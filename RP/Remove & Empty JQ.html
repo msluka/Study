@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+        <style>
+            .container p{
+                height:100px;
+                width:100%;
+                background-color:skyblue;
+                text-align:center;
+            }
+
+            .container>div{
+                border: 1px solid black;
+                height:120px;
+            }
+        </style>
+        <script>
+        $(function(){
+            $(".container>div")
+            .mouseenter(function(){
+                $(this).empty();
+            })
+            .click(function(){
+                $(this).remove();
+            });    
+        });    
+        </script>
+    </head>
+    <body>
+        <div class="container row">
+            <div class="col-xs-3">
+                <p>1</p>           
+            </div>
+            <div class="col-xs-3">
+                <p>2</p>   
+            </div>
+            <div class="col-xs-3">
+                <p>3</p>    
+            </div>
+            <div class="col-xs-3">
+                <p>4</p>    
+            </div>
+        </div>
+    </body>
+</html>
