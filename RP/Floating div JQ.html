@@ -1,0 +1,142 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+    <style>
+        .container {
+            width: 100%;
+            height: 500px;
+            text-align: center;
+            border: 1px solid black;
+            padding-top: 200px;
+            position: relative;
+        }
+
+
+        .container>div {
+            height: 50px;
+            width: 100px;
+            background-color: orangered;
+            margin: auto;
+        }
+    </style>
+    <script>
+        var floatingDivId = "floatingDiv";
+        var floatingDivIdSelector = "#" + floatingDivId;
+        var centerDivIdSelector = "#centerDiv";
+        $(function () {
+
+            createFloatingDiv();
+
+            setTopLeft();
+
+            $("#topLeftButton").click(function () {
+                setButtonClasses(this);
+                setTopLeft();
+            })
+            $("#topRightButton").click(function () {
+                setButtonClasses(this);
+                setTopRight();
+            })
+            $("#bottomLeftButton").click(function () {
+                setButtonClasses(this);
+                setBottomLeft();
+            })
+            $("#bottomRightButton").click(function () {
+                setButtonClasses(this);
+                setBottomRight();
+            })
+
+        });
+
+        function createFloatingDiv() {
+            var floatingDiv = $(document.createElement("div"));
+            floatingDiv.width("100px");
+            floatingDiv.height("50px");
+            floatingDiv.attr("id", floatingDivId);
+
+            floatingDiv.css({
+                "background-color": "limegreen",
+                position: "absolute"
+            });
+
+            $(".container").append(floatingDiv);
+        }
+
+        function setButtonClasses(clickedButton) {
+            $(".btn-success").removeClass("btn-success").addClass("btn-primary");
+            $(clickedButton).removeClass("btn-primary").addClass("btn-success");
+        }
+
+        function setTopLeft() {
+            var centerDiv = $(centerDivIdSelector);
+            var floatingDiv = $(floatingDivIdSelector);
+
+            var top = centerDiv.offset().top - floatingDiv.height();
+            var left = centerDiv.offset().left - floatingDiv.width();
+
+            floatingDiv.css({
+                top: top + "px",
+                left: left + "px"
+            })
+        }
+
+        function setTopRight() {
+            var centerDiv = $(centerDivIdSelector);
+            var floatingDiv = $(floatingDivIdSelector);
+
+            var top = centerDiv.offset().top - floatingDiv.height();
+            var left = centerDiv.offset().left + floatingDiv.width();
+
+            floatingDiv.css({
+                top: top + "px",
+                left: left + "px"
+            })
+        }
+
+        function setBottomLeft() {
+            var centerDiv = $(centerDivIdSelector);
+            var floatingDiv = $(floatingDivIdSelector);
+
+            var top = centerDiv.offset().top + floatingDiv.height();
+            var left = centerDiv.offset().left - floatingDiv.width();
+
+            floatingDiv.css({
+                top: top + "px",
+                left: left + "px"
+            })
+        }
+
+        function setBottomRight() {
+            var centerDiv = $(centerDivIdSelector);
+            var floatingDiv = $(floatingDivIdSelector);
+
+            var top = centerDiv.offset().top + floatingDiv.height();
+            var left = centerDiv.offset().left + floatingDiv.width();
+
+            floatingDiv.css({
+                top: top + "px",
+                left: left + "px"
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="centerDiv">
+
+        </div>
+    </div>
+    <div class="btn-group">
+        <button class="btn btn-success" id="topLeftButton">Top left</button>
+        <button class="btn btn-primary" id="topRightButton">Top Right</button>
+        <button class="btn btn-primary" id="bottomLeftButton">Bottom left</button>
+        <button class="btn btn-primary" id="bottomRightButton">Bottom right</button>
+    </div>
+</body>
+
+</html>
