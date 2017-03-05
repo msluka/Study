@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        
+        <script>
+            function clearSelection(){
+                $(".active").removeClass("active");
+            }
+
+            function useChildren(){
+                clearSelection();
+                $('#ultimateParent').children("p").addClass("active");
+            }
+            
+            function useFind(){
+                clearSelection();
+                $('#ultimateParent').find("p").addClass("active");
+            }
+            
+
+
+        </script>
+
+        <style>
+            div{
+            box-sizing:border-box;
+            width:100%;
+            text-align:center;
+            border:1px solid black;
+            padding:5px;
+            }
+
+            .half{
+                width:49%;
+                display:inline-block;
+            }
+
+            button{
+                width:100px;
+            }
+
+            .active{
+                background-color:lightskyblue;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="ultimateParent">
+            <p>Ultimate parent</p>
+            <div>
+                <p>Parent</p> 
+                <div class="half">
+                    <p>Child 1</p>
+                    <div id="grandchild1" class="half">
+                        GrandChild 1
+                    </div>
+                    <div class="half">
+                        GrandChild 2
+                    </div>
+                </div>
+                <div class="half">
+                    <p>Child 2</p>
+                    <div>
+                        GrandChild 3
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+        <div class="buttonGroup">
+            <button onclick="useChildren()">Children</button>
+            <button onclick="useFind()">Find</button>
+        </div>
+    </body>
+</html>
