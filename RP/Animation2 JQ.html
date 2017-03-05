@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+        <style>
+            #animatedDiv{
+                background-color:red;
+                width:0px;
+                height:0px;
+            }
+        </style>
+        <script>
+        $(function(){ 
+            $("#animatedDiv").animate({
+                width:"+=1000px",
+                height:"+=1000px"
+            }, 20000);
+
+            $("body").click(function(){
+                $("#animatedDiv").stop();
+            });
+        });    
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div id="animatedDiv"></div>
+        </div>
+    </body>
+</html>
