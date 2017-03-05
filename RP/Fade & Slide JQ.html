@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+
+  <style>
+    .container {
+      display: flex;
+    }
+
+
+    .expander {
+      text-align: left;
+      display: inline;
+      width: 100px;
+      background-image: url("E:\Software Development Academy\7. JQuery\01.03.2017\Ćwiczenia\6\expanderIcon-collapsed.png");
+    }
+
+
+    .loading {
+      display: inline;
+      width: 60%;
+      margin-left: 10px;
+    }
+
+
+    li {
+      width: 100%;
+      padding: 10px;
+      list-style-type: none;
+      margin: auto;
+      cursor: pointer;
+    }
+  </style>
+
+
+  <script>
+    $(function () {
+
+      strmyFadeIn()
+      strmySlideDown()
+
+      $("#fadeIn").on("click", function () {
+
+        myFadeIn()
+      })
+
+
+      $("#fadeOut").on("click", function () {
+
+        myFadeOut()
+      })
+
+      $("#fadeToggle").on("click", function () {
+
+        myFadeToggle()
+      })
+
+      $("#fadeTo").on("click", function () {
+
+        myFadeTo()
+      })
+
+      $("#slideDown").on("click", function () {
+
+        mySlideDown()
+      })
+
+      $("#slideUp").on("click", function () {
+
+        mySlideUp()
+      })
+
+      $("#slideToggle").on("click", function () {
+
+        mySlideToggle()
+      })
+
+    })
+
+
+
+
+    function strmyFadeIn() {
+      $("#fadeInUl").hide();
+
+    }
+
+    function myFadeIn() {
+      $("#fadeInUl").fadeIn(2000, "swing");
+
+    }
+
+    function myFadeOut() {
+      $("#fadeOutUl").fadeOut(2000, "swing");
+
+    }
+
+    function myFadeToggle() {
+      $("#fadeToggleUl").fadeToggle(2000, "swing");
+
+    }
+
+    //with Callback
+    function myFadeTo() {
+      $("#fadeToUl").fadeTo(2000, 0.2, function () {
+        alert("The fadeTo effect is finished!");
+      });
+
+    }
+
+    function strmySlideDown() {
+      $("#slideDownUl").hide();
+
+    }
+
+    function mySlideDown() {
+      $("#slideDownUl").slideDown(1000);
+
+    }
+
+    function mySlideUp() {
+      $("#slideUpUl").slideUp(1000);
+
+    }
+
+    //with 2 Callback
+    function mySlideToggle() {
+      $("#slideToggleUl").slideToggle(1000, 'swing', function mySlideUp() {
+
+        $("#slideUpUl").slideUp(1000, function () {
+          location.reload();
+        });
+
+      });
+
+    }
+
+  </script>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="expander">
+
+      <p id="fadeIn"> fadeIn </p>
+
+      <ul id="fadeInUl">
+        <li style="background:gray; color:white;"> Menu1 </li>
+
+        <li style="color:gray; background:limegreen;"> Menu2 </li>
+
+        <li style="background:gray; color:white;"> Menu3 </li>
+
+        <li style="color:gray; background:limegreen;"> Menu4 </li>
+
+        <li style="background:gray; color:white;"> Menu5 </li>
+      </ul>
+
+    </div>
+    <div class="expander">
+
+      <p id="fadeOut"> fadeOut </p>
+
+      <ul id="fadeOutUl">
+        <li style="background:gray; color:white;"> Menu1 </li>
+
+        <li style="color:gray; background:limegreen;"> Menu2 </li>
+
+        <li style="background:gray; color:white;"> Menu3 </li>
+
+        <li style="color:gray; background:limegreen;"> Menu4 </li>
+
+        <li style="background:gray; color:white;"> Menu5 </li>
+      </ul>
+
+    </div>
+
+    <div class="expander">
+
+      <p id="fadeToggle"> fadeToggle </p>
+
+      <ul id="fadeToggleUl">
+        <li style="background:gray; color:white;"> Menu1 </li>
+
+        <li style="color:gray; background:limegreen;"> Menu2 </li>
+
+        <li style="background:gray; color:white;"> Menu3 </li>
+
+        <li style="color:gray; background:limegreen;"> Menu4 </li>
+
+        <li style="background:gray; color:white;"> Menu5 </li>
+      </ul>
+
+    </div>
+
+    <div class="expander">
+
+      <p id="fadeTo"> fadeTo </p>
+
+      <ul id="fadeToUl">
+        <li style="background:gray; color:white;"> Menu1 </li>
+
+        <li style="color:gray; background:limegreen;"> Menu2 </li>
+
+        <li style="background:gray; color:white;"> Menu3 </li>
+
+        <li style="color:gray; background:limegreen;"> Menu4 </li>
+
+        <li style="background:gray; color:white;"> Menu5 </li>
+      </ul>
+
+
+    </div>
+
+    <div class="expander">
+
+      <p id="slideDown"> slideDown </p>
+
+      <ul id="slideDownUl">
+        <li style="background:gray; color:white;"> Menu1 </li>
+
+        <li style="color:gray; background:limegreen;"> Menu2 </li>
+
+        <li style="background:gray; color:white;"> Menu3 </li>
+
+        <li style="color:gray; background:limegreen;"> Menu4 </li>
+
+        <li style="background:gray; color:white;"> Menu5 </li>
+      </ul>
+
+
+    </div>
+
+    <div class="expander">
+
+      <p id="slideUp"> slideUp </p>
+
+      <ul id="slideUpUl">
+        <li style="background:gray; color:white;"> Menu1 </li>
+
+        <li style="color:gray; background:limegreen;"> Menu2 </li>
+
+        <li style="background:gray; color:white;"> Menu3 </li>
+
+        <li style="color:gray; background:limegreen;"> Menu4 </li>
+
+        <li style="background:gray; color:white;"> Menu5 </li>
+      </ul>
+
+    </div>
+
+    <div class="expander">
+
+      <p id="slideToggle"> slideToggle </p>
+
+      <ul id="slideToggleUl">
+        <li style="background:gray; color:white;"> Menu1 </li>
+
+        <li style="color:gray; background:limegreen;"> Menu2 </li>
+
+        <li style="background:gray; color:white;"> Menu3 </li>
+
+        <li style="color:gray; background:limegreen;"> Menu4 </li>
+
+        <li style="background:gray; color:white;"> Menu5 </li>
+      </ul>
+
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>
