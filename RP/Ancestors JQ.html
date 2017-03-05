@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        
+        <script>
+            function clearSelection(){
+                $(".active").removeClass("active");
+            }
+
+            function selectParent(){
+                clearSelection();
+                $('#grandchild1').parent().addClass("active");
+            }
+            
+            function selectParents(){
+                clearSelection();
+                $('#grandchild1').parents().addClass("active");
+            }
+            
+            function selectParentsUntil(){
+                clearSelection();
+                $('#grandchild1').parentsUntil("#ultimateParent").addClass("active");
+            }
+
+
+        </script>
+
+        <style>
+            div{
+            box-sizing:border-box;
+            width:100%;
+            text-align:center;
+            border:1px solid black;
+            padding:5px;
+            }
+
+            .half{
+                width:49%;
+                display:inline-block;
+            }
+
+            button{
+                width:100px;
+            }
+
+            .active{
+                background-color:lightskyblue;
+            }
+			
+			#grandchild1 {
+				background-color: orange;
+			}
+			
+			#grandchild2 {
+				background-color: orange;
+			}
+        </style>
+    </head>
+    <body>
+        <div id="ultimateParent">
+            <p>Ultimate parent</p>
+            <div>
+                <p>Parent</p> 
+                <div class="half">
+                    <p>Child 1</p>
+                    <div id="grandchild1" class="half">
+                        GrandChild 1
+                    </div>
+                    <div id="grandchild2" class="half">
+                        GrandChild 2
+                    </div>
+                </div>
+                <div class="half">
+                    <p>Child 2</p>
+                    <div>
+                        GrandChild 3
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+        <div class="buttonGroup">
+            <button onclick="selectParent()">Parent</button>
+            <button onclick="selectParents()">Parents</button>
+            <button onclick="selectParentsUntil()">ParentsUntil</button>
+        </div>
+    </body>
+</html>
