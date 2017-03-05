@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    #container {
+      margin: auto;
+      width: 50%;
+      display: flex;
+      height: 200px;
+      padding: 10px;
+    }
+
+    button {
+      width: 100px;
+      border-radius: 5px;
+      background: darkorange;
+      color: white;
+      font-weight: bold;
+    }
+
+    #interval {
+      background: blue;
+      padding: 10px;
+    }
+
+    #timeout {
+      background: red;
+      padding: 10px;
+    }
+
+  </style>
+
+  <script>
+
+    var writeHi;
+
+    /* Option 1 --- setInterval() ---
+
+    function write() {
+      var a = document.getElementById("text");
+      a.innerHTML += "Hello Shota" + "<br>";
+    }
+
+    function myFunction() {
+      writeHi = setInterval(write, 1000);
+    }*/
+
+
+    // Option 2 --- setInterval() --- anonymous function will work in all browsers: ---
+
+    function write() {
+      var a = document.getElementById("text");
+      a.innerHTML += "Hello Shota" + "<br>";
+    }
+
+    function myFunction() {
+      writeHi = setInterval(function () { write() }, 1000);
+
+      //to clear interval after specific time
+      setTimeout(function () { clearInterval(writeHi); }, 9000);
+    }
+
+    /*  --- clearInterval() --- 
+    Note: To be able to use the clearInterval() method, you must use a global variable when creating the interval method*/
+
+    function stopWrite() {
+      clearInterval(writeHi);
+    }
+
+
+    // Option 1 --- setTimeout() & clearTimeout --- are like setInterval 
+
+    var myVar;
+
+    function setColor() {
+      myVar = setTimeout(function () { document.getElementById("timeout").style.background = "green" }, 3000);
+    }
+
+    function stopTimeOut() {
+      clearTimeout(myVar);
+    }
+
+  </script>
+
+</head>
+
+<body>
+
+  <div id='container'>
+    <div id='interval'>
+      <button id="setInterval" onclick="myFunction()">setInterval</button>
+      <button id="clearInterval" onclick="stopWrite()">clearInterval</button>
+      <div id="text"></div>
+    </div>
+    <div id='timeout'>
+      <button id="setTimeout" onclick="setColor()">setTimeout</button>
+      <button id="clearTimeout" onclick="stopTimeOut()">clearTimeout</button>
+    </div>
+  </div>
+
+</body>
+
+</html>
