@@ -1,0 +1,37 @@
+http://foundation.zurb.com/sites/docs/installation.html
+
+1. Install nodejs - https://nodejs.org/en/download/
+
+2. run Power Shell (in admin mode)
+
+3. npm install --global foundation-cli
+
+
+
+4. foundation new
+
+
+
+5. choose: A website (Foundation for Sites)
+
+  
+
+6. set project-name
+
+7. Basic Template: includes a Sass compiler
+
+
+
+8. cd project-name folde path
+
+9. npm start
+
+
+http://zurb.com/playground/foundation-icon-fonts-3     //Foundation Icon Fonts 3
+<link rel="stylesheet" type="text/css" href="foundation-icons/foundation-icons.css"> 
+<i class="fi-home">Home Icon</i>
+
+
+http://ionicons.com/     //The premium icon font for Ionic Framework.
+<link rel="stylesheet" href="ionicons-2.0.1/css/ionicons.min.css">
+<i class="icon ion-android-arrow-dropup-circle">Arrow Dropup</i>
