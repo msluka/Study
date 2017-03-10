@@ -6,21 +6,13 @@ http://foundation.zurb.com/sites/docs/installation.html
 
 3. npm install --global foundation-cli
 
-
-
 4. foundation new
 
-
-
-5. choose: A website (Foundation for Sites)
-
-  
+5. choose: A website (Foundation for Sites)  
 
 6. set project-name
 
 7. Basic Template: includes a Sass compiler
-
-
 
 8. cd project-name folde path
 
