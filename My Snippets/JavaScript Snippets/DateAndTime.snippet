@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <!-- Date & Time -->
+  <Header>
+    <Title>DateAndTime</Title>
+    <Author>Msluka</Author>
+    <Shortcut>ddd</Shortcut>
+    <Description>DateAndTime</Description>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>functionName</ID>
+        <ToolTip>functionName</ToolTip>
+        <Default>dateAndTime</Default>
+      </Literal>
+      <Literal>
+        <ID>id</ID>
+        <ToolTip>id</ToolTip>
+        <Default>id</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="JavaScript"><![CDATA[
+  function $functionName$(){
+    
+    var now = new Date();
+    
+    var day = now.getDate();
+    var month = now.getMonth() + 1;
+    var year = now.getFullYear();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    
+    if (day < 10) {
+      day = '0' + day
+    }
+    
+    if (month < 10) {
+      month = '0' + month
+    }
+    
+    if (hour < 10) {
+      hour = '0' + hour
+    }
+    
+    if (minute < 10) {
+      minute = '0' + minute
+    }
+    
+    if (second < 10) {
+      second = '0' + second
+    }    
+    
+    var today = day + "-" + month + "-" + year + "<br><br>" + hour + ":" + minute + ":" + second;;
+    
+    var display = document.getElementById('$id$');
+    
+    display.innerHTML = today;
+        
+    }
+    
+    setInterval("$functionName$()", 1000);
+	
+	$end$]]></Code>
+  </Snippet>
+</CodeSnippet>
