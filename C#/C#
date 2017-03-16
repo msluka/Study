@@ -143,3 +143,103 @@ class Program {
     }
 }
 
+//Example of a Class
+
+class Program
+    {
+        class Dog
+        {
+            public string name;
+            public int age;
+        }
+        static void Main(string[] args)
+        {
+            Dog bob = new Dog();
+            bob.name = "Bobby";
+            bob.age = 3;
+            
+            Console.WriteLine(bob.age);
+			 //Outputs 3
+        }
+    }
+
+//Encapsulation - private & public method
+
+    class BankAccount {
+        private double balance=0;
+        public void Deposit(double n) {
+            balance += n;
+        }
+        public void Withdraw(double n) {
+            balance -= n;
+        }
+        public double GetBalance() {
+            return balance;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            BankAccount b = new BankAccount();
+            b.Deposit(199);
+            b.Withdraw(42);
+            Console.WriteLine(b.GetBalance());
+			//Output 157 
+        }
+    }
+	
+//
+  
+	class Person {
+
+		private int age;
+
+		public int GetAge() {
+		 return age;
+		}
+
+		public void SetAge(int n) {
+		 age = n;
+		}
+	}
+	
+// A class constructor is a special member method of a class that is executed whenever a new object of that class is created.
+
+		class Person
+        {
+            private int age;
+            public Person()
+            {
+                Console.WriteLine("Hi there");
+            }
+        }
+        static void Main(string[] args)
+        {
+            Person p = new Person();
+        }
+		
+//
+
+	class Program
+    {
+        class Person
+        {
+            private int age;
+            private string name;
+            public Person(string nm)
+            {
+                name = nm;
+            }
+            public string getName()
+            {
+                return name;
+            }
+        }
+        static void Main(string[] args)
+        {
+            Person p = new Person("David");
+            Console.WriteLine(p.getName());
+			//Output David
+        }
+    }
