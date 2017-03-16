@@ -163,7 +163,7 @@ class Program
         }
     }
 
-//Encapsulation - private & public method
+//Encapsulation (is also called information hiding)- private & public method (access modifiers);
 
     class BankAccount {
         private double balance=0;
@@ -241,5 +241,58 @@ class Program
             Person p = new Person("David");
             Console.WriteLine(p.getName());
 			//Output David
+        }
+    }
+
+// The Person class has a Name property that has both the set and the get accessors.
+
+class Program
+    {
+        class Person
+        {
+            private string name; //field
+            public string Name  //property
+            {
+                get { return name; }
+                set { name = value; }
+            }
+        }
+        static void Main(string[] args)
+        {
+            Person p = new Person();
+            p.Name = "Bob";
+            Console.WriteLine(p.Name);
+        }
+    }
+	
+//
+
+	class Person
+	{
+	  private int age=0;
+	  public int Age
+	  {
+		get { return age; }
+		set {
+		  if (value > 0)
+			age = value;
+		}
+	  }
+	}
+	
+// Auto-implemented property. Also called auto-properties, they allow for easy and short declaration of private members.
+
+ class Program
+    {
+        class Person
+        {
+            public string Name { get; set; }
+        }
+        static void Main(string[] args)
+        {
+            Person p = new Person();
+            p.Name = "Bob";
+            Console.WriteLine(p.Name);
+			// Outputs "Bob"
         }
     }
