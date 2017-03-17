@@ -296,3 +296,15 @@ class Program
 			// Outputs "Bob"
         }
     }
+	
+//Length returns the length of the string.
+
+	string a = "some text";
+	Console.WriteLine(a.Length);
+	//Outputs 9
+
+//IndexOf(value) returns the index of the first occurrence of the value within the string.
+
+	string a = "some text";
+	Console.WriteLine(a.IndexOf('t'));
+	//Outputs 5
