@@ -329,3 +329,23 @@ class Program
 	if (a.Contains("some"))
 	 Console.WriteLine("found");
 	//Outputs "found"
+	
+//Remove(index) removes all characters in the string after the specified index.
+
+	string a = "I am some text"
+	a = a.Remove(4);
+	Console.WriteLine(a);
+	//Outputs "I am"
+
+//Substring(index, length) returns a substring of the specified length, starting from the specified 
+
+	string a = "I am"
+	a = a.Substring(2);
+	Console.WriteLine(a);
+	//Outputs "am"
+
+//access characters of a string by its index,
+
+	string a = "some text";
+	Console.WriteLine(a[2]);
+	//Outputs "m"
