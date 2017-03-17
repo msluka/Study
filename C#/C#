@@ -308,3 +308,24 @@ class Program
 	string a = "some text";
 	Console.WriteLine(a.IndexOf('t'));
 	//Outputs 5
+
+//Insert(index, value) inserts the value into the string starting from the specified index.
+	
+	string a = "some text";
+	a = a.Insert(0, "This is ");
+	Console.WriteLine(a);
+	//Outputs "This is some text"
+
+//Replace(oldValue, newValue) replaces the specified value in the string.
+
+	string a = "This is some text"
+	a = a.Replace("This is", "I am");
+	Console.WriteLine(a);
+	//Outputs "I am some text"
+
+//Contains(value) returns true if the string contains the specified value.
+
+	string a = "I am some text"
+	if (a.Contains("some"))
+	 Console.WriteLine("found");
+	//Outputs "found"
