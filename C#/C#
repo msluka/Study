@@ -399,3 +399,73 @@ class Program
         }
         
     }
+	
+// Adding Properties to Classes
+
+class Program
+    {
+        class Car
+        {
+            public string Color { get; set; }
+    
+            public Car.Doors NumberOfDoors { get; set; }
+    
+            public enum Doors
+            {
+                two = 2,
+                four = 4,
+                six = 6
+            }
+    
+            private string _engine;
+    
+            public string Engine
+            {
+                get { return _engine;}
+    
+                set
+                {
+                    if(value == "V6" || value == "V8")
+                    { _engine = value;}
+                }
+            }
+    
+            //-----Read Only Property-----//
+            
+            private bool _state;
+    
+            public bool CarState
+            {
+                get { return _state; }
+                set { _state = value; }
+            }
+    
+            public void Turn_On_or_Off()
+            {
+                if (CarState == false)
+                {
+                    CarState = true;
+                }
+    
+                else if (CarState == true)
+                {
+                    CarState = false;}
+            }
+            
+        }
+        
+        static void Main(string[] args)
+        {   
+            Car myCar = new Car();
+            myCar.NumberOfDoors = Car.Doors.four;
+            myCar.Color = "red";
+            myCar.Engine = "V8";
+            myCar.Turn_On_or_Off(); // a click event is needed
+            Console.WriteLine(myCar.NumberOfDoors.ToString() +'\n'+
+                              myCar.Color +'\n'+
+                              myCar.Engine+'\n'+
+                              myCar.CarState
+                              );
+			//Outputs: four red V8 True 
+        }
+    }
