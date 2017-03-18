@@ -349,3 +349,53 @@ class Program
 	string a = "some text";
 	Console.WriteLine(a[2]);
 	//Outputs "m"
+
+// A class, objects and members of the class.
+	
+class Program
+    {        
+        class Book
+		{
+			public string BookName;
+			public string Author;
+			public string PublishingDate;
+
+			public static int BooksSold;
+			//Static members are not accessible by the objects.
+			//They are only accessible by the class.
+
+			public const int Rental_Days = 5;
+			//const is only accessible by the class.
+
+		}
+    
+    
+        static void Main()
+        {
+			//Book newBook;//newBook = new Book();
+			  
+			Book newBook = new Book();
+
+			newBook.BookName = "C#";
+			newBook.Author = "Msluka";
+			newBook.PublishingDate = "01.07.2017";
+
+			Book newBook1 = new Book();
+
+			newBook1.BookName = "Java";
+			newBook1.Author = "Msluka";
+			newBook1.PublishingDate = "01.08.2017";
+
+			Book.BooksSold = 2;
+				
+			Console.WriteLine(newBook.BookName + '\n' +
+							  newBook.PublishingDate + '\n' + 
+							  newBook1.BookName + '\n' + 
+							  newBook1.PublishingDate + '\n'+ 
+							  "Rental days: " + Book.Rental_Days + '\n' + 
+							  "Sold: " + Book.BooksSold);
+			//MessageBox.Show()
+          
+        }
+        
+    }
