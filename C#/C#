@@ -349,6 +349,15 @@ class Program
 	string a = "some text";
 	Console.WriteLine(a[2]);
 	//Outputs "m"
+	
+//String.Concat(); combines the strings.
+
+	string s1 = "some text ";
+    string s2 = "another text";
+    string s3 = String.Concat(s1,s2);
+           
+    Console.WriteLine(s3);
+    //Output: some text another text
 
 // A class, objects and members of the class.
 	
@@ -467,5 +476,45 @@ class Program
                               myCar.CarState
                               );
 			//Outputs: four red V8 True 
+        }
+    }
+	
+// Date and Time
+
+		DateTime.Now; // represents the current date & time
+        DateTime.Today; // represents the current day
+        DateTime.DaysInMonth(2017, 2); //return the number of days in the specified month 
+                              
+        string DateFormat = "dd.MM.yyyy HH:mm:ss"; //MM = two digit // mm = two digit //HH = two digit, 24 hour clock // hh = two digit, 12 hour clock
+        string date = DateTime.Now.ToString(DateFormat);
+        Console.WriteLine(date);
+		  
+// Age Calculator
+
+class Program
+    {
+        class Person
+        {
+            public string Name { get; set; }
+            public string DateOfBirth{get; set;} 
+                      
+        }
+        
+        static void Main(string[] args)
+        {   
+            Person p1 = new Person();
+            p1.Name = "Msluka";
+            p1.DateOfBirth = "04/16/1981";
+                      
+            DateTime birth = DateTime.Parse(p1.DateOfBirth);
+            DateTime today = DateTime.Today;     //we usually don't care about birth time
+            TimeSpan age = today - birth;        //.NET FCL should guarantee this as precise
+            double ageInDays = age.TotalDays;    //total number of days ... also precise
+            double daysInYear = 365.2425;        //statistical value for 400 years
+            double ageInYears = ageInDays / daysInYear;  //can be shifted ... not so precise
+            
+            
+            Console.WriteLine(ageInYears.ToString().Substring(0,2));
+			//Output: 35
         }
     }
