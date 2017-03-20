@@ -515,6 +515,7 @@ class Program
             
             
             Console.WriteLine(ageInYears.ToString().Substring(0,2));
+			Console.WriteLine(ageInYears.ToString().Split('.')[0]; 
 			//Output: 35
         }
     }
