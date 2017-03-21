@@ -512,6 +512,7 @@ class Program
             double ageInDays = age.TotalDays;    //total number of days ... also precise
             double daysInYear = 365.2425;        //statistical value for 400 years
             double ageInYears = ageInDays / daysInYear;  //can be shifted ... not so precise
+			                                             //Age => (DateTime.Now - DateOfBirth).Days; //Option 2//
             
             
             Console.WriteLine(ageInYears.ToString().Substring(0,2));
