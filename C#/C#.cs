@@ -520,3 +520,37 @@ class Program
 			//Output: 35
         }
     }
+	
+//Polymorphism
+
+class Program
+    {
+        class Shape {
+            public virtual void Draw() {
+                Console.WriteLine("Base Draw ");
+            }
+        }
+        class Circle : Shape {
+            public override void Draw() {
+                // draw a circle...
+                Console.WriteLine("Circle Draw ");
+            }
+        }
+        class Rectangle : Shape {
+            public override void Draw() {
+                // draw a rectangle...
+                Console.WriteLine("Rect Draw ");
+            }
+        }
+        static void Main(string[] args)
+        {
+            Shape c = new Circle();
+            c.Draw();
+
+            Shape r = new Rectangle();
+            r.Draw();
+            
+            Circle z = new Circle();
+            z.Draw();
+        }
+    }
