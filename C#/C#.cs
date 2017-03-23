@@ -577,3 +577,23 @@ class Program
         }
     }
 
+// Structs cannot contain default constructors (a constructor without parameters), 
+// but they can have constructors that take parameters.
+
+ class Program
+    {
+        struct Point {
+            public int x;
+            public int y;
+            public Point(int x, int y) {
+                this.x = x;
+                this.y = y;
+            }
+        }
+        static void Main(string[] args)
+        {
+            Point p = new Point(10, 15);
+            Console.WriteLine(p.x);
+			// Outputs 10
+        }
+    }
