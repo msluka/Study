@@ -1,4 +1,4 @@
-//"If else" replacement
+///"If else" replacement
 
 
 int age = 35;
@@ -7,7 +7,7 @@ ale = (age >= 18) ? "Welcome" : "Denied";
 Console.WriteLine(ale);
 
 
-//Optional Arguments
+///Optional Arguments
 class Program {
     static int Pow(int x, int y = 2) {
         int result = 1;
@@ -26,7 +26,7 @@ class Program {
 }
 
 
-//Named Arguments
+///Named Arguments
 class Program {
     static int Area(int h, int w) {
         return h * w;
@@ -39,7 +39,7 @@ class Program {
 }
 
 
-// Passing Arguments (By value, By reference, and as Output)
+/// Passing Arguments (By value, By reference, and as Output)
 // By Value:
 
 class Program {
@@ -108,7 +108,7 @@ class Program
 }
 
 
-//factorial
+///factorial
 
 static int Fact(int num) {
     if (num == 1) {
@@ -117,8 +117,8 @@ static int Fact(int num) {
     return num * Fact(num - 1);
 }
 
-//Recursion. A recursive method is a method that calls itself.
-//In programming, the step by step logic required for the solution to a problem is called an algorithm.
+///Recursion. A recursive method is a method that calls itself.
+///In programming, the step by step logic required for the solution to a problem is called an algorithm.
 
 
 //Making a Pyramid
@@ -163,7 +163,7 @@ class Program
         }
     }
 
-//Encapsulation (is also called information hiding)- private & public method (access modifiers);
+///Encapsulation (is also called information hiding)- private & public method (access modifiers);
 
     class BankAccount {
         private double balance=0;
@@ -204,7 +204,7 @@ class Program
 		}
 	}
 	
-// A class constructor is a special member method of a class that is executed whenever a new object of that class is created.
+/// A class constructor is a special member method of a class that is executed whenever a new object of that class is created.
 
 		class Person
         {
@@ -244,7 +244,7 @@ class Program
         }
     }
 
-// The Person class has a Name property that has both the set and the get accessors.
+/// The Person class has a Name property that has both the set and the get accessors.
 
 class Program
     {
@@ -297,60 +297,60 @@ class Program
         }
     }
 	
-//Length returns the length of the string.
+///Length returns the length of the string.
 
 	string a = "some text";
 	Console.WriteLine(a.Length);
 	//Outputs 9
 
-//IndexOf(value) returns the index of the first occurrence of the value within the string.
+///IndexOf(value) returns the index of the first occurrence of the value within the string.
 
 	string a = "some text";
 	Console.WriteLine(a.IndexOf('t'));
 	//Outputs 5
 
-//Insert(index, value) inserts the value into the string starting from the specified index.
+///Insert(index, value) inserts the value into the string starting from the specified index.
 	
 	string a = "some text";
 	a = a.Insert(0, "This is ");
 	Console.WriteLine(a);
 	//Outputs "This is some text"
 
-//Replace(oldValue, newValue) replaces the specified value in the string.
+///Replace(oldValue, newValue) replaces the specified value in the string.
 
 	string a = "This is some text"
 	a = a.Replace("This is", "I am");
 	Console.WriteLine(a);
 	//Outputs "I am some text"
 
-//Contains(value) returns true if the string contains the specified value.
+///Contains(value) returns true if the string contains the specified value.
 
 	string a = "I am some text"
 	if (a.Contains("some"))
 	 Console.WriteLine("found");
 	//Outputs "found"
 	
-//Remove(index) removes all characters in the string after the specified index.
+///Remove(index) removes all characters in the string after the specified index.
 
 	string a = "I am some text"
 	a = a.Remove(4);
 	Console.WriteLine(a);
 	//Outputs "I am"
 
-//Substring(index, length) returns a substring of the specified length, starting from the specified 
+///Substring(index, length) returns a substring of the specified length, starting from the specified 
 
 	string a = "I am"
 	a = a.Substring(2);
 	Console.WriteLine(a);
 	//Outputs "am"
 
-//access characters of a string by its index,
+///access characters of a string by its index,
 
 	string a = "some text";
 	Console.WriteLine(a[2]);
 	//Outputs "m"
 	
-//String.Concat(); combines the strings.
+///String.Concat(); combines the strings.
 
 	string s1 = "some text ";
     string s2 = "another text";
@@ -521,7 +521,7 @@ class Program
         }
     }
 	
-//Polymorphism
+///Polymorphism
 
 class Program
     {
@@ -554,3 +554,26 @@ class Program
             z.Draw();
         }
     }
+	
+/// A struct type is a value type that is typically used to encapsulate small groups of related variables,
+/// such as the coordinates of a rectangle or the characteristics of an item in an inventory. 
+
+ class Program
+    {
+        struct Book {
+            public string title;  
+            public double price;
+            public string author;
+        }
+        static void Main(string[] args)
+        {
+            Book b;
+            b.title = "Test";
+            b.price = 5.99;
+            b.author = "David";
+            
+            Console.WriteLine(b.title);
+			//Outputs "Test"
+        }
+    }
+
