@@ -597,3 +597,35 @@ class Program
 			// Outputs 10
         }
     }
+	
+/// Enums
+/// The enum keyword is used to declare an enumeration: 
+/// a type that consists of a set of named constants called the enumerator list.
+
+class Program
+    {
+        enum Days { Sun, Mon, Tue, Wed, Thu, Fri, Sat }; 
+        static void Main(string[] args)
+        {
+            int x = (int)Days.Tue;
+            Console.WriteLine(x);
+			//Output: 2
+        }
+    }
+	
+///By default, the first enumerator has the value 0.
+///You can also assign your own enumerator values:
+
+class Program
+    {
+        enum Days { Sun, Mon, Tue=5, Wed, Thu, Fri, Sat }; 
+        static void Main(string[] args)
+        {
+            int x = (int)Days.Fri;
+            Console.WriteLine(x);
+			//Output: 8
+        }
+    }
+
+
+
