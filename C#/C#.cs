@@ -655,5 +655,78 @@ class Program
         }
     }
 
+/// Exceptions
+/// We use the general Exception type to handle all kinds of exceptions. 
+/// We can also use the exception object e to access the exception details, 
+/// such as the original error message (e.Message):
 
+class Program
+    {
+        static void Main(string[] args)
+        {
+            try {
+                int[] arr = new int[] { 4, 5, 8 };
+                Console.Write(arr[8]);
+            }
+            catch(Exception e) {
+                Console.WriteLine("An error occurred");
+				//Output: "An error occurred"
+				
+				Console.WriteLine(e.Message);
+				//Output: Index was outside the bounds of the array.
+            }
+        }
+    }
 
+/// Multiple Exceptions
+/// The most commonly used exceptions: 
+/// DivideByZeroException, FileNotFoundException, FormatException, 
+/// IndexOutOfRangeException, InvalidOperationException, OutOfMemoryException.
+
+ class Program 
+	{
+		static void Main(string[] args) 
+		{
+			int x, y;
+			
+			try {
+				x = Convert.ToInt32(Console.Read());
+				y = Convert.ToInt32(Console.Read());
+				Console.WriteLine(x / y);
+				} 
+			catch (DivideByZeroException e) {
+				Console.WriteLine("Cannot divide by 0");
+				//Output:"Cannot divide by 0" //if the user enters 0 for the second number
+				} 
+			catch (Exception e) {
+				Console.WriteLine("An error occurred");
+				//Output: "An error occurred" //if the user enters non-integer values
+				}
+		}
+	}
+	
+/// Finally Exception
+/// The finally block is used to execute a given set of statements, 
+/// whether an exception is thrown or not. 
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            int result=0;
+            int num1 = 8;
+            int num2 = 0;
+            try {
+                result = num1 / num2;
+            }
+            catch (DivideByZeroException e) {
+                Console.WriteLine("Error");
+			}
+            finally {
+                Console.WriteLine(result);
+            }
+			
+			//Output: "Error" 
+            //Output: 0			
+        }
+    }
