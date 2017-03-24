@@ -557,6 +557,9 @@ class Program
 	
 /// A struct type is a value type that is typically used to encapsulate small groups of related variables,
 /// such as the coordinates of a rectangle or the characteristics of an item in an inventory. 
+/// Structs do not support inheritance and cannot contain virtual methods.
+/// Structs can contain methods, properties, indexers, and so on. 
+/// Consider defining a struct instead of a class if you are trying to represent a simple set of data. 
 
  class Program
     {
@@ -577,8 +580,9 @@ class Program
         }
     }
 
-// Structs cannot contain default constructors (a constructor without parameters), 
-// but they can have constructors that take parameters.
+/// Structs cannot contain default constructors (a constructor without parameters), 
+/// but they can have constructors that take parameters.
+/// In that case the new keyword is used to instantiate a struct object
 
  class Program
     {
@@ -624,6 +628,30 @@ class Program
             int x = (int)Days.Fri;
             Console.WriteLine(x);
 			//Output: 8
+        }
+    }
+	
+/// Enums are often used with switch statements.
+
+	class Program
+    {
+        enum TrafficLights { Green, Red, Yellow };
+        static void Main(string[] args)
+        {
+            TrafficLights x = TrafficLights.Red;
+            switch (x) {
+                case TrafficLights.Green:
+                    Console.WriteLine("Go!");
+                    break;
+                case TrafficLights.Red:
+                    Console.WriteLine("Stop!");
+                    break;
+                case TrafficLights.Yellow:
+                    Console.WriteLine("Caution!");
+                    break;
+				
+				//Output: "Stop!"
+            }
         }
     }
 
