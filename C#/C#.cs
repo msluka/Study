@@ -730,3 +730,34 @@ class Program
             //Output: 0			
         }
     }
+
+/// Files
+/// The System.IO namespace has The File class
+/// The WriteAllText() method creates a file with the specified path and writes the content to it. 
+/// If the file already exists, it is overwritten.
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            string str = "Hello";
+            File.WriteAllText("test.txt", str);
+            
+            string txt = File.ReadAllText("Hello.txt");
+            Console.WriteLine(txt);
+			
+			//Output: Hello
+        }
+    }
+
+/// AppendAllText() - appends text to the end of the file.
+/// Create() - creates a file in the specified location.
+/// Delete() - deletes the specified file.
+/// Exists() - determines whether the specified file exists.
+/// Copy() - copies a file to a new location.
+/// Move() - moves a specified file to a new location
+
+	
+	
+	
+	
