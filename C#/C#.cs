@@ -757,6 +757,35 @@ class Program
 /// Copy() - copies a file to a new location.
 /// Move() - moves a specified file to a new location
 
+class Program
+    {
+        static void Main(string[] args)
+        {
+            string pathBeforeCreation = @"D:\";
+            string text = "Hello" + Environment.NewLine; ;
+            string fileName = "HelloWorld.txt";
+            string createdFile = @"D:\HelloWorld.txt";
+            
+   
+            if (File.Exists(createdFile))
+            {
+                File.AppendAllText(createdFile, text);
+                string innertext = File.ReadAllText(createdFile);
+                Console.WriteLine(innertext);
+                Console.ReadLine();
+            }
+
+            else
+            {
+                File.WriteAllText(createdFile, String.Empty);
+                //File.Create(pathBeforeCreation + fileName);
+                File.AppendAllText(createdFile, text);
+                string innertext = File.ReadAllText(createdFile);
+                Console.WriteLine(innertext);
+                Console.ReadLine();
+            }
+        }
+    }
 	
 	
 	
