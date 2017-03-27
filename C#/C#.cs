@@ -787,6 +787,44 @@ class Program
         }
     }
 	
-	
+/// Constructor with Parapetrs
+
+class Program
+
+    {
+        class Person
+        {
+            private string Name;
+            private int Age;
+
+            private static int Id = 0;
+            private int id;
+
+            public Person(string name, int age)
+            {
+                Id++;
+                this.Name = name;
+                this.Age = age;
+                this.id = Id;
+            }
+
+            public void GetData()
+            {   
+                Console.WriteLine("Name: " + this.Name + "\n"+ 
+                                  "Age: " + this.Age + "\n" + 
+                                  "ID: " + id.ToString("D3") + "\n");
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            Person Man1 = new Person("John", 20);
+            Person Woman1 = new Person("Sandra", 18);
+            
+            Man1.GetData();
+            Woman1.GetData();
+            Console.ReadLine();
+        }
+    }	
 	
 	
