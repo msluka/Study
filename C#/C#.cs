@@ -787,7 +787,62 @@ class Program
         }
     }
 	
-/// Constructor with Parapetrs
+/// *Generics
+/// **Generic Methods
+/// Generics allow the reuse of code across different types. 
+/// In the code below, T is the name of our generic type.
+/// If you omit specifying the type when calling a generic method, 
+/// the compiler will use the type based on the arguments passed to the method.
+
+class Program
+    {
+        static void Swap<T>(ref T a, ref T b) {
+            T temp = a;
+            a = b;
+            b = temp;
+            
+        }
+        static void Main(string[] args)
+        {
+            int a = 4, b = 9;
+            Swap<int>(ref a, ref b);
+            Console.WriteLine(a+" "+b);
+             //Now b is 4, a is 9
+            
+            string x = "Hello";
+            string y = "World";
+            Swap<string>(ref x, ref y);
+            Console.WriteLine(x+" "+y);
+			//Output: World Hello
+        }
+    }	
+
+/// Multiple generic parameters can be used with a single method. 
+/// For example: Func<T, U> takes two different generic types.
+
+ class Program
+    {
+        static void Func<T,U> (T x, U y) {
+        
+            Console.WriteLine(x+" "+y);
+        }
+        
+        static void Main(string[] args) {
+ 
+            double x = 7.42;
+            string y = "test";
+            Func(x,y);
+            
+            //Output: 7.42 test 
+        }
+        
+    }
+
+
+
+	
+	
+/// Constructor with Parametrs
 
 class Program
 
