@@ -2,7 +2,9 @@
 The first version was called:
 SEQUEL - Structured English Query Language.
 The name later was changed to 
-SQL - Structured Query Language.*/
+SQL - Structured Query Language.
+SQL is used to access and manipulate a database.
+SQL is an ANSI (American National Standards Institute) standard*/
 
 
 /*--CREATING TABLE--*/
@@ -89,5 +91,120 @@ SELECT title FROM songs;
 SELECT title FROM songs WHERE released > 1990 OR mood = "epic";
 
 SELECT title FROM songs WHERE released > 1990 and mood = "epic" and duration <240;
+
+
+/*--Selecting Multiple Columns--*/
+--Do not put a comma after the last column name.
+
+SELECT FirstName, LastName, City 
+FROM customers;
+
+/*--Selecting All Columns--*/
+--In SQL, the asterisk means all.
+
+SELECT * 
+FROM customers; 
+
+/*--The DISTINCT Keyword--*/
+--is used in conjunction with SELECT to eliminate all duplicate records and return only unique ones.
+
+SELECT DISTINCT City 
+FROM customers; 
+
+/*--The TOP Keyword--*/
+--we can retrieve the first three records from the customers table.
+
+SELECT TOP 3 City 
+FROM customers; 
+
+/*--Fully Qualified Names--*/
+--is especially useful when working with multiple tables that may share the same column names.
+
+SELECT City 
+FROM customers;
+--Fully
+SELECT customers.City 
+FROM customers;
+
+
+/*--Order By--*/
+--is used with SELECT to sort the returned data. 
+SELECT * 
+FROM customers
+ORDER BY FirstName;
+
+--Sorting Multiple Columns--*/
+SELECT * 
+FROM customers 
+ORDER BY LastName, Age;
+
+/*--WHERE--*/
+
+SELECT * 
+FROM customers
+WHERE ID = 7;
+
+/*--SQL Operators--*/
+-- !=;=;>;<;>=;<=;BETWEEN;
+
+SELECT * 
+FROM customers
+WHERE ID != 5;
+-- the record with ID=5 is excluded from the list.
+
+SELECT * 
+FROM customers 
+WHERE ID BETWEEN 3 AND 7;
+
+/*--Text Values--*/
+-- Use single quotation marks (').
+
+SELECT ID, FirstName, LastName, City 
+FROM customers
+WHERE City = 'New York';
+
+/*--Logical Operators--*/
+-- AND; OR; IN; NOT; 
+
+SELECT ID, FirstName, LastName, Age
+FROM customers
+WHERE Age >= 30 AND Age <= 40;
+
+SELECT * 
+FROM customers 
+WHERE City = 'New York' OR City = 'Chicago';
+
+--Combining AND & OR
+SELECT * 
+FROM customers
+WHERE City = 'New York'
+AND (Age=30 OR Age=35);
+
+--The IN operator is used when you want to compare a column with more than one value. 
+SELECT * 
+FROM customers 
+WHERE City IN ('New York', 'Los Angeles', 'Chicago');
+
+--The NOT IN operator allows you to exclude a list of specific values from the result set. 
+SELECT * FROM customers 
+WHERE City NOT IN ('New York', 'Los Angeles', 'Chicago');
+
+/*--The CONCAT Function--*/
+--is used to concatenate two or more text values and returns the concatenating string.
+
+SELECT CONCAT(FirstName, ', ' , City) 
+FROM customers;
+
+/*--The AS Keyword--*/
+--A concatenation results in a new column.
+
+SELECT CONCAT(FirstName,', ', City) AS new_column 
+FROM customers;
+
+/*--Arithmetic Operators--*/
+
+SELECT ID, FirstName, LastName, Salary+500 AS Salary
+FROM employees;
+
 
 
