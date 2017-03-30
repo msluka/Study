@@ -126,7 +126,6 @@ FROM customers;
 SELECT customers.City 
 FROM customers;
 
-
 /*--Order By--*/
 --is used with SELECT to sort the returned data. 
 SELECT * 
@@ -204,6 +203,57 @@ FROM customers;
 /*--Arithmetic Operators--*/
 
 SELECT ID, FirstName, LastName, Salary+500 AS Salary
+FROM employees;
+
+/*--The UPPER/LOWER Function--*/
+
+SELECT FirstName, UPPER(LastName) AS LastName 
+FROM employees;
+
+/*--SQRT / AVG / SUM--*/
+--The SQRT function returns the square root of given value in the argument:
+SELECT Salary, SQRT(Salary) 
+FROM employees;
+
+-- The AVG function returns the average value of a numeric column:
+SELECT AVG(Salary) 
+FROM employees;
+
+--The SUM function is used to calculate the sum for a column's values:
+SELECT SUM(Salary) 
+FROM employees;
+
+/*--DESC / ASC--*/
+--The DESC keyword sorts results in descending order. 
+--Similarly, ASC sorts the results in ascending order.
+
+SELECT FirstName, Salary 
+FROM employees 
+WHERE  Salary > 3100
+ORDER BY Salary DESC;
+
+
+/*--Subqueries--*/
+--A subquery is a query within another query. 
+
+SELECT FirstName, Salary 
+FROM employees 
+WHERE  Salary > (SELECT AVG(Salary) FROM employees) 
+ORDER BY Salary DESC;
+
+/*--The Like Operator--*/
+--is useful when specifying a search condition within your WHERE clause.
+
+SELECT * 
+FROM employees 
+WHERE FirstName LIKE '%A_';
+
+/*--The MIN / MAX Function--*/
+
+SELECT MIN(Salary) AS Salary 
+FROM employees;
+
+SELECT MAX(Salary) AS Salary 
 FROM employees;
 
 
