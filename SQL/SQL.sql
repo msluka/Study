@@ -257,4 +257,46 @@ SELECT MAX(Salary) AS Salary
 FROM employees;
 
 
+/*--Joining Tables--*/
+
+--INNER JOIN is equivalent to JOIN. It returns rows when there is a match between the tables.
+
+SELECT 
+	Persons.Name
+	,Persons.Surname
+	,Persons.Age
+	,Items.Name
+	,Items.Price
+	
+FROM Persons
+	JOIN Items ON Items.PersonID = Persons.ID
+
+ORDER BY Items.Price;
+
+-- The LEFT JOIN returns all rows from the left table, even if there are no matches in the right table.
+
+SELECT *	
+FROM Persons
+	LEFT JOIN Items ON Items.PersonID = Persons.ID
+ORDER BY Items.Price;
+
+--The RIGHT JOIN returns all rows from the right table, even if there are no matches in the left table
+
+SELECT *	
+FROM Persons
+	RIGHT JOIN Items ON Items.PersonID = Persons.ID
+ORDER BY Items.Price; 
+
+/*--Custom Names--*/
+--It can be used to shorten the join statements by giving the tables "nicknames":
+
+SELECT ct.ID
+	,ct.Name
+	,ord.Name
+	,ord.Amount
+	
+FROM customers AS ct
+	,orders AS ord
+WHERE ct.ID = ord.Customer_ID
+ORDER BY ct.ID;
 
