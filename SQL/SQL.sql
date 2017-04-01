@@ -300,3 +300,25 @@ FROM customers AS ct
 WHERE ct.ID = ord.Customer_ID
 ORDER BY ct.ID;
 
+
+/*--UNION--*/
+--The UNION operator is used to combine the result-sets of two or more SELECT statements.
+--UNION combines multiple datasets into a single dataset, and removes any existing duplicates.
+--UNION ALL combines multiple datasets into one dataset, but does not remove duplicate rows. 
+--UNION ALL is faster than UNION, as it does not perform the duplicate removal operation over the data set.
+
+SELECT ID, FirstName, LastName, City 
+FROM First
+
+UNION ALL
+
+SELECT ID, FirstName, LastName, City 
+FROM Second;
+
+--If your columns don't match exactly across all queries, you can use a NULL (or any other) value such as:
+
+SELECT FirstName, LastName, Company 
+FROM businessContacts
+UNION
+SELECT FirstName, LastName, NULL 
+FROM otherContacts;
