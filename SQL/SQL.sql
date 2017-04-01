@@ -322,3 +322,17 @@ FROM businessContacts
 UNION
 SELECT FirstName, LastName, NULL 
 FROM otherContacts;
+
+/*--Inserting Data--*/
+--The INSERT INTO statement is used to add new rows of data to a table in the database.
+--Make sure the order of the values is in the same order as the columns in the table.
+--you must provide a value for every column that does not have a default value, or does not support NULL.
+
+INSERT INTO Employees 
+VALUES (8, 'Anthony', 'Young', 35);
+
+--you can specify the table's column names in the INSERT INTO statement:
+--You can specify your own column order, as long as the values are specified in the same order as the columns.
+
+INSERT INTO Employees (ID, FirstName, Age, LastName) 
+VALUES (8, 'Anthony', 35, 'Young');
