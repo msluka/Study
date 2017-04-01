@@ -336,3 +336,43 @@ VALUES (8, 'Anthony', 'Young', 35);
 
 INSERT INTO Employees (ID, FirstName, Age, LastName) 
 VALUES (8, 'Anthony', 35, 'Young');
+
+/*--UPDATE--*/
+--The UPDATE statement allows us to alter data in the table. 
+--If you omit the WHERE clause, all records in the table will be updated!
+
+UPDATE Employees 
+SET Salary=5000
+WHERE ID=1;
+
+--Updating Multiple Columns
+
+UPDATE Employees 
+SET Salary=5000, FirstName='Robert'
+WHERE ID=1;
+
+/*--DELETE--*/
+--The DELETE statement is used to remove data from your table.
+--If you omit the WHERE clause, all records in the table will be deleted!
+
+DELETE 
+FROM Employees
+WHERE ID=1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
