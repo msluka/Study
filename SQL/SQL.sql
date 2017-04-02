@@ -359,6 +359,25 @@ DELETE
 FROM Employees
 WHERE ID=1;
 
+/*--Creating a Table--*/
+
+CREATE TABLE Users
+(
+   UserID int,
+   FirstName nvarchar(100),
+   LastName nvarchar(100),
+   City nvarchar(100),
+   PRIMARY KEY(UserID)
+);
+
+--AUTO INCREMENT
+
+CREATE TABLE Persons (
+    ID int IDENTITY(1,1) PRIMARY KEY,
+    LastName nvarchar(50) NOT NULL,
+    FirstName nvarchar(50),
+    Age int
+);  
 
 
 
