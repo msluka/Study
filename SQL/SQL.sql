@@ -379,7 +379,55 @@ CREATE TABLE Persons (
     Age int
 );  
 
+/*--ALTER TABLE--*/
+--The ALTER TABLE command is used to add, delete, or modify columns in an existing table.
 
+--ADDING COLUMNS
+
+ALTER TABLE People 
+ADD DateOfBirth date;
+
+--DROPPING COLUMNS
+--delete the column
+
+ALTER TABLE People 
+DROP COLUMN DateOfBirth;
+
+--DROPPING TABLE
+--To delete the entire table, use the DROP TABLE command:
+
+DROP TABLE People;
+
+--RENAMING COLUMN
+
+sp_RENAME 'Persons.Name', 'Surname' , 'COLUMN'
+
+--RENAMING TABLE
+
+sp_RENAME 'Persons', 'Humans'
+
+/*--Views--*/
+
+--In SQL, a VIEW is a virtual table that is based on the result-set of an SQL statement.
+--A view contains rows and columns, just like a real table. 
+--The fields in a view are fields from one or more real tables in the database.
+
+CREATE VIEW List AS
+SELECT Name, Phone
+FROM  Users;
+
+SELECT *
+FROM List;
+
+--Updating a View
+
+ALTER VIEW List AS
+SELECT Name, Phone, ID
+FROM  Users;
+
+--Deleting a View
+
+DROP VIEW List;
 
 
 
