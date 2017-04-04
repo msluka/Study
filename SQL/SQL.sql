@@ -439,7 +439,27 @@ FROM  Users;
 
 DROP VIEW List;
 
+/*--Date--*/
 
+SELECT * 
+FROM Appointments 
+WHERE AppointmentTime < DATEADD(day, 1, GETDATE()) and  AppointmentTime > GETDATE();
+
+--
+
+SELECT * 
+FROM Appointments 
+WHERE AppointmentTime < DATEADD(hour, 10, GETDATE()) and  AppointmentTime > GETDATE();
+
+/*--Count--*/
+
+SELECT COUNT(*) AS NumberOfOrders 
+FROM Orders;
+
+--
+
+SELECT COUNT(Clients) AS NumberOfClients
+FROM Orders;
 
 
 
