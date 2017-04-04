@@ -273,6 +273,16 @@ FROM Persons
 
 ORDER BY Items.Price;
 
+--FULL OUTER JOIN keyword returns all the rows from the left table, and all the rows from the right table.
+
+SELECT Customers.CustomerName
+       ,Orders.OrderID
+	   
+FROM Customers
+	FULL OUTER JOIN Orders ON Customers.CustomerID=Orders.CustomerID
+	
+ORDER BY Customers.CustomerName;
+
 -- The LEFT JOIN returns all rows from the left table, even if there are no matches in the right table.
 
 SELECT *	
