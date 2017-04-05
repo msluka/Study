@@ -837,9 +837,6 @@ class Program
         }
         
     }
-
-
-
 	
 	
 /// Constructor with Parametrs
@@ -882,4 +879,83 @@ class Program
         }
     }	
 	
-	
+
+/// Timer
+
+class Program
+{
+
+    private static void Main()
+    {
+        myTimer();
+    }
+        
+    public static void myTimer()
+    {
+        System.Timers.Timer aTimer = new System.Timers.Timer();
+        aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+        aTimer.Interval = 1000;
+        aTimer.Enabled = true;
+
+        while (Console.Read() != 'q') ;
+    }
+   
+    private static void OnTimedEvent(object sender, ElapsedEventArgs e)
+    {            
+        DateTime now = DateTime.Now;
+           
+        Console.Write("\x000D"+now);         
+    }
+        
+}
+
+//
+
+class Program
+{
+    private static void Main()
+    {
+        myTimer();
+    }
+
+    public static void myTimer()
+    {
+        System.Timers.Timer aTimer = new System.Timers.Timer();
+        aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+        aTimer.Interval = 1000;
+        aTimer.Enabled = true;
+
+        while (Console.Read() != 'e') ;
+    }
+
+    static int i = 0;
+    private static void OnTimedEvent(object sender, ElapsedEventArgs e)
+    {
+        i++;
+
+        Console.Write("\x000D" + i);
+    }
+}
+
+
+/// DateTime CultureInfo
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Please input date in dd/mm/yyyy hh:mm");
+
+        CultureInfo provider = CultureInfo.InvariantCulture;
+
+        CultureInfo frenchCultureProvider = CultureInfo.GetCultureInfo("gb");
+
+        var dateInput = Console.ReadLine();
+
+        var dateTime = DateTime.ParseExact(dateInput, "dd/MM/yyyy HH:mm", provider);
+
+        Console.WriteLine($"{dateTime.ToString("D", frenchCultureProvider)} {dateTime.ToString("T", frenchCultureProvider)}");
+
+        Console.ReadKey();
+    }
+}	
