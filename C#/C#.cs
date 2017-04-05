@@ -959,3 +959,49 @@ class Program
         Console.ReadKey();
     }
 }	
+
+/// Check Char / Digit
+
+class Program
+{
+    private static void Main()
+    {
+        do
+        {
+            var txt = Console.ReadLine();
+
+            if (txt.Any(x => char.IsDigit(x)))
+            {
+                Console.WriteLine("Is Digit");
+
+            }
+
+            else
+            {
+                Console.WriteLine("Is Char");
+            }
+
+        } while (true);
+    }
+}
+
+/// Lambda
+/// A lambda expression is an anonymous function and it is mostly used to create delegates in LINQ.
+/// It's a shorthand that allows you to write a method in the same place you are going to use it. 
+/// You can read n => n % 2 == 1 like: 
+/// "input parameter named n goes to anonymous function which returns true if the input is odd".
+
+class Program
+{
+    static void Main(string[] args)
+    {
+
+        List<int> numbers = new List<int> { 31, 37, 22, 19, 20 };
+        List<int> oddNumbers = numbers.Where(n => n % 2 == 1).ToList();
+
+        oddNumbers.ForEach(Console.WriteLine);
+
+        Console.ReadLine();
+		//Outputs: 31 37 19
+    }
+}
