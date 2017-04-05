@@ -390,6 +390,7 @@ CREATE TABLE Persons (
 );  
 
 /*--ALTER TABLE--*/
+
 --The ALTER TABLE command is used to add, delete, or modify columns in an existing table.
 
 --ADDING COLUMNS
@@ -461,8 +462,17 @@ FROM Orders;
 SELECT COUNT(Clients) AS NumberOfClients
 FROM Orders;
 
+/*--Convert--*/
 
+--https://www.w3schools.com/sql/func_convert.asp
+--CONVERT(data_type(length),expression,style)
+--data_type(length)	Specifies the target data type (with an optional length
+--expression	    Specifies the value to be converted
+--style	            Specifies the output format for the date/time 
 
+SELECT convert(VARCHAR(11), Appointments.Date,105)
+FROM Appointments
+WHERE ID =2;
 
 
 
