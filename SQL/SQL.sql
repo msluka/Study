@@ -475,6 +475,39 @@ FROM Appointments
 WHERE ID =2;
 
 
+/*--Trigger--*/
+
+CREATE TRIGGER usersUpdateTime
+   ON  Users
+   AFTER INSERT,DELETE,UPDATE
+AS 
+BEGIN
+	
+	INSERT INTO Logs(UpdateTime)
+	VALUES (GETDATE())
+
+END
+GO
+
+--
+ALTER TRIGGER usersUpdateTime
+   ON  Users
+   AFTER INSERT,DELETE,UPDATE
+AS 
+BEGIN
+
+	DECLARE @OldValue nvarchar(50);
+	DECLARE @NewValue nvarChar(50);
+
+	SELECT @OldValue = Name FROM deleted
+	SELECT @NewValue = Name FROM inserted
+	
+	INSERT INTO Logs(UpdateTime, [OldValue], [NewValue])
+	VALUES (GETDATE(), @OldValue, @NewValue)
+
+END
+
+
 
 
 
