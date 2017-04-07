@@ -1005,3 +1005,56 @@ class Program
 		//Outputs: 31 37 19
     }
 }
+
+/// Compare Objects
+
+namespace CompareObjects
+{
+
+    public class Customer
+    {
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public int Age { get; set; }
+        public string City { get; set; }
+
+        public override bool Equals(object otherCustomer)
+        {
+            var customerInstance = otherCustomer as Customer;
+            return Name == customerInstance.Name
+                   && Surname == customerInstance.Surname
+                   && Age == customerInstance.Age
+                   && City == customerInstance.City;
+        }
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            object obj = new object();
+
+
+            var customer1 = new Customer
+            {
+                Name = "Jhone",
+                Surname = "Doe",
+                Age = 33,
+                City = "Berlin"
+            };
+
+            var customer2 = new Customer
+            {
+                Name = "Jhone",
+                Surname = "Doe",
+                Age = 33,
+                City = "Berlin"
+            };
+
+            Console.WriteLine(customer1.Equals(customer2)); // true
+            Console.WriteLine(customer1 == customer2); // false
+            Console.ReadLine();
+        }
+    }
+}
