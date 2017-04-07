@@ -507,7 +507,34 @@ BEGIN
 
 END
 
+/*--Function--*/
 
+CREATE FUNCTION CalculateAge(@DOB DATE)
+
+RETURNS INT
+AS
+BEGIN
+	
+	DECLARE @Age INT
+
+	SET @Age = DATEDIFF(YEAR, @DOB, GETDATE()) -
+	
+		CASE
+			WHEN (MONTH(@DOB) > MONTH(GETDATE())) OR
+			(MONTH(@DOB) = MONTH(GETDATE()) AND DAY(@DOB) > DAY(GETDATE()))
+
+			THEN 1
+			ELSE 0
+		END
+
+	RETURN @Age
+
+END
+GO
+
+--Function invocation
+
+SELECT  dbo.CalculateAge('04/16/1981') --as AGE 
 
 
 
