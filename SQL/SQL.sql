@@ -508,6 +508,10 @@ BEGIN
 END
 
 /*--Function--*/
+--Scalar Functions
+--Table Valued Functions
+
+--Scalar Function returns a scalar value
 
 CREATE FUNCTION CalculateAge(@DOB DATE)
 
@@ -533,12 +537,21 @@ END
 GO
 
 --Function invocation
-
 SELECT  dbo.CalculateAge('04/16/1981') --as AGE 
 
+--Inline Table Valued Function returns a table
 
+CREATE FUNCTION FilterUsersByGender (@Gender nvarchar(10))
+RETURNS TABLE 
+AS
+RETURN 
+(	SELECT ID, Name, Surname, Gender
+	FROM Users
+	WHERE Gender = @Gender
+)
 
-
+--Function invocation
+SELECT * FROM FilterUsersByGender('Male')
 
 
 
