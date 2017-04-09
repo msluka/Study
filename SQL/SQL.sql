@@ -512,6 +512,8 @@ END
 --Table Valued Functions
 
 --Scalar Function returns a scalar value
+--Scalar functions may or may not have parameters, but always return a single (scalar) value. 
+--The returned value can be of any data type, except text, ntext, image, cursor, and timestamp
 
 CREATE FUNCTION CalculateAge(@DOB DATE)
 
@@ -536,7 +538,7 @@ BEGIN
 END
 GO
 
---Function invocation
+--Scalar Function invocation
 SELECT  dbo.CalculateAge('04/16/1981') --as AGE 
 
 --Inline Table Valued Function returns a table
@@ -550,8 +552,15 @@ RETURN
 	WHERE Gender = @Gender
 )
 
---Function invocation
+--Table Valued Function invocation
 SELECT * FROM FilterUsersByGender('Male')
+
+--The table returned by the table valued function can also be used in joins with other tables.
+
+SELECT Name, Gender, ProductName
+FROM FilterUsersByGender('Male') G --alias
+JOIN Products P --alias
+ON G.ID = P.UsersID
 
 
 
