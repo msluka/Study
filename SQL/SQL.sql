@@ -510,6 +510,7 @@ END
 /*--Function--*/
 --Scalar Functions
 --Table Valued Functions
+--Multi statement table valued functions
 
 --Scalar Function returns a scalar value
 --Scalar functions may or may not have parameters, but always return a single (scalar) value. 
@@ -543,6 +544,15 @@ SELECT  dbo.CalculateAge('04/16/1981') --as AGE
 
 --Inline Table Valued Function returns a table
 
+--In an Inline Table Valued function, the RETURNS clause cannot contain the structure of the table,
+--the function returns. Whereas with the multi statement table valued function, we specify the
+--structure of the table that gets returned.
+--Inline Table Valued function cannot have BEGIN and END block, whereas the multi-statement
+--function can have.
+--Inline Table valued functions are better for performance than multi statement table valued
+--functions. If the given task, can be achieved using an inline table valued function, always prefer to
+--use them, over multi-statement table valued functions.
+
 CREATE FUNCTION FilterUsersByGender (@Gender nvarchar(10))
 RETURNS TABLE 
 AS
@@ -562,6 +572,61 @@ FROM FilterUsersByGender('Male') G --alias
 JOIN Products P --alias
 ON G.ID = P.UsersID
 
+--Multi statement table valued functions 
 
+CREATE FUNCTION MSTFilterUsersByGender ()
+RETURNS @Table TABLE (ID int, Name nvarchar(20), Gender nvarchar(10)) 
+AS
+BEGIN
+
+INSERT INTO @Table
+SELECT ID, Name, Gender
+FROM Users
+
+RETURN
+END
+
+--Multi statement table valued invocation
+
+SELECT * FROM dbo.MSTFilterUsersByGender()
+
+/*--Stored procedures--*/
+
+--If you have a situation where you write the same query over and over again, 
+--you can save that specific query as a stored procedure and call it just by it's name.
+
+CREATE PROCEDURE spGetUsers
+
+AS
+BEGIN
+SELECT Name, Gender 
+FROM Users
+END
+
+--To execute the stored procedure:
+
+spGetUsers
+--or
+EXECUTE spGetUsers
+
+--Stored Procedures with parameters
+
+CREATE PROCEDURE spGetUsersByNameAndGender
+
+@Name nvarchar(20),
+@Gender nvarchar(20)
+
+AS
+BEGIN
+
+	SELECT ID, Name, Email, Gender
+	FROM Users
+	WHERE Name = @Name AND Gender =  @Gender
+
+END
+
+--To execute the stored procedure with parameters:
+
+spGetUsersByNameAndGender 'Diane', 'Female'
 
 
