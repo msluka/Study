@@ -1059,3 +1059,48 @@ namespace CompareObjects
         }
     }
 }
+
+
+/// LINQ
+/// Language Integrated Query
+/// is uniform query syntax in C# and VB.NET used to save and retrieve data from different sources.
+/// LINQ providers: 	
+/// LINQ to Objects
+///	LINQ to XML
+///	LINQ to SQL
+/// LINQ to DataSets
+/// LINQ to Entities
+
+//Quary Syntax:
+
+string[] musicalArtists = { "Adele", "Maroon 5", "Avril Lavigne" };
+
+        IEnumerable<string> aArtists =
+            from artist in musicalArtists
+            where artist.StartsWith("A")
+            select artist;
+
+        foreach (var artist in aArtists)
+        {
+            Console.WriteLine(artist);
+        }
+		
+//Method Syntax:
+
+string[] musicalArtists = { "Adele", "Maroon 5", "Avril Lavigne" };
+
+var aArtists = musicalArtists
+            .Where(artist => artist.StartsWith("A"))
+            .Select(artist=>artist).ToList();
+
+        aArtists.ForEach(Console.WriteLine);
+        Console.ReadLine();
+
+//
+
+
+
+
+
+
+
