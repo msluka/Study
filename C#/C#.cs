@@ -1098,6 +1098,191 @@ var aArtists = musicalArtists
 
 //
 
+class Program
+{
+    public class Album
+    {
+        public string Name { get; set; }
+
+        public string Year { get; set; }
+    }
+
+    public class MusicalArtist
+    {
+        public string Name { get; set; }
+
+        public string Genre { get; set; }
+
+        public string LatestHit { get; set; }
+
+        public List<Album> Albums { get; set; }
+    }
+
+    class ArtistViewModel
+    {
+        public string ArtistName { get; set; }
+
+        public string Song { get; set; }
+    }
+	
+    static List<MusicalArtist> GetMusicalArtists()
+    {
+        return new List<MusicalArtist>
+            {
+                new MusicalArtist
+                {
+                    Name = "Adele",
+                    Genre = "Pop",
+                    LatestHit = "Someone Like You",
+                    Albums = new List<Album>
+                    {
+                        new Album { Name = "21", Year = "2011" },
+                        new Album { Name = "19", Year = "2008" },
+                    }
+                },
+                new MusicalArtist
+                {
+                    Name = "Maroon 5",
+                    Genre = "Adult Alternative",
+                    LatestHit = "Moves Like Jaggar",
+                    Albums = new List<Album>
+                    {
+                        new Album { Name = "Misery", Year = "2010" },
+                        new Album { Name = "It Won't Be Soon Before Long", Year = "2008" },
+                        new Album { Name = "Wake Up Call", Year = "2007" },
+                        new Album { Name = "Songs About Jane", Year = "2006" },
+                    }
+                },
+                new MusicalArtist
+                {
+                    Name = "Lady Gaga",
+                    Genre = "Pop",
+                    LatestHit = "You And I",
+                    Albums = new List<Album>
+                    {
+                        new Album { Name = "The Fame", Year = "2008" },
+                        new Album { Name = "The Fame Monster", Year = "2009" },
+                        new Album { Name = "Born This Way", Year = "2011" },
+                    }
+                }
+            };
+    }
+
+    //Querying A Custom Type
+    static void QueryingCustomTypes()
+    {
+        List<MusicalArtist> artistsDataSource = GetMusicalArtists();
+
+        IEnumerable<MusicalArtist> artistsResult =
+            from artist in artistsDataSource
+            select artist;
+
+        Console.WriteLine("\nQuerying Custom Types");
+        Console.WriteLine("---------------------\n");
+
+        foreach (MusicalArtist artist in artistsResult)
+        {
+            Console.WriteLine(
+                "Name: {0}\nGenre: {1}\nLatest Hit: {2}\n",
+                artist.Name,
+                artist.Genre,
+                artist.LatestHit);
+        }
+
+        Console.ReadLine();
+    }
+
+    //Custom Projection with Data Source Type
+    static void CreatingCustomProjectionsWithTheDataSourceType()
+    {
+        List<MusicalArtist> artistsDataSource = GetMusicalArtists();
+
+        IEnumerable<MusicalArtist> artistsResult =
+            from artist in artistsDataSource
+            select new MusicalArtist
+            {
+                Name = artist.Name,
+                LatestHit = artist.LatestHit
+            };
+
+        Console.WriteLine("\nCustom Projection With Data Source Type");
+        Console.WriteLine("---------------------------------------\n");
+
+        foreach (MusicalArtist artist in artistsResult)
+        {
+            Console.WriteLine(
+                "Name: {0}\nLatest Hit: {1}\n",
+                artist.Name,
+                artist.LatestHit);
+        }
+
+        Console.ReadLine();
+    }
+
+    //Custom Projection on a Different Type
+    static void CreatingCustomProjectionsOnDifferentType()
+    {
+        List<MusicalArtist> artistsDataSource = GetMusicalArtists();
+
+        IEnumerable<ArtistViewModel> artistsResult =
+            from artist in artistsDataSource
+            select new ArtistViewModel
+            {
+                ArtistName = artist.Name,
+                Song = artist.LatestHit
+            };
+
+        Console.WriteLine("\nCustom Projection On a Different Type");
+        Console.WriteLine("-------------------------------------\n");
+
+        foreach (ArtistViewModel artist in artistsResult)
+        {
+            Console.WriteLine(
+                "Artist Name: {0}\nSong: {1}\n",
+                artist.ArtistName,
+                artist.Song);
+        }
+
+        Console.ReadLine();
+    }
+
+    //Projecting Anonymous Types
+    private static void ProjectingAnonymousTypes()
+    {
+        List<MusicalArtist> artistsDataSource = GetMusicalArtists();
+
+        var artistsResult =
+            from artist in artistsDataSource
+            select new
+            {
+                Name = artist.Name,
+                NumberOfAlbums = artist.Albums.Count
+            };
+
+        Console.WriteLine("\nProjecting Anonymous Types");
+        Console.WriteLine("--------------------------\n");
+
+        foreach (var artist in artistsResult)
+        {
+            Console.WriteLine(
+                "Artist Name: {0}\nNumber of Albums: {1}\n",
+                artist.Name,
+                artist.NumberOfAlbums);
+        }
+        Console.ReadLine();
+    }
+
+    static void Main(string[] args)
+    {
+
+        QueryingCustomTypes();
+        CreatingCustomProjectionsWithTheDataSourceType();
+        CreatingCustomProjectionsOnDifferentType();
+        ProjectingAnonymousTypes();
+
+    }
+}
+
 
 
 
