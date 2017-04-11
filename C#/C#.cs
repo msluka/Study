@@ -1360,6 +1360,30 @@ public Customer GetCustomer(int id)
 
 //
 
+public void AddCustomer(Customer customer)
+{
+
+	using (var conn = new SqlConnection(Settings.Default.ConnectionString))
+	{
+		
+		var querry = "INSERT INTO Customers (Name, Surname, CityName) Values " +
+					 "(@Name, @Surname, @CityName)";
+
+		using (var command = new SqlCommand(querry, conn))
+
+		{
+			command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = customer.Name;
+			command.Parameters.Add("@Surname", SqlDbType.NVarChar).Value = customer.Surname;
+			command.Parameters.Add("@CityName", SqlDbType.NVarChar).Value = customer.CityName;
+
+			conn.Open();
+			command.ExecuteNonQuery();
+		  
+		}
+
+	}
+	
+}
 
 
 
