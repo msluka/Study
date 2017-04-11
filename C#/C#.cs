@@ -1385,6 +1385,31 @@ public void AddCustomer(Customer customer)
 	
 }
 
+// 
 
+public void UpdateCustomer(Customer customer)
+{
+
+	using (var conn = new SqlConnection(Settings.Default.ConnectionString))
+	{
+
+		var querry = "UPDATE Customers SET Name =@Name, Surname=@Surname, CityName=@CityName WHERE Id = @Id";
+					 
+		using (var command = new SqlCommand(querry, conn))
+
+		{
+			command.Parameters.Add("@Id", SqlDbType.Int).Value = customer.Id;
+			command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = customer.Name;
+			command.Parameters.Add("@Surname", SqlDbType.NVarChar).Value = customer.Surname;
+			command.Parameters.Add("@CityName", SqlDbType.NVarChar).Value = customer.CityName;
+
+			conn.Open();
+			command.ExecuteNonQuery();
+
+		}
+		
+	}
+	
+}
 
 
