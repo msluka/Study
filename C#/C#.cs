@@ -1414,6 +1414,7 @@ public void UpdateCustomer(Customer customer)
 
 // 
 
+public void DeleteCustomer(int id)
 {
 
 	using (var conn = new SqlConnection(Settings.Default.ConnectionString))
