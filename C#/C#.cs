@@ -1286,39 +1286,77 @@ class Program
 /// ADO.NET
 
 public IEnumerable<Customer> GetAllCustomers()
-        {
+{
 
-            var result = new List<Customer>();
+	var result = new List<Customer>();
 
-            using (var conn = new SqlConnection(Settings.Default.ConnectionString))
-            {
+	using (var conn = new SqlConnection(Settings.Default.ConnectionString))
+	{
 
-                conn.Open();
-                var querry = "SELECT * FROM Customers";
-                using (var command = new SqlCommand(querry, conn))
+		conn.Open();
+		var querry = "SELECT * FROM Customers";
+		using (var command = new SqlCommand(querry, conn))
 
-                {
-                    var dataReader = command.ExecuteReader();
+		{
+			var dataReader = command.ExecuteReader();
 
-                    while (dataReader.Read())
-                    {
-                        result.Add(new Customer
-                        {
+			while (dataReader.Read())
+			{
+				result.Add(new Customer
+				{
 
-                            Id = (int)dataReader["Id"],
-                            CityName = (string)dataReader["CityName"],
-                            Name = (string)dataReader["Name"],
-                            Surname = (string)dataReader["Surname"]
+					Id = (int)dataReader["Id"],
+					CityName = (string)dataReader["CityName"],
+					Name = (string)dataReader["Name"],
+					Surname = (string)dataReader["Surname"]
 
-                        });
-                    }
-                }
+				});
+			}
+		}
 
-            }
+	}
 
-            return result;
+	return result;
 
-        }
+}
+
+//
+
+public Customer GetCustomer(int id)
+{
+	
+	var result = new List<Customer>();
+
+	using (var conn = new SqlConnection(Settings.Default.ConnectionString))
+	{
+
+		conn.Open();
+		var querry = "SELECT * FROM Customers WHERE Id = @Id";
+		using (var command = new SqlCommand(querry, conn))
+
+		{
+			command.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+			var dataReader = command.ExecuteReader();
+
+			while (dataReader.Read())
+			{
+				result.Add(new Customer
+				{
+
+					Id = (int)dataReader["Id"],
+					CityName = (string)dataReader["CityName"],
+					Name = (string)dataReader["Name"],
+					Surname = (string)dataReader["Surname"]
+
+				});
+			}
+		}
+
+	}
+
+	return result.SingleOrDefault();
+
+}
 
 //
 
