@@ -1412,4 +1412,26 @@ public void UpdateCustomer(Customer customer)
 	
 }
 
+// 
+
+{
+
+	using (var conn = new SqlConnection(Settings.Default.ConnectionString))
+	{
+
+		var querry = "DELETE FROM Customers WHERE Id = @Id";
+
+		using (var command = new SqlCommand(querry, conn))
+
+		{
+			command.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+		  
+			conn.Open();
+			command.ExecuteNonQuery();
+
+		}
+
+	}
+
+}
 
