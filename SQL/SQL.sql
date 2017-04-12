@@ -575,15 +575,19 @@ ON G.ID = P.UsersID
 --Multi statement table valued functions 
 
 CREATE FUNCTION MSTFilterUsersByGender ()
+
 RETURNS @Table TABLE (ID int, Name nvarchar(20), Gender nvarchar(10)) 
+
 AS
+
 BEGIN
 
-INSERT INTO @Table
-SELECT ID, Name, Gender
-FROM Users
+	INSERT INTO @Table
+	SELECT ID, Name, Gender
+	FROM Users
 
-RETURN
+	RETURN
+	
 END
 
 --Multi statement table valued invocation
@@ -598,9 +602,12 @@ SELECT * FROM dbo.MSTFilterUsersByGender()
 CREATE PROCEDURE spGetUsers
 
 AS
+
 BEGIN
-SELECT Name, Gender 
-FROM Users
+
+	SELECT Name, Gender 
+	FROM Users
+	
 END
 
 --To execute the stored procedure:
@@ -617,6 +624,7 @@ CREATE PROCEDURE spGetUsersByNameAndGender
 @Gender nvarchar(20)
 
 AS
+
 BEGIN
 
 	SELECT ID, Name, Email, Gender
