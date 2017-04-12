@@ -1436,3 +1436,39 @@ public void DeleteCustomer(int id)
 
 }
 
+//
+
+public IEnumerable<Customer> GetAllCustomers()
+{
+
+	var result = new List<Customer>();
+
+	using (var conn = new SqlConnection(Settings.Default.ConnectionString))
+	{
+		
+		conn.Open();
+		var querry = "SELECT * FROM Customers";
+		using (var command = new SqlCommand(querry, conn))
+
+		{
+			var dataReader = command.ExecuteReader();
+
+			while (dataReader.Read())
+			{
+				result.Add(new Customer
+				{
+					 
+					Id = (int ) dataReader ["Id"],
+					CityName = (string) dataReader["CityName"],
+					Name = (string) dataReader["Name"],
+					Surname = (string) dataReader ["Surname"]
+
+				});
+			}
+		}
+
+	}
+	
+	return result;
+
+}
