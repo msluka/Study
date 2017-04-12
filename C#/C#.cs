@@ -1436,39 +1436,73 @@ public void DeleteCustomer(int id)
 
 }
 
-//
+/// Executing a SQL server stored procedure in c#
 
-public IEnumerable<Customer> GetAllCustomers()
+/*CREATE PROCEDURE [dbo].[getCustomersOrdersReport]
+
+AS
+BEGIN
+
+SELECT 
+
+customers.Name + ' ' + customers.Surname as CustoemrName
+
+,COUNT (orders.Id) as OrdesCount
+,(SELECT
+                COUNT(DISTINCT(ProductId))
+                FROM OrderProducts orderProd
+                JOIN Orders ords ON orderProd.OrderId = ords.Id 
+                WHERE ords.CustomerId = customers.Id
+         ) AS ProductsCount
+		
+,SUM(aggregatedOrderProducts.QuantitySum) as QuantitySum
+,SUM(aggregatedOrderProducts.TotalPrice) as TotalPrice
+		
+
+FROM (
+ SELECT OrderId,
+ SUM(Quantity) AS QuantitySum,
+ SUM(Quantity * Price) AS TotalPrice
+ FROM OrderProducts
+ GROUP BY OrderId) AS aggregatedOrderProducts
+
+JOIN Orders AS orders ON aggregatedOrderProducts.OrderId = orders.Id
+JOIN Customers AS customers ON orders.CustomerId = customers.Id
+GROUP BY customers.Id, customers.Name, customers.Surname
+
+
+END
+*/
+
+public IEnumerable<OrdersListRow> GetCustomerOrdersReport()
 {
-
-	var result = new List<Customer>();
+	var result = new List<OrdersListRow>();
 
 	using (var conn = new SqlConnection(Settings.Default.ConnectionString))
-	{
-		
-		conn.Open();
-		var querry = "SELECT * FROM Customers";
-		using (var command = new SqlCommand(querry, conn))
+	{	
+		var query = "getCustomersOrdersReport";
 
+		using (var command = new SqlCommand(query, conn))
 		{
-			var dataReader = command.ExecuteReader();
+			command.CommandType = CommandType.StoredProcedure;
+			
+			conn.Open();
+			var reader = command.ExecuteReader();
 
-			while (dataReader.Read())
+			while (reader.Read())
 			{
-				result.Add(new Customer
+				result.Add(new OrdersListRow
 				{
-					 
-					Id = (int ) dataReader ["Id"],
-					CityName = (string) dataReader["CityName"],
-					Name = (string) dataReader["Name"],
-					Surname = (string) dataReader ["Surname"]
-
+					CustomerName = (string)reader["CustoemrName"],
+					OrdersCount = (int)reader["OrdesCount"],
+					ProductsCount = (int)reader["ProductsCount"],
+					ProductsQuantitySum = (int)reader["QuantitySum"],
+					TotalPrice = (decimal)reader["TotalPrice"]
 				});
 			}
 		}
+	}	
 
-	}
-	
 	return result;
-
+	
 }
