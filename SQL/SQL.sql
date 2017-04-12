@@ -630,3 +630,34 @@ END
 spGetUsersByNameAndGender 'Diane', 'Female'
 
 
+/*--Transactions--*/
+
+--A transaction is a group of commands that change the data stored in a database.
+--A transaction ensures that either all of the commands succeed, or none of them. 
+--If one of the commands in the transaction fails, all of the commands fail, and 
+--any data that was modified in the database is rolled back. 
+--Note: NOT able to see the un-committed changes. To do that: 
+--SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+
+Create Procedure spTransaction
+
+As
+
+Begin
+
+	Begin Try
+		Begin Transaction
+			Update Users Set Surname = 'Hamilton', Gender = 'Female'  
+			Where Name = 'Gloria'
+
+			Update Users Set ID = 'abc' 
+			Where Gender = 'Female'
+		Commit Transaction
+	End Try
+
+	Begin Catch
+		Rollback Transaction
+		Print 'Transaction rolled back'
+	End Catch
+
+End
