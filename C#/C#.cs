@@ -1506,3 +1506,53 @@ public IEnumerable<OrdersListRow> GetCustomerOrdersReport()
 	return result;
 	
 }
+
+/// SQL transaction in c#
+
+public void AddSingleProductOrder(Order order, int productId, int quantity, int price)
+{
+	using (var connection = new SqlConnection(Settings.Default.ConnectionString))
+	{
+		connection.Open();
+		var transaction = connection.BeginTransaction();
+
+		try
+		{
+
+			var createOrderQuery = $"insert into orders (OrderDate, CustomerId) " +
+								   "Values (@OrderDate, @CustomerId);" +
+								   "Select Scope_Identity();";
+
+			var orderId = 0;
+			using (var createOrderCommand = new SqlCommand(createOrderQuery, connection, transaction))
+			{
+				createOrderCommand.Parameters.Add("@OrderDate", SqlDbType.DateTime).Value = order.OrderDate;
+				createOrderCommand.Parameters.Add("@CustomerId", SqlDbType.Int).Value = order.CustomerId;
+
+				orderId = Convert.ToInt32(createOrderCommand.ExecuteScalar());
+			}
+
+			var createOrderProductQuery = $"insert into orderProducts (OrderId, ProductId, Quantity, Price) " +
+										  "Values (@OrderId, @ProductId, @Quantity, @Price)";
+
+			using (
+				var createOrderProductCommand = new SqlCommand(createOrderProductQuery, connection, transaction)
+			)
+			{
+				createOrderProductCommand.Parameters.Add("@OrderId", SqlDbType.Int).Value = orderId;
+				createOrderProductCommand.Parameters.Add("@ProductId", SqlDbType.Int).Value = productId;
+				createOrderProductCommand.Parameters.Add("@Quantity", SqlDbType.Int).Value = quantity;
+				createOrderProductCommand.Parameters.Add("@Price", SqlDbType.Decimal).Value = price;
+
+				createOrderProductCommand.ExecuteNonQuery();
+			}
+
+			transaction.Commit();
+
+		}
+		catch (Exception e)
+		{
+			transaction.Rollback();
+		}
+	}
+}
