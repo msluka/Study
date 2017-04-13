@@ -1607,3 +1607,19 @@ public void AddSingleProductOrder(Order order, int productId, int quantity, int 
 	Console.WriteLine(result);
 			Console.ReadLine();
 			//Output: Believe someone's statement without proof
+			
+			
+/// Start a new line and remove anything that's not a word or apostrophe.
+
+	string s = "Believe someone's statement,without proof.";
+			
+			Console.WriteLine(s);
+
+			if (Regex.IsMatch(s, @"\s"))
+			{
+				string result = Regex.Replace(s, @"[^\w\']", "\n");
+				string result2 = Regex.Replace(result, @"[^\w\'\s]", String.Empty);
+
+				Console.WriteLine(result2);
+				Console.ReadLine();
+			}
