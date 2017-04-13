@@ -1556,3 +1556,25 @@ public void AddSingleProductOrder(Order order, int productId, int quantity, int 
 		}
 	}
 }
+
+///Remove Punctuation from string using Regex
+
+string s = "Believe someone's statement, without proof.";
+
+string result = Regex.Replace(s, @"\p{P}", "");
+
+Console.WriteLine(result);
+        Console.ReadLine();
+		//Output: Believe someones statement without proof
+		
+
+///Remove Punctuation and Spaces from string using Regex
+
+string s = "Believe someone's statement, without proof.";
+
+string result = Regex.Replace(s, @"\W|_", String.Empty);
+
+Console.WriteLine(result);
+        Console.ReadLine();
+		//Output: Believesomeonesstatementwithoutproof
+
