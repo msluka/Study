@@ -1557,6 +1557,25 @@ public void AddSingleProductOrder(Order order, int productId, int quantity, int 
 	}
 }
 
+
+///Remove Punctuation from string
+
+string s = "Believe someone's statement, without proof.";
+        var sb = new StringBuilder();
+
+        foreach (char c in s)
+        {
+            if (!char.IsPunctuation(c))
+                sb.Append(c);
+        }
+
+        s = sb.ToString();
+           
+        Console.WriteLine(s);
+        Console.ReadLine();
+		//Output: Believe someones statement without proof
+
+
 ///Remove Punctuation from string using Regex
 
 string s = "Believe someone's statement, without proof.";
