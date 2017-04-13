@@ -1560,40 +1560,50 @@ public void AddSingleProductOrder(Order order, int productId, int quantity, int 
 
 ///Remove Punctuation from string
 
-string s = "Believe someone's statement, without proof.";
-        var sb = new StringBuilder();
+	string s = "Believe someone's statement, without proof.";
+			var sb = new StringBuilder();
 
-        foreach (char c in s)
-        {
-            if (!char.IsPunctuation(c))
-                sb.Append(c);
-        }
+			foreach (char c in s)
+			{
+				if (!char.IsPunctuation(c))
+					sb.Append(c);
+			}
 
-        s = sb.ToString();
-           
-        Console.WriteLine(s);
-        Console.ReadLine();
-		//Output: Believe someones statement without proof
+			s = sb.ToString();
+			   
+			Console.WriteLine(s);
+			Console.ReadLine();
+			//Output: Believe someones statement without proof
 
 
 ///Remove Punctuation from string using Regex
 
-string s = "Believe someone's statement, without proof.";
+	string s = "Believe someone's statement, without proof.";
 
-string result = Regex.Replace(s, @"\p{P}", "");
+	string result = Regex.Replace(s, @"\p{P}", "");
 
-Console.WriteLine(result);
-        Console.ReadLine();
-		//Output: Believe someones statement without proof
+	Console.WriteLine(result);
+			Console.ReadLine();
+			//Output: Believe someones statement without proof
 		
 
 ///Remove Punctuation and Spaces from string using Regex
 
-string s = "Believe someone's statement, without proof.";
+	string s = "Believe someone's statement, without proof.";
 
-string result = Regex.Replace(s, @"\W|_", String.Empty);
+	string result = Regex.Replace(s, @"\W|_", String.Empty);
 
-Console.WriteLine(result);
-        Console.ReadLine();
-		//Output: Believesomeonesstatementwithoutproof
+	Console.WriteLine(result);
+			Console.ReadLine();
+			//Output: Believesomeonesstatementwithoutproof
 
+		
+///Remove anything that's not a word, apostrophe or whitespace character
+
+	string s = "Believe someone's statement, without proof.";
+
+	string result = Regex.Replace(s, @"[^\w\'\s]", String.Empty);
+
+	Console.WriteLine(result);
+			Console.ReadLine();
+			//Output: Believe someone's statement without proof
