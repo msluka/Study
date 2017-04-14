@@ -1623,3 +1623,36 @@ public void AddSingleProductOrder(Order order, int productId, int quantity, int 
 				Console.WriteLine(result2);
 				Console.ReadLine();
 			}
+
+/// Regex
+/// The Regex class is used for representing a regular expression.
+
+/// The following example matches words that start with 'S':
+
+using System;
+using System.Text.RegularExpressions;
+
+namespace RegExApplication
+{
+   class Program
+   {
+      private static void showMatch(string text, string expr)
+      {
+         Console.WriteLine("The Expression: " + expr);
+         MatchCollection mc = Regex.Matches(text, expr);
+         foreach (Match m in mc)
+         {
+            Console.WriteLine(m);
+         }
+      }
+      
+      static void Main(string[] args)
+      {
+         string str = "A Thousand Splendid Suns";
+         
+         Console.WriteLine("Matching words that start with 'S': ");
+         showMatch(str, @"\bS\S*");
+         Console.ReadKey();
+      }
+   }
+}
