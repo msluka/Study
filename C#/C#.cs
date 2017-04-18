@@ -1685,3 +1685,38 @@ namespace RegExApplication
       }
    }
 }
+
+/// Removing trailing zeros in a decimal
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            decimal[] decimalNumbers = { 1.0M, 1.01M, 1.0010M, 0.00M, 1.0050M };
+
+            foreach (decimal decimalNumber in decimalNumbers)
+            {
+                Console.WriteLine("Original Decimal Number = {0}, Without Zeros = {1}",
+                                    decimalNumber, decimalNumber.ToString("0.####"));
+            }
+
+            Console.ReadLine();
+
+			//Outputs: Original Decimal Number = 1.0, Without Zeros = 1
+					 //Original Decimal Number = 1.01, Without Zeros = 1.01
+					 //Original Decimal Number = 1.0010, Without Zeros = 1.001
+					 //Original Decimal Number = 0.00, Without Zeros = 0
+					 //Original Decimal Number = 1.0050, Without Zeros = 1.005
+
+
+        }
+    }
+
+
+
+/// Entity Framework
+
+/// is an ORM framework. ORM stands for object Relational Mapping.
+/// ORM framework automatically creates classes based on database tables and 
+/// the vice versa is also true, that is, it can also automatically generate 
+/// necessary SQL to create database tables based on classes.
