@@ -74,16 +74,55 @@
 	Console.WriteLine(++b);
 	// Output: 5
 
+/// The if statement - is a conditional statement that executes a block of code when a condition is true.
+/// 	When only one line of code is in the if block, the curly braces can be omitted.
 
+	if (x > y)
+	Console.WriteLine("x is greater than y");
+
+/// The else Clause - An optional else clause can be specified to execute a block of code when the condition 
+/// 	in the if statement evaluates to false.
+
+	int mark = 85;
+
+	if (mark < 50) 
+	{
+	   Console.WriteLine("You failed.");
+	}
+	else 
+	{
+	   Console.WriteLine("You passed.");
+	}
+
+	// Outputs "You passed." 
 
 ///"If else" replacement
 
+	int age = 35;
+	string ale;
+	ale = (age >= 18) ? "Welcome" : "Denied";
+	Console.WriteLine(ale);
+	
+/// The if-else if Statement - can be used to decide among three or more actions.
 
-int age = 35;
-string ale;
-ale = (age >= 18) ? "Welcome" : "Denied";
-Console.WriteLine(ale);
+	int x = 33;
 
+	if (x == 8) {
+	   Console.WriteLine("Value of x is 8");
+	}
+	else if (x == 18) {
+	   Console.WriteLine("Value of x is 18");
+	}
+	else if (x == 33) {
+	   Console.WriteLine("Value of x is 33");
+	}
+	else {
+	   Console.WriteLine("No match");
+	}
+	//Outputs "Value of x is 33"
+
+	
+	
 
 ///Optional Arguments
 class Program {
