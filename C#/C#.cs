@@ -121,8 +121,28 @@
 	}
 	//Outputs "Value of x is 33"
 
-	
-	
+/// The switch statement - provides a more elegant way to test a variable for equality against a list of values.
+/// 	Each value is called a case. The optional default case is executed when none of the previous cases match.
+///     The role of the break statement is to terminate the switch statement. 
+/// 	All case and default code must end with a break statement.
+
+	int age = 88;
+	switch (age) {
+	  case 16:
+		Console.WriteLine("Too young");
+		break;
+	  case 42:
+		Console.WriteLine("Adult");
+		break;
+	  case 70:
+		Console.WriteLine("Senior");
+		break;
+	  default:
+		Console.WriteLine("The default case");
+		break;
+	}
+	// Outputs "The default case"
+
 
 ///Optional Arguments
 class Program {
