@@ -1,3 +1,81 @@
+/// C# is an object-oriented language
+/// The .NET Framework consists of:
+
+///	- the Common Language Runtime (CLR) and 
+/// - the .NET Framework class library.
+
+/// CLR is the foundation of the .NET Framework. It manages code at execution time, 
+/// 	providing core services such as memory management, code accuracy, and many other aspects of the code.
+
+/// Class library is a collection of classes, interfaces, and value types that enable developers 
+/// 	to accomplish a range of common programming tasks, such as data collection, file access, and working with text.
+
+/// Identifier - A variable name, also called an identifier. 
+/// Implicitly typed variables - Variables declared using the var keyword are called implicitly typed variables.
+/// 	Implicitly typed variables must be initialized with a value.
+
+/// Statement - A line of code that completes an action is called a statement. Each statement in C# must end with a semicolon.
+
+/// IDE - an integrated development environment is a software suite that consolidates the basic tools developers need 
+/// 	to write and test software. 
+/// COMPILER - is a special program that processes statements written in a particular programming language and turns 
+/// 	them into machine language or "code" that a computer's processor uses.
+/// 	Traditionally, the output of the compilation has been called object code or sometimes an object module . 
+/// 	Note that the term "object" here is not related to object-oriented programming.
+/// 	The object code is machine code that the processor can execute one instruction at a time.
+/// GUI (usually pronounced GOO-ee) is a graphical (rather than purely textual) user interface to a computer. 
+
+/// Operators - An operator is a symbol that performs mathematical or logical manipulations. (+, -, *, /, %)
+/// Precedence - Operator precedence determines the grouping of terms in an expression, which affects how an expression 
+///		is evaluated.
+/// 	If none of the expressions are in parentheses, multiplicative (multiplication, division, modulus) operators 
+///		will be evaluated before additive (addition, subtraction) operators. 
+///		Operators of equal precedence are evaluated from left to right.
+
+/// Assignment operator - the = assignment operator assigns the value on the right side of the operator to the variable 
+/// 	on the left side. 
+/// Compound assignment operators - perform an operation and an assignment in one statement. For example:
+
+	x *= 8; // equivalent to x = x * 8
+	x /= 5; // equivalent to x = x / 5
+	x %= 2; // equivalent to x = x % 2
+
+/// Increment Operator
+
+	x++; //equivalent to x = x + 1
+
+/// Decrement Operator
+/// The decrement operator (--) works in much the same way as the increment operator
+
+	x--; //equivalent to x = x - 1
+
+/// The increment operator has two forms, prefix and postfix.
+
+	++x; //prefix
+	x++; //postfix
+
+/// Prefix increments the value, and then proceeds with the expression. 
+
+	int x = 3;
+	int y = ++x;
+	// x is 4, y is 4
+
+/// Postfix evaluates the expression and then performs the incrementing.
+
+	int x = 3;
+	int y = x++;
+	// x is 4, y is 3
+
+//prefix / postfix Example:
+
+	int a = 4;
+	int b = 6;
+	b = a++;
+	Console.WriteLine(++b);
+	// Output: 5
+
+
+
 ///"If else" replacement
 
 
