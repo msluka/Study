@@ -268,10 +268,74 @@
 	string msg;
 	msg = (age >= 18) ? "Welcome" : "Sorry";
 	Console.WriteLine(msg);
-	
-	
 
+	
+/// Method
+/// A method is a group of statements that perform a particular task.
+/// To use a method, you need to declare the method and then call it.
+/// Each method declaration includes:
+/// - the return type (The return type of a method is declared before its name. )
+/// - the method name
+/// - an optional list of parameters.
+
+	int Sqr(int x)
+	{
+	  int result = x*x;
+	  return result;
+	}
+
+// In the example above, the return type is int, which indicates that the method returns an integer value. 
+// When a method returns a value, it must include a return statement.
+// void is a basic data type that defines a valueless state.
+
+	static void SayHi()
+	{
+	  Console.WriteLine("Hello");
+	}
+
+	static void Main(string[] args)
+	{
+	  SayHi();
+	}
+	//Outputs "Hello"
+
+/// Parameters and Arguments
+/// A parameter is a variable in a method definition. 
+/// When a method is called, the arguments are the data you pass into the method's parameters.
+
+	static void Foo(int i, double f)
+	{
+		Console.WriteLine(i);
+		Console.WriteLine(f);
+		Console.ReadLine();
+	}
+
+	static void Main(string[] args)
+	{
+			Foo(3, 2.5);
+	}
+		
+// Here i and f are the parameters, and 3 and 2.5 are the arguments.
+
+/// Multiple Parameters
+/// You can add as many parameters to a single method as you want. 
+/// If you have multiple parameters, remember to separate them with commas, 
+/// both when declaring them and when calling the method.
+
+        static int Sum(int x, int y)
+        {
+            return x+y;
+        }
+        static void Main(string[] args)
+        {
+            int res = Sum(11, 42);
+            Console.WriteLine(res);
+        }
+		// Output: 53
+
+		
 ///Optional Arguments
+
 class Program {
     static int Pow(int x, int y = 2) {
         int result = 1;
