@@ -96,7 +96,7 @@
 
 	// Outputs "You passed." 
 
-///"If else" replacement
+///"If else" replacement - The Conditional Operator (?)	
 
 	int age = 35;
 	string ale;
@@ -261,7 +261,13 @@
 	}
 
 	// Outputs "Your age is less than 16"
-		
+
+// The Conditional Operator (?)	
+
+	int age = 42;
+	string msg;
+	msg = (age >= 18) ? "Welcome" : "Sorry";
+	Console.WriteLine(msg);
 	
 	
 
