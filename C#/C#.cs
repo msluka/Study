@@ -186,6 +186,7 @@
 	*/
 
 /// The init and increment statements may be left out, if not needed, but the semicolons are mandatory.
+/// for (; ;) {} is an infinite loop.
 
 	int x = 10;
 	for ( ; x > 0 ; )
@@ -194,8 +195,75 @@
 	  x += 3;
 	}
 	
-/// for (; ;) {} is an infinite loop.
 
+/// break
+/// When the break statement is encountered inside a loop, the loop is immediately terminated and 
+/// the program execution moves on to the next statement following the loop body.
+
+	int num = 0;
+	while (num < 20)
+	{
+	   if (num == 5)
+		 break;
+
+	   Console.WriteLine(num);
+	   num++;
+	}
+
+	/* Outputs:
+	0
+	1
+	2
+	3
+	4
+	*/
+	
+/// continue
+/// The continue statement is similar to the break statement, but instead of terminating the loop entirely, 
+/// it skips the current iteration of the loop and continues with the next iteration.
+
+	for (int i = 0; i < 5; i++) {
+	  if (i == 2)
+		continue;
+
+	  Console.WriteLine(i);
+	}
+	/* Outputs:
+	0
+	1
+	3
+	4
+	*/
+	
+/// Logical Operators (&&,||, !)
+/// Logical operators are used to join multiple expressions and return true or false.
+
+// The AND Operator
+
+	int age = 42;
+	int grade = 75;
+	if(age > 16 && age < 80 && grade > 50) 
+	  Console.WriteLine("Hey there");
+
+// The OR Operator
+
+	int age = 18;
+	int score = 85;
+	if (age > 20 || score > 50) {
+		Console.WriteLine("Welcome");
+	}
+	
+// The NOT Operator
+
+	int age = 8;
+	if ( !(age >= 16) ) {
+	  Console.Write("Your age is less than 16");
+	}
+
+	// Outputs "Your age is less than 16"
+		
+	
+	
 
 ///Optional Arguments
 class Program {
