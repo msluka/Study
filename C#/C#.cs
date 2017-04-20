@@ -173,7 +173,28 @@
 
 	// Outputs 42
 	
+/// The for Loop
+/// A for loop executes a set of statements a specific number of times.
 
+	for (int x = 10; x < 13; x++)
+	{
+	  Console.WriteLine("Value of x: {0}", x);
+	}
+	/*
+	Value of x: 10
+	Value of x: 11	
+	*/
+
+/// The init and increment statements may be left out, if not needed, but the semicolons are mandatory.
+
+	int x = 10;
+	for ( ; x > 0 ; )
+	{
+	  Console.WriteLine(x);
+	  x += 3;
+	}
+	
+/// for (; ;) {} is an infinite loop.
 
 
 ///Optional Arguments
