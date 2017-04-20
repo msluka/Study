@@ -142,6 +142,38 @@
 		break;
 	}
 	// Outputs "The default case"
+	
+/// While - A while loop repeatedly executes a block of code as long as a given condition is true.
+/// 	Without a statement that eventually evaluates the loop condition to false, the loop will 
+///		continue indefinitely. 
+
+	int num = 1;
+	while(num < 6) 
+	{
+	   Console.WriteLine(num);
+	   num+=2;
+	}
+	/* Outputs
+	1
+	3
+	5
+	*/
+	
+/// Do-while - A do-while loop is similar to a while loop, except that a do-while loop is guaranteed to 
+/// 	execute at least one time.
+
+/// The do-while loop executes the statements at least once, and then tests the condition.
+/// The while loop executes the statement only after testing condition.
+
+	int x = 42;
+	do {
+	  Console.WriteLine(x);
+	  x++;
+	} while(x < 10);
+
+	// Outputs 42
+	
+
 
 
 ///Optional Arguments
