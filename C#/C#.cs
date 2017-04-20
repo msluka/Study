@@ -1075,6 +1075,27 @@ class Program
     }
 }
 
+/// Simple Timer
+
+class Program
+{
+	static void Main(string[] args)
+	{
+		int num = 60;
+
+		while (num >= 0)
+		{
+
+			Console.Write("\x000D" + num--);
+		  
+			Thread.Sleep(1000);
+		}
+	   
+		Console.ReadLine();
+
+	}
+}
+
 
 /// DateTime CultureInfo
 
