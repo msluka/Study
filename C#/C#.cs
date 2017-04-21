@@ -334,7 +334,9 @@
 		// Output: 53
 
 		
-///Optional Arguments
+/// Optional Arguments
+/// Just remember, that you must havethe parameters with default values at the end 
+/// of the parameter list when defining the method.
 
 class Program {
     static int Pow(int x, int y = 2) {
@@ -354,7 +356,8 @@ class Program {
 }
 
 
-///Named Arguments
+/// Named Arguments
+/// Named arguments use the name of the parameter followed by a colon and the value.
 class Program {
     static int Area(int h, int w) {
         return h * w;
@@ -368,7 +371,12 @@ class Program {
 
 
 /// Passing Arguments (By value, By reference, and as Output)
-// By Value:
+
+// By Value
+// By value copies the argument's value into the method's formal parameter. 
+// Here, we can make changes to the parameter within the method without having 
+// any effect on the argument.
+// By default, C# uses call by value to pass arguments.
 
 class Program {
     static void Sqr(int x) {
@@ -383,8 +391,15 @@ class Program {
     }
 }
 
+// In the example above, the Sqr method does not change the original value of the variable, 
+// as it is passed by value, meaning that it operates on the value, not the actual variable.
 
-//By reference:
+
+// By reference
+// Pass by reference copies an argument's memory address into the formal parameter. 
+// Inside the method, the address is used to access the actual argument used in the call. 
+// This means that changes made to the parameter affect the argument.
+
 
 class Program {
     static void Sqr(ref int x) {
