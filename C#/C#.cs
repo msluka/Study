@@ -399,6 +399,7 @@ class Program {
 // Pass by reference copies an argument's memory address into the formal parameter. 
 // Inside the method, the address is used to access the actual argument used in the call. 
 // This means that changes made to the parameter affect the argument.
+// The ref keyword is used both when defining the method and when calling it.
 
 
 class Program {
@@ -416,21 +417,30 @@ class Program {
 
 
 // As Output
+// Output parameters are similar to reference parameters, except that they transfer data out of the method 
+// rather than accept data in. Similar to the ref keyword, the out keyword is used both when defining the 
+// method and when calling it.
 
 class Program
 {
-    static void GetValues(out int x, out int y)
-    {
-        x = 5;
-        y = 42;
-    }
-    static void Main(string[] args)
-    {
-        int a, b;
-        GetValues(out a, out b);
-        Console.WriteLine(a+" "+b);
-        //Now a equals 5, b equals 42
-    }
+	static void GetValues(out int x, out int y, out string z)
+	{
+		x = 5 - 2;
+		y = x + 42;
+		z = (x + y).ToString();
+	}
+	static void Main(string[] args)
+	{
+		int a, b;
+		string c;
+		GetValues(out a, out b, out c);
+		Console.WriteLine(a + " " + b + '\n' + c);
+		Console.ReadLine();
+		
+		/*Outputs: 3 45
+				   48  */
+
+	}
 }
 
 
