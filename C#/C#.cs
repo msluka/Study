@@ -16,8 +16,11 @@
 
 /// Statement - A line of code that completes an action is called a statement. Each statement in C# must end with a semicolon.
 
+/// Algorithm - In programming, the step by step logic required for the solution to a problem is called an algorithm.
+
 /// IDE - an integrated development environment is a software suite that consolidates the basic tools developers need 
 /// 	to write and test software. 
+
 /// COMPILER - is a special program that processes statements written in a particular programming language and turns 
 /// 	them into machine language or "code" that a computer's processor uses.
 /// 	Traditionally, the output of the compilation has been called object code or sometimes an object module . 
@@ -461,20 +464,59 @@ class Program
 }
 
 
-///factorial
+/// Overloading
+/// Method overloading is when multiple methods have the same name, but different parameters.
+/// When overloading methods, the definitions of the methods must differ from each other 
+/// by the types and/or number of parameters.
 
-static int Fact(int num) {
-    if (num == 1) {
-        return 1;
-    }
-    return num * Fact(num - 1);
+class Program
+{
+	static void Print(int a) {
+		Console.WriteLine("Value: " + a);
+	}
+	static void Print(double a) {
+		Console.WriteLine("Value: " + a);
+	}
+	static void Print(string label, double a) {
+		Console.WriteLine(label + a);
+	}
+	static void Main(string[] args)
+	{
+		Print(11);
+		Print(4.13);
+		Print("Average: ", 7.57);
+	}
 }
 
-///Recursion. A recursive method is a method that calls itself.
-///In programming, the step by step logic required for the solution to a problem is called an algorithm.
+/// Recursion 
+/// A recursive method is a method that calls itself.
+/// One of the classic tasks that can be solved easily by recursion is calculating the factorial of a number.
+
+/// Factorial
+/// if you call the Fact method with the argument 4, it will execute as follows:
+///	return 4*Fact(3), which is 4*3*Fact(2), which is 4*3*2*Fact(1), which is 4*3*2*1.
+
+ class Program
+    {
+        static int Fact(int num)
+        {
+            if (num == 1)
+            {
+                return 1;
+            }
+            return num * Fact(num - 1);
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine(Fact(4));
+            Console.ReadLine();
+			
+			//Output: 24
+        }
+    }
 
 
-//Making a Pyramid
+/// Making a Pyramid
 
 class Program {
     static void DrawPyramid(int n) {
@@ -495,6 +537,19 @@ class Program {
         DrawPyramid(5);
     }
 }
+
+
+/// Class
+/// A class is like a blueprint. It defines the data and behavior for a type.
+/// In programming, the term type is used to refer to a class name: We're creating an object of a particular type.
+
+/// Object
+/// An object is a concrete entity based on a class, and is sometimes referred to as an instance of a class.
+/// Creating an object is called instantiation.
+/// An object is called an instance of a class.
+
+/// Properties. 
+/// The characteristics of an object are called properties. 
 
 //Example of a Class
 
