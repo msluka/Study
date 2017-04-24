@@ -696,8 +696,12 @@ class Program
 
 	
 /// Properties	
-/// A property is a member that provides a flexible mechanism to read, write, or compute the value of a private field. 
-/// Properties can be used as if they are public data members, but they actually include special methods called accessors.
+/// Properties are an extension of fields and are accessed using the same syntax. 
+/// They use accessors through which the values of the private fields can be read, written or manipulated.
+/// The name of the property can be anything you want, but coding conventions dictate properties have the same name as 
+/// the private field with a capital letter. 
+/// The property is accessed by its name, just like any other public member of the class
+/// A property can also be private, so it can be called only from within the class.
 /// The Person class bellow has a Name property that has both the set and the get accessors.
 
 	class Person
@@ -739,7 +743,21 @@ class Program
 	  }
 	}
 	
-// Auto-implemented property. Also called auto-properties, they allow for easy and short declaration of private members.
+/// Any accessor of a property can be omitted. 
+/// For example, the following code creates a property that is read-only:
+
+	class Person
+	{
+	  private string name;
+	  public string Name
+	  {
+		get { return name; }
+	  }
+	}
+	
+/// Auto-implemented property. Also called auto-properties, they allow for easy and short declaration of private members.
+/// In the example below you can see, you do not need to declare the private field name separately - it is created 
+/// by the property automatically. 
 
  class Program
     {
@@ -755,6 +773,44 @@ class Program
 			// Outputs "Bob"
         }
     }
+	
+	
+/// Destructors
+/// As constructors are used when a class is instantiated, destructors are automatically invoked when 
+/// an object is destroyed or deleted. 
+/// - A class can only have one destructor.
+/// - Destructors cannot be called. They are invoked automatically.
+/// - A destructor does not take modifiers or have parameters. 
+/// - The name of a destructor is exactly the same as the class prefixed with a tilde (~).
+/// This can be useful, for example, if your class is working with storage or files. The constructor would initialize 
+/// and open the files. Then, when the program ends, the destructor would close the files.
+
+	class Program
+    {
+        class Dog
+        {
+            public Dog() {
+                Console.WriteLine("Constructor");
+            }
+            ~Dog() {
+                Console.WriteLine("Destructor");
+            }
+        }
+        static void Main(string[] args)
+        {
+            Dog d = new Dog();
+			
+			/*Outputs:
+			Constructor
+			Destructor
+			*/
+        }	
+		
+    }
+
+// In the example above, when the program runs, it first creates the object, which calls the constructor. 
+// The object is deleted at the end of the program and the destructor is invoked when the program's execution is complete.
+		
 	
 ///Length returns the length of the string.
 
@@ -818,6 +874,10 @@ class Program
     Console.WriteLine(s3);
     //Output: some text another text
 
+	
+	
+	
+///***
 // A class, objects and members of the class.
 	
 class Program
