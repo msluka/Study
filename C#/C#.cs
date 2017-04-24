@@ -551,6 +551,15 @@ class Program {
 /// Properties. 
 /// The characteristics of an object are called properties. 
 
+/// Access modifier
+/// Access modifiers are keywords used to specify the accessibility of a member (fields and methods).
+/// If no access modifier is defined, the member is private by default.
+/// - public - makes the member accessible from the outside of the class. 
+/// - private - makes members accessible only from within the class and hides them from the outside. 
+/// - protected - 
+/// - internal - 
+/// - protected internal.
+
 //Example of a Class
 
 class Program
@@ -571,7 +580,15 @@ class Program
         }
     }
 
-///Encapsulation (is also called information hiding)- private & public method (access modifiers);
+/// Encapsulation 
+/// also called information hiding - is defined 'as the process of enclosing one or more items 
+/// within a physical or logical package'.
+/// Encapsulation is implemented by using access modifiers.
+
+/// In summary, the benefits of encapsulation are:
+/// - Control the way data is accessed or modified.
+/// - Code is more flexible and easy to change with new requirements.
+/// - Change one part of code without affecting other parts of code.
 
     class BankAccount {
         private double balance=0;
@@ -597,6 +614,12 @@ class Program
         }
     }
 	
+// We used encapsulation to hide the balance member from the outside code. 
+// Then we provided restricted access to it using public methods. 
+// The class data can be read through the GetBalance method and modified only through the Deposit and Withdraw methods.
+// You cannot directly change the balance variable. You can only view its value using the public method. 
+// You cannot directly change the balance variable.
+	
 //
   
 	class Person {
@@ -612,20 +635,24 @@ class Program
 		}
 	}
 	
+	
+/// Constructors	
 /// A class constructor is a special member method of a class that is executed whenever a new object of that class is created.
+/// A default constructor has no parameters. However, when needed, parameters can be added to a constructor. 
+/// Constructors can be overloaded like any method by using different numbers of parameters.
 
-		class Person
-        {
-            private int age;
-            public Person()
-            {
-                Console.WriteLine("Hi there");
-            }
-        }
-        static void Main(string[] args)
-        {
-            Person p = new Person();
-        }
+	class Person
+	{
+		private int age;
+		public Person()
+		{
+			Console.WriteLine("Hi there");
+		}
+	}
+	static void Main(string[] args)
+	{
+		Person p = new Person();
+	}
 		
 //
 
@@ -635,6 +662,7 @@ class Program
         {
             private int age;
             private string name;
+            
             public Person(string nm)
             {
                 name = nm;
@@ -643,35 +671,58 @@ class Program
             {
                 return name;
             }
-        }
-        static void Main(string[] args)
-        {
-            Person p = new Person("David");
-            Console.WriteLine(p.getName());
-			//Output David
-        }
-    }
-
-/// The Person class has a Name property that has both the set and the get accessors.
-
-class Program
-    {
-        class Person
-        {
-            private string name; //field
-            public string Name  //property
+            
+            
+            public Person(int _age)
             {
-                get { return name; }
-                set { name = value; }
+                age = _age;
+            }
+            public int getAge()
+            {
+                return age;
             }
         }
         static void Main(string[] args)
         {
-            Person p = new Person();
-            p.Name = "Bob";
-            Console.WriteLine(p.Name);
+            Person p = new Person("David");
+            Person p2 = new Person(25);
+     
+            Console.WriteLine(p.getName());
+			//Output: David
+            Console.WriteLine(p2.getAge());
+			//Output: 25
         }
     }
+
+	
+/// Properties	
+/// A property is a member that provides a flexible mechanism to read, write, or compute the value of a private field. 
+/// Properties can be used as if they are public data members, but they actually include special methods called accessors.
+/// The Person class bellow has a Name property that has both the set and the get accessors.
+
+	class Person
+		{
+			private string name; //field
+			
+			public string Name //property
+			{
+				get { return name; }
+				set { name = value; }
+			}
+			
+			public string getName(){
+				
+				return name;
+				
+			}
+		}
+		static void Main(string[] args)
+		{
+			Person p = new Person();
+			p.Name = "Bob";
+			Console.WriteLine(p.Name);
+			Console.WriteLine(p.getName());
+		}
 	
 //
 
