@@ -839,6 +839,54 @@ class Program
         }
     }
 		
+/// Static Methods
+/// Static methods can access only static members. 
+/// The Main method is static, as it is the starting point of any program. 
+/// Therefore any method called directly from Main had to be static.
+
+	class Program
+    {
+        class Calc
+        {
+            public static void Addition()
+            {
+                int a = 2;
+                int b = 2;
+                int sum = a + b;
+                Console.WriteLine(sum);
+            }
+
+        }
+
+        class MixCalc
+        {
+            public static void Subtract()
+            {
+                int a = 10;
+                int b = 5;
+                int result = a - b;
+                Console.WriteLine(result);
+            }
+
+            public static void CallAddition()
+            {
+                Calc.Addition();
+            } 
+			
+        }
+
+        static void Main(string[] args)
+        {
+            MixCalc.Subtract();
+            MixCalc.CallAddition();
+            Console.ReadLine();
+			
+			/*Outputs: 5
+			           4*/
+        }
+		
+    }
+
 	
 ///Length returns the length of the string.
 
