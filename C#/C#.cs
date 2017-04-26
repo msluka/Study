@@ -886,6 +886,45 @@ class Program
         }
 		
     }
+	
+	
+/// Constant members are static by default.
+
+	class MathClass 
+	{
+	  public const int ONE = 1;
+	}
+	
+	static void Main(string[] args) 
+	{
+	  Console.Write(MathClass.ONE);
+	}
+	//Outputs 1
+	
+/// Static Constructors
+/// Constructors can be declared static to initialize static members of the class.
+/// The static constructor is automatically called once when we access a static member of the class.
+	
+	class Program
+    {
+        class SomeClass {
+            public static int X { get; set; }
+            public static int Y { get; set; }
+            
+            static SomeClass() {
+                X = 10;
+                Y = 20;
+            }
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine(SomeClass.X);
+			
+			//Output: 10
+        }
+    }
+	
+// The constructor will get called once when we try to access SomeClass.X or SomeClass.Y.
 
 	
 ///Length returns the length of the string.
