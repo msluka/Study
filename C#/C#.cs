@@ -810,6 +810,34 @@ class Program
 
 // In the example above, when the program runs, it first creates the object, which calls the constructor. 
 // The object is deleted at the end of the program and the destructor is invoked when the program's execution is complete.
+
+
+/// Static
+/// Class members (variables, properties, methods) can also be declared as static. 
+/// This makes those members belong to the class itself, instead of belonging to individual objects. 
+/// No matter how many objects of the class are created, there is only one copy of the static member.
+/// Because of their global nature, static members can be accessed directly using the class name without an object.
+
+/// You must access static members using the class name. 
+/// If you try to access them via an object of that class, you will generate an error.
+
+	class Program
+    {
+        class Cat {
+            public static int count=0;
+            public Cat() {
+                count++;
+            }
+        }
+        static void Main(string[] args)
+        {
+            Cat c1 = new Cat();
+            Cat c2 = new Cat();
+            Console.WriteLine(Cat.count);
+			
+			//Output 2
+        }
+    }
 		
 	
 ///Length returns the length of the string.
