@@ -926,6 +926,45 @@ class Program
 	
 // The constructor will get called once when we try to access SomeClass.X or SomeClass.Y.
 
+
+/// Static Classes
+/// An entire class can be declared as static.
+/// A static class can contain only static members. 
+/// You cannot instantiate an object of a static class, as only one instance of the static class can exist in a program.
+/// Static classes are useful for combining logical properties and methods. The good examples of this are:
+/// Math class; Console class; Convert class; DateTime class;
+
+// Math.Pow() returns a specified number raised to the specified power.
+	
+	Console.WriteLine(Math.Pow(2, 3));
+	//Outputs 8
+
+// Math.Round() rounds the decimal number to its nearest integral value.	
+	
+	Console.WriteLine(Math.Round(12.6));
+	//Outputs 13
+	
+// Math.PI the constant PI.
+// Math.E represents the natural logarithmic base e.
+// Math.Max() returns the larger of its two arguments.
+// Math.Min() returns the smaller of its two arguments.
+// Math.Abs() returns the absolute value of its argument.
+// Math.Sin() returns the sine of the specified angle.
+// Math.Cos() returns the cosine of the specified angle.
+// Math.Sqrt() returns the square root of a specified number
+
+/// The Array class includes some static methods for manipulating arrays:
+
+	int[] arr = {1, 2, 3, 4};
+
+	Array.Reverse(arr);
+	//arr = {4, 3, 2, 1}
+
+	Array.Sort(arr);
+	//arr = {1, 2, 3, 4}
+
+
+
 	
 ///Length returns the length of the string.
 
