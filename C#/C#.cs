@@ -964,7 +964,55 @@ class Program
 	//arr = {1, 2, 3, 4}
 
 
+/// The this Keyword
+/// is used inside the class and refers to the current instance of the class, meaning it refers to the current object.
 
+/// One of the common uses of this is to distinguish class members from other data, 
+/// such as local or formal parameters of a method,	
+
+/// Another common use of this is for passing the current instance to a method as parameter (exp. ShowInfo(this);).
+
+	class Program
+    {
+        class Person
+        {
+            private string name;
+            private int age;
+            public Person(string name, int age)
+            {
+                this.name = name;
+                this.age = age;
+            }
+
+            public static void ShowInfo(Person p)
+            {
+                Console.WriteLine("This is " + p.name + ". Age: " + p.age);
+            }
+
+            public void TellMeAboutYourself()
+            {
+                ShowInfo(this);
+            }
+        }
+
+
+        static void Main(string[] args)
+        {
+            Person person = new Person("Anna", 21);
+            Person.ShowInfo(person);
+			//Output: This is Anna. Age: 21
+
+            Person person2 = new Person("David", 22);
+            Person.ShowInfo(person2);
+			//Output: This is David. Age: 22
+
+            person.TellMeAboutYourself();
+			// Output: This is Anna. Age: 21
+            
+            Console.ReadLine();	
+        }
+    }
+	
 	
 ///Length returns the length of the string.
 
