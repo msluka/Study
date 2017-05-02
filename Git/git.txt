@@ -1,0 +1,484 @@
+https://git-scm.com/
+
+git init
+--------									
+creates a new Git repository.				
+Transforms the current directory into a Git repository. 
+
+
+git clone 
+---------
+creates a new git repository by copying an existing one located at the URI you specify.
+
+
+git config --global user.name "Msluka"  
+--------------------------------------  			
+Creates global username
+
+
+git config --global user.email info@gmail.com  
+---------------------------------------------  		
+Sets global user email
+
+					The same can be done in local <config> or in global <.gitcongig> file: 
+
+					[user]
+					name = Msluka
+					email = info@gmail.com
+					
+					config
+					------
+					is a file that is stored in git hidden folder.
+					
+					.gitconfig 
+					----------
+					is a file that is stored at: C:\Users\"YourUserName"
+										
+										
+git config --get user.name  
+git config --get user.email
+---------------------------
+These commands show you which username and email are set for the repository.
+
+
+git config --list 
+-----------------
+Shows info about username, email and itc.
+
+
+git config --global push.default matching
+-----------------------------------------
+all matched branches will be pushed
+
+
+.gitignore    
+----------
+is a file which is created to store ignored folders or files.
+
+					1. Create Text document ".gitignore"
+					2. Open it in an editor and save in format "all types". 
+					   It will create a new file without name.
+					3. Remove old file with the name ".gitignore".
+					4. "#" is used to include comments.
+					5. To ignore a folder: Folder name and "/" 
+					   e.g. Logs/
+					6. To ignore a specific file type: "*" and file format 
+					   e.g. *.txt
+
+										   
+git status
+----------  
+Shows the state of the working directory and the staging area
+								   
+git status --untracked=all  	Shows a file which has not been staged or committed.
+git status --ignored  			Shows a file which Git has been explicitly told to ignore.
+
+
+git add .  
+---------           
+stages All = (git add --all)
+
+git add -A             			stages All = (git add --all)
+git add -u  	          		stages modified and deleted, without new (git add --update)
+git add "file name"  	  		stages specific file (also can be done without "")
+git add "*.txt"					stages all files of this type
+
+
+git rm --cached "file name with extention"  
+------------------------------------------
+to unstage file (e.g. it rm --cached "one/info.js")
+
+
+git commit -m "commit name"
+---------------------------
+commits the staged snapshot to the project history
+
+git commit (without -m) 
+-----------------------
+Default Editor will be open. 
+Type "commit name" , ESC/:/x/Enter (Save and exit)
+               
+			We can change default editor:
+			
+			git config --global core.editor "'C:\Program Files (x86)\Notepad++\notepad++.exe' 
+			-multiinst -notabar -nosession -noPlugin"
+			   
+     
+git commit -a -m "commit name"
+------------------------------
+adds and commits
+
+
+"--"     
+----
+The special "option" -- means "treat every argument after this point as a file name, 
+no matter what it looks like."
+		  
+		  e.g.
+		  rm -f      # does nothing
+          rm -- -f   # deletes a file named "-f"
+	  
+git checkout -- filename   
+------------------------
+This will checkout the file from HEAD, overwriting your change. 
+
+
+git help
+--------
+Shows help
+
+
+git log  
+-------  
+Shows the history
+
+
+git help log
+------------                                    
+help for the log command
+
+
+git log --pretty=format:"%h - %an, %ar : %s"    
+--------------------------------------------
+shows short log 
+			%h: abbreviated commit hash 
+			%an: author name, 
+			%ar: author date, relative 
+			%ssubject
+
+			
+git log -3  
+----------
+the command will display only the 3 most recent commits.
+
+
+get log --after="yesterday"
+git log --after="2017-04-30"
+git log --after="2017-04-30 13:50"
+
+git log --since=2.weeks
+
+git log --before="2017-04-30 13:50"
+
+git log --after="2017-04-30 13:50" --before="2017-04-30 13:55"
+
+git log --author="Msluka"			Search By Author
+
+git log --author="John\|Mary        Searches for commits by either Mary or John. (regular expressions)
+
+git log --grep="test"               Search By Message
+
+git log -- foo.PNG bar.txt          Search By File
+
+git log -S"Hello World"             Search By Content
+
+
+git log master..feature    
+-----------------------
+	The master..feature range contains all of the commits that are in the feature branch, 
+	but aren’t in the master branch.
+	Note that if you switch the order of the range (feature..master), 
+	you will get all of the commits in master, but not in feature. 
+	If git log outputs commits for both versions, this tells you that your history has diverged.
+							
+
+git log --no-merges			You can prevent git log from displaying these merge commits 
+
+git log --merges      	 	if you’re only interested in the merge commits
+
+
+git log --oneline 
+-----------------   
+	condenses each commit to a single line. By default, it displays 
+	only the commit ID and the first line of the commit message. 
+					  
+git log --oneline --decorate  
+---------------------------- 
+	any times it’s useful to know which branch or tag each commit is associated with. 
+	The --decorate flag makes git log display all of the references (e.g., branches, tags, etc) 
+	that point to each commit.
+	
+git log --graph --oneline --decorate    
+------------------------------------
+	The --graph option draws an ASCII graph representing the branch structure 
+	of the commit history. This is commonly used in conjunction with the --oneline 
+	and --decorate commands to make it easier to see which commit belongs to which branch.
+								 
+								 
+git log --stat
+--------------
+	The --stat option displays the number of insertions and deletions to each file altered by each commit.
+
+
+git log -p
+----------
+	If you want to see the actual changes introduced by each commit, you can pass the -p option to git log.
+
+
+git shortlog
+------------
+	It groups each commit by author and displays the first line of each commit message.
+
+
+
+
+git branch test
+---------------  
+	creates new branch "test"
+								
+								
+git checkout -b "test"
+----------------------
+	creates new branch "test" and switches to that branch.
+
+git branch
+----------
+	Displays branches and the actual state
+
+git checkout test
+----------------------	
+	Switches to branch "test"
+
+git branch -v
+-------------
+	The latest commit on the branches
+	
+git branch -d <branch_name>
+---------------------------
+	Delete local branch
+
+git push origin --delete <branch_name>
+--------------------------------------
+	Delete remote branch
+
+
+git mergetool  
+-------------  
+	calls mergetool in the case of conflicts.
+	default mergetool can be replaced
+
+		kdiff3  -  mergetool (install page: http://kdiff3.sourceforge.net/)
+		
+		after installation:
+		
+		git config --global --add merge.tool kdiff3
+		git config --global --add mergetool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"
+		git config --global --add mergetool.kdiff3.trustExitCode false
+
+		git config --global --add diff.guitool kdiff3
+		git config --global --add difftool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"
+		git config --global --add difftool.kdiff3.trustExitCode false
+		
+		or insert in .gitconfig
+		
+		[merge]
+			tool = kdiff3
+		[mergetool "kdiff3"]
+			path = C:/Program Files/KDiff3/kdiff3.exe
+			trustExitCode = false
+		[diff]
+			guitool = kdiff3
+		[difftool "kdiff3"]
+			path = C:/Program Files/KDiff3/kdiff3.exe
+			trustExitCode = false
+
+		or 
+		
+		git config --global mergetool.kdiff3.cmd '"C:\\Program Files\\KDiff3\\kdiff3" $BASE $LOCAL $REMOTE -o $MERGED'
+
+		
+git merge master 
+---------------- 
+	The branch which will call the command will merge master branch
+	
+
+git remote
+----------  
+displays remote repository
+
+
+git remote -v 
+--------------
+displays remote repository and path 
+
+
+git ls-remote
+------------- 
+displays references available in a remote repository and tests connection 
+
+
+git push -u origin master
+-------------------------
+Pushs commits to the remote branch
+
+
+git push origin master -f 
+git push -f
+-------------------------
+	force pushing will overwrite the remote branch with the state of the branch that you're pushing.
+
+
+git log HEAD..origin/master --oneline
+-------------------------------------
+	See if there are any incoming changes
+
+ 
+ $ git diff <filename>
+ ---------------------
+	Shows difference between staged and unstaged file 
+	
+	
+Multiple Accounts
+=================
+Create a second guthub user on the same PC
+using SSH key
+https://www.youtube.com/watch?v=fnSRBRiQIU8
+------------------------------------------
+
+
+1. create a new empty repository
+
+	git init
+
+2. Set Username	
+
+	git config user.name "msluka"
+	
+3. Set Email
+
+	git config user.email info@gmail.com
+	
+
+4. Create a new ssh key
+
+	ssh-keygen -t rsa -C "info@gmail.com"
+	
+		Give new name to the new key (the path to the key will be the same)
+	
+	.ssh/id_rsa (existing)
+	.ssh/id_rsa_newname (new)
+
+5. Copy and add new SSH Key to your user on github.com
+
+6. Open a connection to your authentication agent
+
+	eval `ssh-agent -s`
+	
+7. Execute command within the Terminal:
+
+	ssh-add ~/.ssh/id_rsa_newname 
+	
+		If successful, you'll see a response of "Identity Added."
+
+8. Create a config file.
+
+	touch ~/.ssh/config
+
+		It will be created in the .ssh folder at: C:\Users\"PC UserName"\.ssh  
+
+9. Edit SSH config file with your accounts information
+	
+	#Default GitHub
+	Host github.com
+	HostName github.com  
+	User git 
+	IdentityFile ~/.ssh/id_rsa
+
+	
+	Host github-new      				//new user
+	HostName github.com	 				//don't change this
+	User git 							
+	IdentityFile ~/.ssh/id_rsa_new   	//new key
+
+10. Create an entry in your git config 
+
+	git remote add origin git@github-new:yourGitHubUserName/yourRemository.git
+
+11. Test Connection 
+
+	git ls-remote
+
+12. Ready to push
+
+	git push -u origin master
+
+=================
+
+ 
+git gui 
+-------
+	calls GUI client
+
+
+ls -al ~/.ssh
+-------------
+	Checking for existing SSH keys
+
+
+cat
+---
+	reads file
+
+	e.g. cat git.txt
+
+
+sed 
+---
+	edits text
+
+	e.g. sed 's/hello/hi/g' -i test.txt
+
+	hello will be changed with hi in test.txt file.
+
+
+git show <commit, first 4 digits>
+----------------------------------------
+	Dysplays what were changed with this commit
+	e.g. git show f41a
+
+	
+git revert <commit>
+--------------------------
+	Reverts commit (get back, do not remove commit)
+	e.g. git revert f41a
+	
+
+git reset <commit> 
+------------------
+	git reset is a simple way to undo changes that haven’t been shared with anyone else.
+	get back the file from commit in working directory.
+	
+
+git reset HEAD <file> 
+---------------------
+	get back the file from HEAD but keep changes
+
+	
+	
+
+git fetch 
+---------
++ 
+git merge origni master
+----------------------- 
+=
+git pull
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
