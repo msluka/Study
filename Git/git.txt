@@ -33,6 +33,16 @@ Sets global user email
 					.gitconfig 
 					----------
 					is a file that is stored at: C:\Users\"YourUserName"
+					
+					
+git config --global --unset-all user.name
+-----------------------------------------
+Unset all username
+
+
+git config --global --replace-all user.name "New User Name"
+-----------------------------------------------------------
+Replace all username
 										
 										
 git config --get user.name  
