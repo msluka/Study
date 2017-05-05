@@ -56,6 +56,11 @@ git config --list
 Shows info about username, email and itc.
 
 
+$git config --global --list
+---------------------------
+Shows .gitconfig info
+
+
 git config --global push.default matching
 -----------------------------------------
 all matched branches will be pushed
