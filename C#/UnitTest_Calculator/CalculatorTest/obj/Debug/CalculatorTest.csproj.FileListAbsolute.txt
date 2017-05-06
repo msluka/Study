@@ -1,0 +1,16 @@
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\Calculator\CalculatorTest\obj\Debug\CalculatorTest.csprojResolveAssemblyReference.cache
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\Calculator\CalculatorTest\bin\Debug\CalculatorTest.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\Calculator\CalculatorTest\bin\Debug\CalculatorTest.pdb
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\Calculator\CalculatorTest\bin\Debug\Calculator.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\Calculator\CalculatorTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\Calculator\CalculatorTest\bin\Debug\Calculator.pdb
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\Calculator\CalculatorTest\obj\Debug\CalculatorTest.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\Calculator\CalculatorTest\obj\Debug\CalculatorTest.pdb
+G:\Software Development Academy\14. NET - C#\06.05.2017 - ASP - ZASADY DP\Calculator\CalculatorTest\bin\Debug\CalculatorTest.dll
+G:\Software Development Academy\14. NET - C#\06.05.2017 - ASP - ZASADY DP\Calculator\CalculatorTest\bin\Debug\CalculatorTest.pdb
+G:\Software Development Academy\14. NET - C#\06.05.2017 - ASP - ZASADY DP\Calculator\CalculatorTest\bin\Debug\Calculator.dll
+G:\Software Development Academy\14. NET - C#\06.05.2017 - ASP - ZASADY DP\Calculator\CalculatorTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+G:\Software Development Academy\14. NET - C#\06.05.2017 - ASP - ZASADY DP\Calculator\CalculatorTest\bin\Debug\Calculator.pdb
+G:\Software Development Academy\14. NET - C#\06.05.2017 - ASP - ZASADY DP\Calculator\CalculatorTest\obj\Debug\CalculatorTest.csprojResolveAssemblyReference.cache
+G:\Software Development Academy\14. NET - C#\06.05.2017 - ASP - ZASADY DP\Calculator\CalculatorTest\obj\Debug\CalculatorTest.dll
+G:\Software Development Academy\14. NET - C#\06.05.2017 - ASP - ZASADY DP\Calculator\CalculatorTest\obj\Debug\CalculatorTest.pdb
