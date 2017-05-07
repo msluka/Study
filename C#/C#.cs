@@ -773,8 +773,49 @@ class Program
 			// Outputs "Bob"
         }
     }
+
 	
+/// Arrays
+
+/// C# provides numerous built-in classes to store and manipulate data.
+/// One example of such a class is the Array class.
+/// An array is a data structure that is used to store a collection of data. 
+/// You can think of it as a collection of variables of the same type.
+
+/// Since arrays are objects, we need to instantiate them with the new keyword:
+
+	int[ ] myArray = new int[5]; 
 	
+/// This instantiates an array named myArray that holds 5 integers.
+/// Note the square brackets used to define the number of elements the array should hold.
+
+/// After creating the array, you can assign values to individual elements by using the index number:
+	
+	int[ ] myArray = new int[5];
+	myArray[0] = 23;
+	
+/// This will assign the value 23 to the first element of the array.
+
+/// Arrays in C# are zero-indexed meaning the first member has index 0, the second has index 1, and so on.
+
+/// We can provide initial values to the array when it is declared by using curly brackets:
+
+	string[ ] names = new string[3] {"John", "Mary", "Jessica"};
+	double[ ] prices = new double[4] {3.6, 9.8, 6.4, 5.9};
+	
+/// We can omit the size declaration when the number of elements are provided in the curly braces:
+
+	string[ ] names = new string[ ] {"John", "Mary", "Jessica"};
+	double[ ] prices = new double[ ] {3.6, 9.8, 6.4, 5.9};
+	
+/// We can even omit the new operator. The following statements are identical to the ones above:
+
+	string[ ] names = {"John", "Mary", "Jessica"};
+	double[ ] prices = {3.6, 9.8, 6.4, 5.9};
+
+/// Array values should be provided in a comma separated list enclosed in {curly braces}.
+
+
 /// Destructors
 /// As constructors are used when a class is instantiated, destructors are automatically invoked when 
 /// an object is destroyed or deleted. 
@@ -1043,6 +1084,9 @@ class Program
 
 	  readonly double a = Math.Sin(60); // OK
 	  const double b = Math.Sin(60); // Error! 
+	  
+	  
+	  
 	
 ///Length returns the length of the string.
 
