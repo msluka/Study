@@ -815,6 +815,78 @@ class Program
 
 /// Array values should be provided in a comma separated list enclosed in {curly braces}.
 
+/// To access individual array elements, place the element's index number in square brackets following the array name.
+
+	static void Main(string[] args)
+		{
+			int[] box = { 11, 45, 62, 70, 88 };
+
+			Console.WriteLine(box[2]);
+			//Outputs 62
+
+			Console.WriteLine(box[3]);
+			//Outputs 70
+
+			Console.ReadLine();
+		}
+		
+/// Arrays & Loops
+
+/// The for loop
+/// For example, we can declare an array of 10 integers and assign each element an even value with the for loop
+/// and we can also use the loop to read the values of an array.
+
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			int[ ] a = new int[10];
+			for (int k = 0; k < 10; k++) {
+				a[k] = k*2;
+			}
+			for (int k = 0; k < 10; k++) {
+				Console.Write(a[k]+", ");
+			
+				//Outputs: 0, 2, 4, 6, 8, 10, 12, 14, 16, 18,
+			}
+			
+			Console.ReadLine();
+		}
+	}
+
+/// The foreach Loop
+
+/// The foreach loop provides a shorter and easier way of accessing array elements.
+
+	static void Main(string[] args)
+	{
+		string[] names = { "John", "Mary", "Jessica" };
+
+		foreach (var name in names)
+		{
+			Console.WriteLine(name);
+		}
+
+		Console.ReadLine();
+		
+	}
+
+//
+
+	static void Main(string[] args)
+	{
+		int[ ] arr = {11, 35, 62, 555, 989};
+		int sum = 0; 
+		
+		foreach (int x in arr) {
+			sum += x;
+		}
+		Console.WriteLine(sum);
+		//Outputs 1652
+
+	}
+
+
 
 /// Destructors
 /// As constructors are used when a class is instantiated, destructors are automatically invoked when 
