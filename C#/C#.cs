@@ -886,7 +886,51 @@ class Program
 
 	}
 
+/// Multidimensional Arrays
 
+/// An array can have multiple dimensions. A multidimensional array is declared as follows:
+
+	int[ , ] someNums = { {2, 3}, {5, 6}, {4, 6} };
+	
+	// This will create an array with three rows and two columns. 
+	// Nested curly brackets are used to define values for each row.
+
+/// The same array can be declared as follows:
+
+	int[,] someNums = new int[3, 2];
+            someNums[0, 0] = 2;  // first row, first column
+            someNums[0, 1] = 3;  // first row, second column             
+
+            someNums[1, 0] = 5;  // second row, first column
+            someNums[1, 1] = 6;  // second row, second column
+
+            someNums[2, 0] = 4;  // third row, first column
+            someNums[2, 1] = 6;  // third row, second column
+
+
+/// To access an element of the array, provide both indexes. 
+/// For example someNums[2, 0] will return the value 4, as it accesses the first column of the third row.
+
+/// We have to use two nested for loops, one to iterate through the rows and one through the columns.
+
+			for (int r = 0; r < 3; r++)       // iterates through the rows
+            {
+                for (int c = 0; c < 2; c++)   // iterates through the columns
+                {
+                    Console.Write(someNums[r, c] + " ");
+                }
+                
+                Console.WriteLine();
+				
+				//Outputs: 2 3
+				//		   5 6
+				//         4 6
+
+            }
+
+            Console.ReadLine();
+			
+			
 
 /// Destructors
 /// As constructors are used when a class is instantiated, destructors are automatically invoked when 
