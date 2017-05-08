@@ -1152,6 +1152,32 @@ class Program
 		*/
 
 	}
+	
+/// To use the Min, Max, and Sum methods with the multidimensional arrays 
+/// we have to use the cast<int>() method:
+
+	static void Main(string[] args)
+	{
+		int[,] someNums = { {2, 3}, {5, 6}, {4, 6} };
+		
+		Console.WriteLine("Length " + someNums.Length + "\n" +
+						  "Dimension " + someNums.Rank + "\n" +
+		
+						  "Max Number " + someNums.Cast<int>().Max() + "\n" +
+						  "Min Number " + someNums.Cast<int>().Min() + "\n" +
+						  "Sum " + someNums.Cast<int>().Sum() + "\n" );
+		
+		Console.ReadLine();
+		
+		/* Output:  Length 6
+					Dimension 2
+					Max Number 6
+					Min Number 2
+					Sum 26
+		*/
+	}
+	
+	
 /// Destructors
 /// As constructors are used when a class is instantiated, destructors are automatically invoked when 
 /// an object is destroyed or deleted. 
