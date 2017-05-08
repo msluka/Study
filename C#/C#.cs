@@ -1086,7 +1086,7 @@ class Program
 
 				for (int j = 0; j < inner.Length; j++)
 				{
-					Console.Write(inner[j]+" "); // prints array columns
+					Console.Write(inner[j]+" "); // prints array elements(columns)
 				}
 
 				Console.WriteLine(); // prints next array from a new line
@@ -1102,9 +1102,56 @@ class Program
 /// It always has the same amount of columns for every row.	
 
 
+/// Arrays Properties and Methods
+
+/// The Array class in C# provides various properties and methods to work with arrays. 
+/// For example:
+/// 	the Length property returs the number of elements of the array
+///     the Rank property returns the number of dimensions of the array
+/// 	the Max method returns the largest value.
+/// 	the Min method returns the smallest value.
+/// 	the Sum method returns the sum of all elements.
 
 
-	
+	static void Main(string[] args)
+	{
+		int[][] jaggedArr =
+		{
+			new int[ ] {1,8,2,7,9},
+			new int[ ] {2,4,6},
+			new int[ ] {33,42}
+		};
+
+		foreach (var array in jaggedArr)
+		{
+			Console.WriteLine("Length " + array.Length  + "\n" +
+							  "Dimension " + array.Rank + "\n" +
+							  "Max Number " + array.Max() + "\n" +
+							  "Min Number " + array.Min() + "\n" +
+							  "Sum " + array.Sum() + "\n"  );
+		}
+	   
+		Console.ReadLine();
+		/* Outputs: Length 5
+					Dimension 1
+					Max Number 9
+					Min Number 1
+					Sum 27
+
+					Length 3
+					Dimension 1
+					Max Number 6
+					Min Number 2
+					Sum 12
+
+					Length 2
+					Dimension 1
+					Max Number 42
+					Min Number 33
+					Sum 75
+		*/
+
+	}
 /// Destructors
 /// As constructors are used when a class is instantiated, destructors are automatically invoked when 
 /// an object is destroyed or deleted. 
