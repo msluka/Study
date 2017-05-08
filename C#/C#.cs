@@ -889,6 +889,8 @@ class Program
 /// Multidimensional Arrays
 
 /// An array can have multiple dimensions. A multidimensional array is declared as follows:
+	
+/// 2D array
 
 	int[ , ] someNums = { {2, 3}, {5, 6}, {4, 6} };
 	
@@ -898,14 +900,15 @@ class Program
 /// The same array can be declared as follows:
 
 	int[,] someNums = new int[3, 2];
-            someNums[0, 0] = 2;  // first row, first column
-            someNums[0, 1] = 3;  // first row, second column             
+	
+	someNums[0, 0] = 2;  // first row, first column
+	someNums[0, 1] = 3;  // first row, second column             
 
-            someNums[1, 0] = 5;  // second row, first column
-            someNums[1, 1] = 6;  // second row, second column
+	someNums[1, 0] = 5;  // second row, first column
+	someNums[1, 1] = 6;  // second row, second column
 
-            someNums[2, 0] = 4;  // third row, first column
-            someNums[2, 1] = 6;  // third row, second column
+	someNums[2, 0] = 4;  // third row, first column
+	someNums[2, 1] = 6;  // third row, second column
 
 
 /// To access an element of the array, provide both indexes. 
@@ -930,7 +933,70 @@ class Program
 
             Console.ReadLine();
 			
-			
+/// 3D array
+
+	string[,,] someNums  =  {      //first row             //second row          //third row
+							  //  1c    2c    3c         1c    2c    3c         1c    2c    3c
+							 { { "000","001","002" }, { "010","011","012" }, { "020","021","022" } }, // first layer
+							 { { "100","101","102" }, { "110","111","112" }, { "120","121","122" } }  // second layer
+
+						    };	
+
+/// The same array can be declared as follows:
+
+	string[,,] someNums = new string[2, 3, 3];
+
+	someNums[0, 0, 0] = "000"; //first layer, first row, first column
+	someNums[0, 0, 1] = "001"; //first layer, first row, second column
+	someNums[0, 0, 2] = "002"; //first layer, first row, third column
+
+	someNums[0, 1, 0] = "010"; //first layer, second row, first column
+	someNums[0, 1, 1] = "011"; //first layer, second row, second column
+	someNums[0, 1, 2] = "012"; //first layer, second row, third column
+
+	someNums[0, 2, 0] = "020"; //first layer, third row, first column
+	someNums[0, 2, 1] = "021"; //first layer, third row, second column
+	someNums[0, 2, 2] = "022"; //first layer, third row, third column
+
+	someNums[1, 0, 0] = "100"; //second layer, first row, first column
+	someNums[1, 0, 1] = "101"; //second layer, first row, second column
+	someNums[1, 0, 2] = "102"; //second layer, first row, third column
+
+	someNums[1, 1, 0] = "110"; //second layer, second row, first column
+	someNums[1, 1, 1] = "111"; //second layer, second row, second column
+	someNums[1, 1, 2] = "112"; //second layer, second row, third column
+
+	someNums[1, 2, 0] = "120"; //second layer, third row, first column
+	someNums[1, 2, 1] = "121"; //second layer, third row, second column
+	someNums[1, 2, 2] = "122"; //second layer, third row, thitd column
+
+	for (int l = 0; l < 2; l++)
+	{
+		for (int r = 0; r < 3; r++)
+		{
+			for (int c = 0; c < 3; c++)
+			{
+				Console.Write(someNums[l, r, c] + " ");
+			}
+
+			Console.WriteLine(); // prints rows from a new line
+		}
+
+		Console.WriteLine(); // prints layers from a new line
+
+	}
+
+	Console.ReadLine();
+
+	/* Outputs: 000 001 002				
+				010 011 012
+				020 021 022
+
+				100 101 102
+				110 111 112
+				120 121 122 */
+	
+	
 
 /// Destructors
 /// As constructors are used when a class is instantiated, destructors are automatically invoked when 
