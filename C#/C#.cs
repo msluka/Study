@@ -28,6 +28,10 @@
 /// 	The object code is machine code that the processor can execute one instruction at a time.
 /// GUI (usually pronounced GOO-ee) is a graphical (rather than purely textual) user interface to a computer. 
 
+/// A matrix - is a collection of numbers arranged into a fixed number of rows and columns.
+/// 		   Each number that makes up a matrix is called an element of the matrix. 
+///            The elements in a matrix have specific locations.
+
 /// Operators - An operator is a symbol that performs mathematical or logical manipulations. (+, -, *, /, %)
 /// Precedence - Operator precedence determines the grouping of terms in an expression, which affects how an expression 
 ///		is evaluated.
@@ -891,8 +895,12 @@ class Program
 /// An array can have multiple dimensions. A multidimensional array is declared as follows:
 	
 /// 2D array
-
-	int[ , ] someNums = { {2, 3}, {5, 6}, {4, 6} };
+                          // c = column
+	int[ , ] someNums = { // 1c,2c  
+							{2, 3}, //first row
+							{5, 6}, //second row
+							{4, 6}  //third row
+						};
 	
 	// This will create an array with three rows and two columns. 
 	// Nested curly brackets are used to define values for each row.
@@ -935,10 +943,19 @@ class Program
 			
 /// 3D array
 
-	string[,,] someNums  =  {      //first row             //second row          //third row
-							  //  1c    2c    3c         1c    2c    3c         1c    2c    3c
-							 { { "000","001","002" }, { "010","011","012" }, { "020","021","022" } }, // first layer
-							 { { "100","101","102" }, { "110","111","112" }, { "120","121","122" } }  // second layer
+	string[,,] someNums  =  {  //  c = column   
+							   //  1c    2c    3c         
+							 { 
+								{ "000","001","002" }, // first row
+								{ "010","011","012" }, // second row     // first layer
+								{ "020","021","022" }  // third row
+							 }, 
+							 
+							 { 
+							    { "100","101","102" }, // first row
+								{ "110","111","112" }, // second row     // second layer
+								{ "120","121","122" }  // third row
+							 }  
 
 						    };	
 
@@ -997,7 +1014,97 @@ class Program
 				120 121 122 */
 	
 	
+/// Jagged Arrays
 
+/// A jagged array is an array whose elements are arrays. 
+/// So it is basically an array of arrays.	
+
+/// The following is a declaration of a single-dimensional array that has three elements, 
+/// each of which is a single-dimensional array of integers:
+
+	int[ ][ ] jaggedArr = new int[3][ ];
+
+/// Each dimension is an array, so we can also initialize the array upon declaration like this:
+
+	int[ ][ ] jaggedArr = new int[ ][ ] 
+	{
+	  new int[ ] {1,8,2,7,9},
+	  new int[ ] {2,4,6},
+	  new int[ ] {33,42}
+	};
+	
+///	or this:
+
+	int[ ][ ] jaggedArr =  
+		{
+		  new int[ ] {1,8,2,7,9},
+		  new int[ ] {2,4,6},
+		  new int[ ] {33,42}
+		};
+		
+/// ot this:
+
+	int[][] jaggedArr = new int[3][]; //array that has three elements each of which is an array
+
+	jaggedArr[0] = new int[5]; //the first array has 5 elements(columns)
+	jaggedArr[1] = new int[3]; //the second array has 3 elements(columns)
+	jaggedArr[2] = new int[2]; //the third array has 2 elements(columns)
+
+	jaggedArr[0][0] = 1; // the first element of the first array
+	jaggedArr[0][1] = 8; // the second element of the first array
+	jaggedArr[0][2] = 2; // the third element of the first array
+	jaggedArr[0][3] = 7; // the fourth element of the first array
+	jaggedArr[0][4] = 9; // the fifth element of the first array
+
+	jaggedArr[1][0] = 2; // the first element of the second array
+	jaggedArr[1][1] = 4; // the second element of the second array
+	jaggedArr[1][2] = 6; // the third element of the second array
+
+	jaggedArr[2][0] = 33; // the first element of the third array
+	jaggedArr[2][1] = 42; // the second element of the third array
+
+/// We can access individual array elements as shown in the example below:
+
+	int x = jaggedArr[2][1]; 
+	// Oputput: 42
+	// This accesses the second element of the third array.
+
+/// We can print them as follows:
+
+		static void Main(string[] args)
+		{
+			int[][] jaggedArr = 
+			{
+				new int[ ] {1,8,2,7,9},
+				new int[ ] {2,4,6},
+				new int[ ] {33,42}
+			};
+
+			for (var i = 0; i < jaggedArr.Length; i++)
+			{
+				int[] inner = jaggedArr[i]; 
+
+				for (int j = 0; j < inner.Length; j++)
+				{
+					Console.Write(inner[j]+" "); // prints array columns
+				}
+
+				Console.WriteLine(); // prints next array from a new line
+			}
+					   
+			Console.ReadLine();
+		}
+	
+/// A jagged array is an array-of-arrays, so an int[ ][ ] is an array of int[ ], 
+/// each of which can be of different lengths and occupy their own block in memory.
+ 
+/// A multidimensional array (int[,]) is a single block of memory (essentially a matrix). 
+/// It always has the same amount of columns for every row.	
+
+
+
+
+	
 /// Destructors
 /// As constructors are used when a class is instantiated, destructors are automatically invoked when 
 /// an object is destroyed or deleted. 
