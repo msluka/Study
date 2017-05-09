@@ -1176,7 +1176,89 @@ class Program
 					Sum 26
 		*/
 	}
+
+
+
+/// Strings
+
+/// It’s common to think of strings as arrays of characters. In reality, strings in C# are objects.
+/// When we declare a string variable, we basically instantiate an object of type String. 
+/// String objects support a number of useful properties and methods: 
+	  
 	
+///Length returns the length of the string.
+
+	string a = "some text";
+	Console.WriteLine(a.Length);
+	//Outputs 9
+
+///IndexOf(value) returns the index of the first occurrence of the value within the string.
+
+	string a = "some text";
+	Console.WriteLine(a.IndexOf('t'));
+	//Outputs 5
+
+///Insert(index, value) inserts the value into the string starting from the specified index.
+	
+	string a = "some text";
+	a = a.Insert(0, "This is ");
+	Console.WriteLine(a);
+	//Outputs "This is some text"
+
+///Replace(oldValue, newValue) replaces the specified value in the string.
+
+	string a = "This is some text"
+	a = a.Replace("This is", "I am");
+	Console.WriteLine(a);
+	//Outputs "I am some text"
+
+///Contains(value) returns true if the string contains the specified value.
+
+	string a = "I am some text"
+	if (a.Contains("some"))
+	 Console.WriteLine("found");
+	//Outputs "found"
+	
+///Remove(index) removes all characters in the string after the specified index.
+
+	string a = "I am some text"
+	a = a.Remove(4);
+	Console.WriteLine(a);
+	//Outputs "I am"
+
+///Substring(index, length) returns a substring of the specified length, starting from the specified 
+
+	string a = "I am"
+	a = a.Substring(2);
+	Console.WriteLine(a);
+	//Outputs "am"
+
+///access characters of a string by its index,
+
+	string a = "some text";
+	Console.WriteLine(a[2]);
+	//Outputs "m"
+	
+///String.Concat(); combines the strings.
+
+	string s1 = "some text ";
+    string s2 = "another text";
+    string s3 = String.Concat(s1,s2);
+           
+    Console.WriteLine(s3);
+    //Output: some text another text
+
+//
+
+	static void Main(string[] args)
+	{
+		string text = "Razor is not a programming language. It's a server side markup language.";
+        text = text.Replace("Razor", "HTML");
+        text = text.Substring(0, text.IndexOf(".")+1);
+		
+		Console.WriteLine(text);
+		//Outputs: HTML is not a programming language.
+	}	
 	
 /// Destructors
 /// As constructors are used when a class is instantiated, destructors are automatically invoked when 
@@ -1447,72 +1529,6 @@ class Program
 	  readonly double a = Math.Sin(60); // OK
 	  const double b = Math.Sin(60); // Error! 
 	  
-	  
-	  
-	
-///Length returns the length of the string.
-
-	string a = "some text";
-	Console.WriteLine(a.Length);
-	//Outputs 9
-
-///IndexOf(value) returns the index of the first occurrence of the value within the string.
-
-	string a = "some text";
-	Console.WriteLine(a.IndexOf('t'));
-	//Outputs 5
-
-///Insert(index, value) inserts the value into the string starting from the specified index.
-	
-	string a = "some text";
-	a = a.Insert(0, "This is ");
-	Console.WriteLine(a);
-	//Outputs "This is some text"
-
-///Replace(oldValue, newValue) replaces the specified value in the string.
-
-	string a = "This is some text"
-	a = a.Replace("This is", "I am");
-	Console.WriteLine(a);
-	//Outputs "I am some text"
-
-///Contains(value) returns true if the string contains the specified value.
-
-	string a = "I am some text"
-	if (a.Contains("some"))
-	 Console.WriteLine("found");
-	//Outputs "found"
-	
-///Remove(index) removes all characters in the string after the specified index.
-
-	string a = "I am some text"
-	a = a.Remove(4);
-	Console.WriteLine(a);
-	//Outputs "I am"
-
-///Substring(index, length) returns a substring of the specified length, starting from the specified 
-
-	string a = "I am"
-	a = a.Substring(2);
-	Console.WriteLine(a);
-	//Outputs "am"
-
-///access characters of a string by its index,
-
-	string a = "some text";
-	Console.WriteLine(a[2]);
-	//Outputs "m"
-	
-///String.Concat(); combines the strings.
-
-	string s1 = "some text ";
-    string s2 = "another text";
-    string s3 = String.Concat(s1,s2);
-           
-    Console.WriteLine(s3);
-    //Output: some text another text
-
-	
 	
 	
 ///***
