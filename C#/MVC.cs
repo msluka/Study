@@ -42,3 +42,29 @@
 	<div>
 		@TempData["CurrentDateAndTime"]
 	</div>
+	
+	
+/// Session
+
+//	In Controller
+
+	public ActionResult SampleView()
+	{
+		Session["CurrentDateAndTime"] = DateTime.Now;
+		return RedirectToAction("SampleView1");
+
+	}
+
+	public ActionResult SampleView1()
+	{
+		string str = Session["CurrentDateAndTime"].ToString();
+		return View("SampleView");
+	}
+	
+//	In View
+	
+	<div>
+		@Session["CurrentDateAndTime"]
+	</div>
+	
+	
