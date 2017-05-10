@@ -67,4 +67,54 @@
 		@Session["CurrentDateAndTime"]
 	</div>
 	
+
+/// Model / Form / Request
+
+// Model
+
+	public class Customer
+    {
+        public int Id { get; set; }
+        public string CustomerCode { get; set; }
+        public double Amount { get; set; }
+    }
 	
+// Form (in FillCustomer View)
+
+	<form action="DisplayCustomer" method="post">
+        Customer Id: <input type="text" name="CustomerId"/><br/>
+        Customer Code: <input type="text" name="CustomerCode" /><br />
+        Amount: <input type="text" name="Amount"/><br />
+        <input type="submit" value="Click Here"/><br/>
+    </form>
+  
+// Request (from Customer Controller)
+
+	public ActionResult DisplayCustomer()
+        {
+            Customer obj = new Customer();
+            obj.Id = Convert.ToInt32(Request.Form["CustomerId"]);
+            obj.CustomerCode = Request.Form["CustomerCode"].ToString();
+            obj.Amount = Convert.ToDouble(Request.Form["Amount"]);
+            
+            return View(obj);
+        }
+ 
+// Display View
+
+	<div>
+		
+		Customer Id is: @Model.Id<br/>
+		Customer Code is: @Model.CustomerCode <br/>
+		@if (Model.Amount > 100)
+		{
+			<span>This is VIP Customer and Amount is:</span>
+			<span>@Model.Amount</span>
+		}
+		else
+		{
+			<span>This is usual Customer and Amount is:</span>
+			<span>@Model.Amount</span>
+		}
+
+	</div>
