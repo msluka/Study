@@ -19,3 +19,26 @@
 //	In View
    
 	@ViewBag.key1
+	
+	
+///	TempData 
+
+//	In Controller
+
+	public ActionResult SampleView()
+	{
+		TempData["CurrentDateAndTime"] = DateTime.Now;
+		return RedirectToAction("SampleView1");
+	}
+
+	public ActionResult SampleView1()
+	{
+		string str = TempData["CurrentDateAndTime"].ToString();
+		return View("SampleView");
+	}
+	
+//	In View
+	
+	<div>
+		@TempData["CurrentDateAndTime"]
+	</div>
