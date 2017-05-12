@@ -314,14 +314,93 @@
 	}
 
 
+/// Action Selectors
+/// Three action selectors attributes are available in MVC 5 
+///   - ActionName
+///   - NonAction
+///   - ActionVerbs
+
+/// ActionName
+/// attribute is used to specify different name of action than method name.
+
+	[ActionName("find")]
+    public ActionResult GetById(int id)
+    {
+        // get student from the database 
+        return View();
+    }
+	
+	// This action method will be invoked on 
+	// http://localhost/student/find/1 request instead of 
+	// http://localhost/student/getbyid/1 request.
+	
+/// NonAction
+/// NonAction selector attribute indicates that a public method of a Controller is not 
+/// an action method. Use NonAction attribute when you want public method in a controller 
+/// but do not want to treat it as an action method.
+
+	[NonAction]
+    public Student GetStudnet(int id)
+    {
+        return studentList.Where(s => s.StudentId == id).FirstOrDefault();
+    }
+
+/// ActionVerbs
+/// The ActionVerbs selector is used when you want to control the selection of an action method 
+/// based on a Http request method. For example, you can define two different action methods with 
+/// the same name but one action method responds to an HTTP Get request and another action method 
+/// responds to an HTTP Post request.
+
+	[HttpGet] // To retrieve the information from the server. 
+	public ActionResult Index()
+    {
+        return View();
+    }
+	
+	[HttpPost] // To create a new resource.
+    public ActionResult PostAction()
+    {
+        return View("Index");
+    }
 
 
+    [HttpPut] // To update an existing resource.
+    public ActionResult PutAction()
+    {
+        return View("Index");
+    }
 
+    [HttpDelete] // To delete an existing resource.
+    public ActionResult DeleteAction()
+    {
+        return View("Index");
+    }
 
+    [HttpHead] // Identical to GET except that server do not return message body.
+    public ActionResult HeadAction()
+    {
+        return View("Index");
+    }
+       
+    [HttpOptions] // OPTIONS method represents a request for information about the communication options supported by web server.
+    public ActionResult OptionsAction()
+    {
+        return View("Index");
+    }
+       
+    [HttpPatch] // 	To full or partial update the resource.
+    public ActionResult PatchAction()
+    {
+        return View("Index");
+    }
 
+/// We can also apply multiple http verbs using AcceptVerbs attribute. 
 
-
-
+	[AcceptVerbs(HttpVerbs.Post | HttpVerbs.Get)]
+	public ActionResult GetAndPostAction()
+	{
+		return RedirectToAction("Index");
+	}
 
 
 
