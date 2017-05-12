@@ -403,6 +403,50 @@
 	}
 
 
+/// Example: Passing Model from Controller
+
+	public class StudentController : Controller
+    {
+        // GET: Student
+        public ActionResult Index()
+        {
+            var studentList = new List<Student>{
+                new Student() { StudentId = 1, StudentName = "John", Age = 18 } ,
+                new Student() { StudentId = 2, StudentName = "Steve",  Age = 21 } ,
+                new Student() { StudentId = 3, StudentName = "Bill",  Age = 25 } ,
+                new Student() { StudentId = 4, StudentName = "Ram" , Age = 20 } ,
+                new Student() { StudentId = 5, StudentName = "Ron" , Age = 31 } ,
+                new Student() { StudentId = 4, StudentName = "Chris" , Age = 17 } ,
+                new Student() { StudentId = 4, StudentName = "Rob" , Age = 19 }
+            };
+            return View(studentList);
+        }
+        
+    }
+
+// We pass this list object as a parameter in the View() method. The View() method is defined 
+// in base Controller class, which automatically binds model object to the view.
 
 
+/// DisplayNameFor vs DisplayFor
 
+/// DisplayNameFor 
+/// shows the name of the property or 
+/// the string defined in the display attribute for the property.
+
+/// DisplayFor 
+/// shows the value of the field.
+
+	public class Student
+    {        
+        [Display(Name = "Name of Student")]
+        public string StudentName { get; set; }
+		
+        public int Age { get; set; }
+    }
+
+	// @Html.DisplayNameFor(m => m.StudentName) would show 'Name'.
+	// @Html.DisplayNameFor(m => m.Age) would show 'Age'.
+	
+	// @Html.DisplayFor(modelItem => item.StudenName) would show the value E.g "John"
+	// @Html.DisplayFor(modelItem => item.Age) would show the value E.g "18"
