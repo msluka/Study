@@ -194,11 +194,12 @@
 // Controller / CustomerController
 
 		
-		[HttpPost]
-        public ActionResult DisplayCustomer(Customer obj)
-        {
-            return View(obj);
-        }
+	[HttpPost]
+	public ActionResult DisplayCustomer(Customer obj)
+	{
+		return View(obj);
+	}
+		
 		
 // Summary
 
@@ -234,7 +235,7 @@
 /// Route constraints applies restrictions on the value of parameters.
 /// Route must be registered in Application_Start event in Global.ascx.cs file.
 
-public static void RegisterRoutes(RouteCollection routes)
+	public static void RegisterRoutes(RouteCollection routes)
     {
         routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
@@ -257,17 +258,60 @@ public static void RegisterRoutes(RouteCollection routes)
 // student should always use Index action of StudentController. We have specified default controller and action 
 // to handle any URL request which starts from domainname/students.
 
-routes.MapRoute(
-            name: "Student",
-            url: "students/{id}",
-            defaults: new { controller = "Student", action = "Index"}, constraints: new { id = @"\d+" }
-        );
+	routes.MapRoute(
+		name: "Student",
+		url: "students/{id}",
+		defaults: new { controller = "Student", action = "Index"}, constraints: new { id = @"\d+" }
+	);
 
 // So if you give non-numeric value for id parameter then that request will be handled by another route or, 
 // if there are no matching routes then "The resource could not be found" error will be thrown.
 
 
+/// Action methods
+/// All the public methods in the Controlle class are called Action methods.
+/// - Action method must be public. It cannot be private or protected
+/// - Action method cannot be overloaded
+/// - Action method cannot be a static method.
 
+	using System.Web.Mvc;
+
+	namespace MVC.Controllers
+	{
+		public class StudentController : Controller
+		{
+			// GET: Student
+		public ActionResult Index()
+        {
+            return View();
+        }
+
+        public string GetString()
+        {
+            return "This is Index action method of StudentController";
+        }
+	}
+
+/// Action method Parameters:
+/// Every action methods can have input parameters as normal methods.
+/// It can be primitive data type or complex type parameters as shown in the below example.
+/// Action method parameters can be Nullable type. 
+
+	[HttpPost]
+	public ActionResult Edit(Student std)
+	{
+		// update student to the database
+		
+		return RedirectToAction("Index");
+	}
+
+	[HttpDelete]
+	public ActionResult Delete(int id)
+	{
+		// delete student from the database whose id matches with specified id
+
+		return RedirectToAction("Index");
+	}
 
 
 
