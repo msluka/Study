@@ -206,3 +206,80 @@
 //	2. Submit button Calls DisplayCustomer Action in CustomController.
 //	3. DisplayCustomer Action takes as a parameter Customer object that 
 //	   was created using Html Helper Class and pass it to the View.
+
+
+/// MVC stands for Model, View and Controller.
+
+/// Model
+/// Model represents shape of the data and business logic. It maintains the data of the application. 
+/// Model objects retrieve and store model state in a database.
+/// - Model is responsible for maintaining application data and business logic.
+
+/// View 
+/// View is a user interface. 
+/// View display data using model to the user and also enables them to modify the data.
+/// - View is a user interface of the application, which displays the data.
+
+/// Controller
+/// Controller handles the user request. Typically, user interact with View, 
+/// which in-tern raises appropriate URL request, this request will be handled by a controller. 
+/// The controller renders the appropriate view with the model data as a response.
+/// - Controller handles user's requests and renders appropriate View with Model data.
+
+
+/// Routing
+/// Routing maps URL to physical file or class (controller class in MVC).
+/// Route contains URL pattern and handler information. URL pattern starts after domain name.
+/// Routes can be configured in RouteConfig class. Multiple custom routes can also be configured.
+/// Route constraints applies restrictions on the value of parameters.
+/// Route must be registered in Application_Start event in Global.ascx.cs file.
+
+public static void RegisterRoutes(RouteCollection routes)
+    {
+        routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+        routes.MapRoute(
+            name: "Student",
+            url: "students/{id}",
+            defaults: new { controller = "Student", action = "Index"}
+        );
+
+        routes.MapRoute(
+            name: "Default",
+            url: "{controller}/{action}/{id}",
+            defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional } 
+        );
+    }
+
+// As shown in the above code, URL pattern for the Student route is students/{id}, 
+// which specifies that any URL that starts with domainName/students, must be handled by StudentController. 
+// Notice that we haven't specified {action} in the URL pattern because we want every URL that starts with 
+// student should always use Index action of StudentController. We have specified default controller and action 
+// to handle any URL request which starts from domainname/students.
+
+routes.MapRoute(
+            name: "Student",
+            url: "students/{id}",
+            defaults: new { controller = "Student", action = "Index"}, constraints: new { id = @"\d+" }
+        );
+
+// So if you give non-numeric value for id parameter then that request will be handled by another route or, 
+// if there are no matching routes then "The resource could not be found" error will be thrown.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
