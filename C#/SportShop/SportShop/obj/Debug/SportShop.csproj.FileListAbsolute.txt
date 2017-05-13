@@ -1,0 +1,236 @@
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\ApplicationInsights.config
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\csc.exe
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\csc.exe.config
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\csc.rsp
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\csi.exe
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\csi.exe.config
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\csi.rsp
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.AppContext.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Console.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Diagnostics.Process.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.IO.Compression.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.IO.Pipes.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Security.Claims.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Threading.Thread.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.ValueTuple.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Xml.XPath.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\vbc.exe
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\vbc.exe.config
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\vbc.rsp
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\VBCSCompiler.exe
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\SportShop.dll.config
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\SportShop.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\SportShop.pdb
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Antlr3.Runtime.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\EntityFramework.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\EntityFramework.SqlServer.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AI.Web.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.ApplicationInsights.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Security.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Newtonsoft.Json.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Owin.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\System.Web.Helpers.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\System.Web.Mvc.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\System.Web.Optimization.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\System.Web.Razor.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\System.Web.WebPages.Deployment.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\System.Web.WebPages.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\System.Web.WebPages.Razor.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\WebGrease.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Antlr3.Runtime.pdb
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AI.Web.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.ApplicationInsights.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Security.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Newtonsoft.Json.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\System.Web.Helpers.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\System.Web.Mvc.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\System.Web.Optimization.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\System.Web.Razor.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\System.Web.WebPages.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\System.Web.WebPages.Deployment.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\System.Web.WebPages.Razor.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\EntityFramework.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\EntityFramework.SqlServer.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\obj\Debug\SportShop.csprojResolveAssemblyReference.cache
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\obj\Debug\SportShop.dll
+C:\Users\RENT\Documents\Visual Studio 2015\Projects\SportShop\SportShop\obj\Debug\SportShop.pdb
+D:\gittest\MVC\SportShop\SportShop\bin\ApplicationInsights.config
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\csc.exe
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\csc.exe.config
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\csc.rsp
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\csi.exe
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\csi.exe.config
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\csi.rsp
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.AppContext.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Collections.Immutable.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Console.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Diagnostics.Process.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.IO.Compression.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.IO.FileSystem.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.IO.Pipes.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Reflection.Metadata.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Security.AccessControl.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Security.Claims.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Security.Principal.Windows.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Threading.Thread.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.ValueTuple.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Xml.XmlDocument.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Xml.XPath.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\vbc.exe
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\vbc.exe.config
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\vbc.rsp
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\VBCSCompiler.exe
+D:\gittest\MVC\SportShop\SportShop\bin\roslyn\VBCSCompiler.exe.config
+D:\gittest\MVC\SportShop\SportShop\bin\SportShop.dll.config
+D:\gittest\MVC\SportShop\SportShop\bin\SportShop.dll
+D:\gittest\MVC\SportShop\SportShop\bin\SportShop.pdb
+D:\gittest\MVC\SportShop\SportShop\bin\Antlr3.Runtime.dll
+D:\gittest\MVC\SportShop\SportShop\bin\EntityFramework.dll
+D:\gittest\MVC\SportShop\SportShop\bin\EntityFramework.SqlServer.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AI.Agent.Intercept.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AI.DependencyCollector.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AI.Web.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AI.WindowsServer.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.ApplicationInsights.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AspNet.Identity.Core.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Security.Cookies.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Security.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Security.Facebook.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Security.Google.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Security.OAuth.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Security.Twitter.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Web.Infrastructure.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Newtonsoft.Json.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Owin.dll
+D:\gittest\MVC\SportShop\SportShop\bin\System.Web.Helpers.dll
+D:\gittest\MVC\SportShop\SportShop\bin\System.Web.Mvc.dll
+D:\gittest\MVC\SportShop\SportShop\bin\System.Web.Optimization.dll
+D:\gittest\MVC\SportShop\SportShop\bin\System.Web.Razor.dll
+D:\gittest\MVC\SportShop\SportShop\bin\System.Web.WebPages.Deployment.dll
+D:\gittest\MVC\SportShop\SportShop\bin\System.Web.WebPages.dll
+D:\gittest\MVC\SportShop\SportShop\bin\System.Web.WebPages.Razor.dll
+D:\gittest\MVC\SportShop\SportShop\bin\WebGrease.dll
+D:\gittest\MVC\SportShop\SportShop\bin\Antlr3.Runtime.pdb
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AI.DependencyCollector.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AI.Web.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AI.WindowsServer.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.ApplicationInsights.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Security.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Security.Cookies.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Security.Facebook.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Security.Google.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Security.OAuth.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.Owin.Security.Twitter.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Newtonsoft.Json.xml
+D:\gittest\MVC\SportShop\SportShop\bin\System.Web.Helpers.xml
+D:\gittest\MVC\SportShop\SportShop\bin\System.Web.Mvc.xml
+D:\gittest\MVC\SportShop\SportShop\bin\System.Web.Optimization.xml
+D:\gittest\MVC\SportShop\SportShop\bin\System.Web.Razor.xml
+D:\gittest\MVC\SportShop\SportShop\bin\System.Web.WebPages.xml
+D:\gittest\MVC\SportShop\SportShop\bin\System.Web.WebPages.Deployment.xml
+D:\gittest\MVC\SportShop\SportShop\bin\System.Web.WebPages.Razor.xml
+D:\gittest\MVC\SportShop\SportShop\bin\EntityFramework.xml
+D:\gittest\MVC\SportShop\SportShop\bin\EntityFramework.SqlServer.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AspNet.Identity.Core.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\gittest\MVC\SportShop\SportShop\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\gittest\MVC\SportShop\SportShop\obj\Debug\SportShop.csprojResolveAssemblyReference.cache
+D:\gittest\MVC\SportShop\SportShop\obj\Debug\SportShop.dll
+D:\gittest\MVC\SportShop\SportShop\obj\Debug\SportShop.pdb

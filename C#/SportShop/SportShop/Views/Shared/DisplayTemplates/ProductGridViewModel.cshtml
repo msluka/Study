@@ -1,0 +1,8 @@
+﻿@model SportShop.Models.ProductGridViewModel
+
+<tr>
+    <th>@Model.Id</th>
+    <th>@Html.ActionLink(Model.Name, "GetProduct", "Product", new {productId = Model.Id}, null)</th>
+    <th>@Model.Price.ToString("c")</th>
+</tr>
+

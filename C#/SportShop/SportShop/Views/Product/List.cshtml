@@ -1,0 +1,48 @@
+﻿@*@model IEnumerable<SportShop.Models.ProductGridViewModel>*@
+@using System.Globalization
+@model SportShop.Controllers.ProductGridModel
+
+    
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<table class="table table-hover table-striped">
+    <colgroup>
+        <col/>
+        <col />
+        <col />
+    </colgroup>
+    
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nazwa</th>
+        <th>cena</th>
+    </tr>
+        
+       
+    </thead>
+    <tbody>
+    @*@foreach (var item in Model)*@ 
+    @*@foreach (var item in Model.Items)
+    {
+        <tr>
+            <th>@item.Id</th>
+            <th>@item.Name</th>
+            <th>@item.Price.ToString("c")</th>
+        </tr>
+    }*@
+        @Html.DisplayFor(x=>x.Items)
+
+    </tbody>
+
+</table>
+
+
+
+<p>Ilosc elementow</p> 
+@Model.Count
