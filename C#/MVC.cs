@@ -748,13 +748,65 @@
               cols="20" 
               id="Description" 
               name="Description" 
-              rows="2"></textarea> 		
+              rows="2"></textarea> 
+
+			  
+///	CheckBox()
+/// ----------
+/// The Html.CheckBox() is a loosely typed method.
+/// It generates a <input type="checkbox" > with the specified name, isChecked boolean and html attributes.	  
+/// CheckBox() method Signature:
+
+	MvcHtmlString CheckBox(string name, bool isChecked, object htmlAttributes)	
 	
-	
-	
-	
-	
-	
+	// Html.CheckBox() in Razor View
+
+	@Html.CheckBox("isNewlyEnrolled", true)
+
+	// Html Result:
+
+	<input checked="checked" 
+           id="isNewlyEnrolled" 
+           name="isNewlyEnrolled" 
+           type="checkbox" 
+           value="true" />
+
+		   
+/// CheckBoxFor()
+/// -------------
+/// CheckBoxFor helper method is a strongly typed extension method. 
+/// It generates <input type="checkbox"> element for the model property specified using a lambda expression. 
+/// CheckBoxFor method binds a specified model object property to checkbox element. 
+/// So it automatically checked or unchecked a checkbox based on the property value.
+/// CheckBoxFor() method Signature:
+
+	MvcHtmlString CheckBoxFor(<Expression<Func<TModel,TValue>> expression, object htmlAttributes)
+		
+	// Html.CheckBoxFor() in Razor View
+
+	@model Student
+
+	@Html.CheckBoxFor(m => m.isNewlyEnrolled)
+
+	// Html Result:
+
+	<input data-val="true" 
+        data-val-required="The isNewlyEnrolled field is required." 
+        id="isNewlyEnrolled" 
+        name="isNewlyEnrolled" 
+        type="checkbox" 
+        value="true" />
+
+	<input name="isNewlyEnrolled" type="hidden" value="false" />
+
+/*	
+	In the above Html result, notice that it has generated additional hidden field with the same name 
+	and value=false. This is because when we submit a form with a checkbox, the value is only posted 
+	if the checkbox is checked. So, if we leave the checkbox unchecked then nothing will be sent to 
+	the server when in many situations we would want false to be sent instead. As the hidden input has 
+	the same name as the checkbox, then if the checkbox is unchecked you'll still get a 'false' sent 
+	to the server.
+*/
 	
 	
 	
