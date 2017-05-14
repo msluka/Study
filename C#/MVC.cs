@@ -808,7 +808,79 @@
 	to the server.
 */
 	
+
+/// RadioButton()
+/// -------------
+/// The Html.RadioButton() method creates an radio button element with a specified name, 
+/// isChecked boolean and html attributes.
+/// RadioButton() method Signature:
+
+	MvcHtmlString RadioButton(string name, object value, bool isChecked, object htmlAttributes)
 	
+	// Html.RadioButton() in Razor View
+
+	Male:   @Html.RadioButton("Gender","Male")  
+	Female: @Html.RadioButton("Gender","Female")  
+
+	// Html Result:
+
+	Male: <input checked="checked" 
+			id="Gender" 
+			name="Gender" 
+			type="radio" 
+			value="Male" />
+
+	Female: <input id="Gender" 
+			name="Gender" 
+			type="radio" 
+			value="Female" />
+			
+/* 
+	In the above example, we have created two radio button for the "Gender" property. 
+	The second parameter is a value which will be sent to the server, if respective radio button is checked. 
+	If the Male radio button is selected, then the string value "Male" will be assigned to a model 
+	property Gender and submitted to the server. The above example creates two radio buttons.
+*/
+
+
+/// RadioButtonFor()
+/// ----------------
+/// RadioButtonFor helper method is a strongly typed extension method. 
+/// It generates <input type="radio"> element for the property specified using a lambda expression. 
+/// RadioButtonFor method binds a specified model object property to RadioButton control. 
+/// So it automatically checked or unchecked a RadioButton based on the property value.
+/// RadioButtonFor() method Signature:
+
+	MvcHtmlString RadioButtonFor(<Expression<Func<TModel,TValue>> expression, object value, object htmlAttributes)
+
+	// Html.RadioButtonFor() in Razor View
+
+	@model Student
+
+	@Html.RadioButtonFor(m => m.Gender,"Male")
+	@Html.RadioButtonFor(m => m.Gender,"Female")
+
+	// Html Result:
+
+	<input checked="checked" 
+        id="Gender" 
+        name="Gender" 
+        type="radio" 
+        value="Male" />
+
+	<input id="Gender" 
+        name="Gender" 
+        type="radio" 
+        value="Female" />
+
+/* 
+	In the above example, the first parameter in RadioButtonFor() method is a lambda expression that specifies 
+	the model property to be bind with the RadioButton element. We have created two radio button for the Gender 
+	property in the above example. So, it generates two <input type="RadioButton"> element with id & name set 
+	to property name - Gender. The second parameter is a value which will be sent to the server when form will 
+	be submitted.
+*/
+
 	
 	
 	
