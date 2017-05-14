@@ -687,3 +687,59 @@
         
         <input type="submit" class="btn btn-info" value="Click to Submit">
     }
+	
+
+/// TextArea()
+/// ----------
+/// The Html.TextArea() method creates <textarea rows="2" cols="20" > element with 
+/// specified name, value and html attributes.
+/// @Html.TextArea() is loosely typed method.
+/// TextArea() method Signature:
+
+	MvcHtmlString Html.TextArea(string name, string value, object htmlAttributes)
+	
+	public class Student
+{
+    public int StudentId { get; set; }
+    [Display(Name="Name")]
+    public string StudentName { get; set; }
+    public string Description { get; set; } // Set Description is: "Male"
+}
+	
+	// Html.TextArea() in Razor View
+	
+	@model Student
+
+	@Html.TextArea("Description", null, new { @class = "form-control" })  
+	
+	// Html Result:
+
+	<textarea class="form-control" 
+              id="Description" 
+              name="Description" 
+              rows="2"
+              cols="20">Male</textarea>
+			  
+/*
+	In the above example, the first parameter is the "Description" property of Student model class 
+	which will be set as a name & id of textarea. The second parameter is a value to display in a textarea, 
+	which is null in the above example because TextArea() method will automatically display a value 
+	of the Description property in the textarea. The third parameter will be set as class attribute.
+*/
+
+/// You can also specify any name for the textarea. However, it will not be bound to a model.	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
