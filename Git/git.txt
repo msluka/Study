@@ -463,6 +463,16 @@ git reset <commit>
 	git reset is a simple way to undo changes that haven’t been shared with anyone else.
 	get back the file from commit in working directory.
 	
+	
+git reset --hard <commit>
+-------------------------
+	will reset our copy to the commit we want and removes all commits
+	
+	
+git checkout -b oldState <commit>
+---------------------------------
+	Creates branch: oldState and goes to a snapshot made on a certain commit. 
+	
 
 git reset HEAD <file> 
 ---------------------
