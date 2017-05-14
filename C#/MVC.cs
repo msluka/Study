@@ -209,6 +209,8 @@
 //	   was created using Html Helper Class and pass it to the View.
 
 
+/// MVC Architecture
+/// ----------------
 /// MVC stands for Model, View and Controller.
 
 /// Model
@@ -229,6 +231,7 @@
 
 
 /// Routing
+/// -------
 /// Routing maps URL to physical file or class (controller class in MVC).
 /// Route contains URL pattern and handler information. URL pattern starts after domain name.
 /// Routes can be configured in RouteConfig class. Multiple custom routes can also be configured.
@@ -269,6 +272,7 @@
 
 
 /// Action methods
+/// --------------
 /// All the public methods in the Controlle class are called Action methods.
 /// - Action method must be public. It cannot be private or protected
 /// - Action method cannot be overloaded
@@ -315,6 +319,7 @@
 
 
 /// Action Selectors
+/// ----------------
 /// Three action selectors attributes are available in MVC 5 
 ///   - ActionName
 ///   - NonAction
@@ -453,6 +458,7 @@
 	
 
 /// Razor Syntax
+/// ------------
 /// Razor is one of the view engine supported in ASP.NET MVC. 
 /// Razor allows us to write mix of HTML and server side code using C# or Visual Basic. 
 
@@ -558,3 +564,126 @@
 	
 	//Result	
 	Hello World!
+	
+	
+/// HTML Helpers
+/// ------------
+/// HtmlHelper class generates html elements using the model class object in razor view. 
+/// It binds the model object to html elements to display value of model properties into html elements 
+/// and also assigns the value of the html elements to the model properties while submitting web form.
+	
+///	@Html is an object of HtmlHelper class. (@ symbol is used to access server side object in razor syntax). 
+///	ActionLink() and DisplayNameFor() is extension methods included in HtmlHelper class.
+///	HtmlHelper extension method generates html elements based on model properties.
+	
+	// For example
+	@Html.ActionLink("Create New", "Create") 
+	// would generate anchor tag 
+	<a href="/Student/Create">Create New</a>
+	
+/// There are many extension methods for HtmlHelper class, which creates different html controls.
+/*
+	HtmlHelper				Strogly Typed HtmlHelpers		Html Control
+	----------				------------------------- 		------------
+	Html.ActionLink			Anchor link
+	Html.TextBox			Html.TextBoxFor					Textbox
+	Html.TextArea			Html.TextAreaFor				TextArea
+	Html.CheckBox			Html.CheckBoxFor				Checkbox
+	Html.RadioButton		Html.RadioButtonFor				Radio button
+	Html.DropDownList		Html.DropDownListFor			Dropdown, combobox
+	Html.ListBox			Html.ListBoxFor					multi-select list box
+	Html.Hidden				Html.HiddenFor					Hidden field
+	Password				Html.PasswordFor				Password textbox
+	Html.Display			Html.DisplayFor					Html text
+	Html.Label				Html.LabelFor					Label
+	Html.Editor				Html.EditorFor					Generates Html controls based 
+																on data type of specified model 
+																property e.g. textbox for string 
+																property, numeric field for int, 
+																double or other numeric type.
+	
+	
+	The difference between calling the HtmlHelper methods and using an html tags is that 
+	the HtmlHelper method is designed to make it easy to bind to view data or model data.
+*/
+
+/// TextBox()
+/// ---------
+/// The Html.TextBox() method creates <input type="text" > element.
+/// @Html.TextBox() is loosely typed method.
+/// TextBox()method signature:
+
+	MvcHtmlString Html.TextBox(string name, string value, object htmlAttributes)
+
+	// Html.TextBox() in Razor View
+	
+	@model Student
+
+	@Html.TextBox("StudentName", null, new { @class = "form-control" }) 
+
+	// Html Result 
+	
+	<input class="form-control" 
+		   id="StudentName" 
+		   name="StudentName" 
+		   type="text" 
+		   value="" />
+
+/*  
+	In the above example, the first parameter is "StudentName" property of Student model class 
+	which will be set as a name & id of textbox. The second parameter is a value to display in a textbox, 
+	which is null in the above example because TextBox() method will automatically display a value of the 
+	StudentName property in the textbox. The third parameter will be set as class attribute. 
+*/
+	
+/// We can also specify any name for the textbox. However, it will not be bind to a model.
+
+
+/// TextBoxFor()
+/// ------------
+/// @Html.TextBoxFor() is a strongly typed (generic) extension method.
+/// TextBoxFor() requires lambda expression as a parameter.
+/// TextBoxFor() method Signature:
+
+	MvcHtmlString TextBoxFor(Expression<Func<TModel,TValue>> expression, object htmlAttributes)
+		
+	// Html.TextBoxFor() in Razor View
+	
+	@model Student
+
+	@Html.TextBoxFor(m => m.StudentName, new { @class = "form-control" }) 
+		
+	
+/// TextBox() and TextBoxFor() Examples:
+	
+	@using (Html.BeginForm("DisplayCustomer", "Customer", FormMethod.Post))
+	{
+		
+		@Html.Label("CustomerId", "Enter Customer Id")
+		@Html.TextBox("CustomerId", Model, new { @class = "form-control" })
+		<br />
+		@Html.Label("CustomerCode", "Enter Customer Code")
+		@Html.TextBox("CustomerCode", Model, new { @class = "form-control" })
+		<br />
+		@Html.Label("Amount", "Enter Customer Amount")
+		@Html.TextBox("Amount", Model, new { @class = "form-control" })
+		<br />
+		
+		<input type="submit" class="btn btn-info" value="Click to Submit">
+	}
+
+	@using (Html.BeginForm("DisplayCustomer", "Customer", FormMethod.Post))
+    {
+
+        @Html.Label("Id", "Enter Customer Id")
+        @Html.TextBoxFor(x=>x.Id, new { @class = "form-control" })
+        <br />
+        @Html.Label("CustomerCode", "Enter Customer Code")
+        @Html.TextBoxFor(x => x.CustomerCode, new { @class = "form-control" })
+        <br />
+        @Html.Label("Amount", "Enter Customer Amount")
+        @Html.TextBoxFor(x => x.Amount, new { @class = "form-control" })
+        <br />
+        
+        <input type="submit" class="btn btn-info" value="Click to Submit">
+    }
