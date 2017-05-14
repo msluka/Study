@@ -727,9 +727,28 @@
 	of the Description property in the textarea. The third parameter will be set as class attribute.
 */
 
-/// You can also specify any name for the textarea. However, it will not be bound to a model.	
+/// We can also specify any name for the textarea. However, it will not be bound to a model.	
 	
+
+/// TextBoxFor() 
+/// ------------
+/// TextBoxFor()method Signature:
+
+	MvcHtmlString TextAreaFor(<Expression<Func<TModel,TValue>> expression, object htmlAttributes)
+
+	// Html.TextAreaFor() in Razor View
 	
+	@model Student
+
+	@Html.TextAreaFor(m => m.Description, new { @class = "form-control" }) 
+
+	// Html Result:
+
+	<textarea class="form-control" 
+              cols="20" 
+              id="Description" 
+              name="Description" 
+              rows="2"></textarea> 		
 	
 	
 	
