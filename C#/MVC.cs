@@ -433,30 +433,6 @@
 // in base Controller class, which automatically binds model object to the view.
 
 
-/// DisplayNameFor vs DisplayFor
-
-/// DisplayNameFor 
-/// shows the name of the property or 
-/// the string defined in the display attribute for the property.
-
-/// DisplayFor 
-/// shows the value of the field.
-
-	public class Student
-    {        
-        [Display(Name = "Name of Student")]
-        public string StudentName { get; set; }
-		
-        public int Age { get; set; }
-    }
-
-	@Html.DisplayNameFor(m => m.StudentName) // would show 'Name'.
-	@Html.DisplayNameFor(m => m.Age) // would show 'Age'.
-	
-	@Html.DisplayFor(modelItem => item.StudenName) // would show the value E.g "John"
-	@Html.DisplayFor(modelItem => item.Age) // would show the value E.g "18"
-	
-
 /// Razor Syntax
 /// ------------
 /// Razor is one of the view engine supported in ASP.NET MVC. 
@@ -1050,6 +1026,63 @@
 	The value attribute will be set to the value of a StudentId property which is 1 in the above example.
 
 	Please notice that it has created data- attribute of html5 that is used for the validation in ASP.Net MVC.
+*/
+
+
+/// Password()
+/// ----------
+/// The Html.Password() method generates a input password element with specified name, value and html attributes.
+
+/// Password() method signature:
+
+	MvcHtmlString Html.Password(string name, object value, object htmlAttributes)
+
+
+	// Html.Password() in Razor View
+
+	@model Student
+
+	@Html.Password("OnlinePassword")
+
+	// Html Result:
+
+	<input 
+			id="OnlinePassword" 
+			name="OnlinePassword" 
+			type="password" 
+			value="" />
+
+	// The above example will create password field for "OnlinePassword" property.
+
+	
+///	PasswordFor()
+/// -------------
+/// PasswordFor helper method is a strongly typed extension method. 
+/// It generates a <input type="password"> element for the model object property specified 
+/// using a lambda expression. PasswordFor method binds a specified model object property 
+/// to <input type="password">. So it automatically sets a value of the model property to 
+/// password field and visa-versa.
+
+/// PasswordFor() method signature:
+
+	MvcHtmlString Html.PasswordFor(Expression<Func<dynamic,TProperty>> expression, object htmlAttributes)
+
+	// PasswordFor() in Razor View
+
+	@model Student
+
+	@Html.PasswordFor(m => m.Password)
+
+	// Html Result:
+
+	<input id="Password" name="Password" type="password" value="mypassword" />
+
+/*
+	In the above example, the first parameter in PasswordFor() method is a lambda expression 
+	that specifies the model property to be bind with the password textbox. We have specified 
+	Password property in the above example. So, it generates input password element with id & name 
+	set to property name. The value attribute will be set to the value of a Password property which 
+	is "mypassword" in the above example.
 */
 	
 	
