@@ -986,7 +986,71 @@
 */
 
 	
+/// Hidden()
+/// --------
+/// The Html.Hidden() method generates a input hidden field (<input type="hidden">) element 
+/// with specified name, value and html attributes.
+
+/// Hidden() method signature:
+
+	MvcHtmlString Html.Hidden(string name, object value, object htmlAttributes)
 	
+	
+
+	// Html.Hidden() in Razor View
+
+	@model Student
+
+	@Html.Hidden("StudentId")
+
+	// Html Result:
+
+	<input id="StudentId" 
+				name="StudentId" 
+				type="hidden" 
+				value="1" />
+
+/* 
+	The above example creates a hidden field for StudentId property of Student model. 
+	It binds StudentId with the hidden field, so that it can assign value of StudentId 
+	to the hidden field and visa-versa.
+*/
+
+/// HiddenFor()
+/// -----------
+/// HiddenFor helper method is a strongly typed extension method. 
+/// It generates a hidden input element for the model property specified using a lambda expression. 
+/// HiddenFor method binds a specified model object property to <input type="hidden">. 
+/// So it automatically sets a value of the model property to hidden field and visa-versa.
+
+/// HiddenFor() method signature:
+
+	MvcHtmlString Html.HiddenFor(Expression<Func<dynamic,TProperty>> expression)
+
+	// HiddenFor() in Razor View
+
+	@model Student
+
+	@Html.HiddenFor(m => m.StudentId)
+
+	// Html Result:
+
+	<input data-val="true" 
+				data-val-number="The field StudentId must be a number." 
+				data-val-required="The StudentId field is required." 
+				id="StudentId" 
+				name="StudentId" 
+				type="hidden" 
+				value="1" />
+
+/*
+	In the above example, the first parameter in HiddenFor() method is a lambda expression 
+	that specifies the model property to be bind with the hidden field. We have specified StudentId 
+	property in the above example. So, it generates input text element with id & name set to property name. 
+	The value attribute will be set to the value of a StudentId property which is 1 in the above example.
+
+	Please notice that it has created data- attribute of html5 that is used for the validation in ASP.Net MVC.
+*/
 	
 	
 	
