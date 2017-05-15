@@ -1084,6 +1084,71 @@
 	set to property name. The value attribute will be set to the value of a Password property which 
 	is "mypassword" in the above example.
 */
+
+
+/// Display()
+/// ---------
+/// The Html.Display() is a loosely typed method which generates a string in razor view for 
+/// the specified property of model.
+
+/// Display() method Signature: 
+
+	MvcHtmlString Display(string expression)
+
+	// Html.Display() in Razor View
+
+	@Html.Display("StudentName")
+
+	// Html Result:
+
+	"Steve"
+
+
+/// DisplayFor()
+/// ------------
+/// DisplayFor helper method is a strongly typed extension method. 
+/// It generates a html string for the model object property specified using a lambda expression.
+
+/// DisplayFor() method Signature: 
+
+	// DisplayFor() in Razor View
+
+	@model Student
+
+	@Html.DisplayFor(m => m.StudentName)
+
+	// Html Result:
+
+	" Steve  "
+
+/*
+	In the above example, we have specified StudentName property of Student model using lambda expression 
+	in the DisplayFor() method. So, it generates a html string with the value of StudentName property, 
+	which is "Steve" in the above example.
+*/
+
+
+/// DisplayNameFor vs DisplayFor
+
+/// DisplayNameFor 
+/// shows the name of the property or 
+/// the string defined in the display attribute for the property.
+
+/// DisplayFor 
+/// shows the value of the field.
+
+	public class Student
+    {        
+        [Display(Name = "Name of Student")]
+        public string StudentName { get; set; }
+		
+        public int Age { get; set; }
+    }
+
+	@Html.DisplayNameFor(m => m.StudentName) // would show 'Name'.
+	@Html.DisplayNameFor(m => m.Age) // would show 'Age'.
 	
+	@Html.DisplayFor(modelItem => item.StudenName) // would show the value E.g "John"
+	@Html.DisplayFor(modelItem => item.Age) // would show the value E.g "18"
 	
 	
