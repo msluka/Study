@@ -1152,3 +1152,61 @@
 	@Html.DisplayFor(modelItem => item.Age) // would show the value E.g "18"
 	
 	
+	
+/// Label()
+/// -------
+/// The Html.Label() method generates a <label> element for a specified property of model object.
+
+/// Label() method Signature: 
+
+	MvcHtmlString Label(string expression, string labelText, object htmlAttributes)
+
+	// Html.Label() in Razor View
+
+	@Html.Label("StudentName")
+
+	// Html Result:
+
+	<label for="StudentName">Name</label>
+
+/*
+	In the above example, we have specified a StudentName property as a string. 
+	So, it will create <label> element that display Name.
+*/
+
+/// We can specify another label text instead of property name as shown below.
+
+	// Html.Label() in Razor View
+
+	@Html.Label("StudentName","Student-Name")
+
+	// Html Result:
+
+	<label for="StudentName">Student-Name</label>
+
+
+	
+/// LabelFor()
+/// ----------
+/// LabelFor helper method is a strongly typed extension method. 
+/// It generates a html label element for the model object property specified using a lambda expression.
+
+/// LabelFor() method Signature: 
+
+	MvcHtmlString LabelFor(<Expression<Func<TModel,TValue>> expression)
+
+	// LabelFor() in Razor View
+
+	@model Student
+
+	@Html.LabelFor(m => m.StudentName)
+
+	// Html Result:
+
+	<label for="StudentName">Name</label>
+
+/*
+	In the above example, we have specified the StudentName property of Student model using 
+	lambda expression in the LabelFor() method. So, it generates <label> and set label text 
+	to the same as StudentName property name.	
+*/
