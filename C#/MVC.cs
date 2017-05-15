@@ -881,6 +881,110 @@
 	be submitted.
 */
 
+
+/// DropDownList()
+/// --------------
+/// The Html.DropDownList() method generates a select element with specified name, list items and html attributes.
+/// DropDownList() method signature:
+
+	MvcHtmlString Html.DropDownList(string name, IEnumerable<SelectLestItem> selectList, 
+	                                string optionLabel, object htmlAttributes)
+
+
+
+	// Example
+	
+	public class Student
+	{
+		public int StudentId { get; set; }
+		[Display(Name="Name")]
+		public string StudentName { get; set; }
+		public Gender StudentGender { get; set; }
+	}
+
+	public enum Gender
+	{
+		Male,
+		Female    
+	}
+
+	// Html.DropDownList() in Razor View
+
+	@using MyMVCApp.Models
+
+	@model Student
+
+	@Html.DropDownList("StudentGender", 
+                    new SelectList(Enum.GetValues(typeof(Gender))),
+                    "Select Gender",
+                    new { @class = "form-control" })
+
+	// Html Result
+
+	<select class="form-control" id="StudentGender" name="StudentGender">
+		<option>Select Gender</option> 
+		<option>Male</option> 
+		<option>Female</option> 
+	</select>
+	
+/*
+	In the above example, the first parameter is a property name for which we want to display list items. 
+	The second parameter is list of values to be included in the dropdownlist. We have used Enum methods 
+		to get the Gender enum values. 
+	The third parameter is a label which will be the first list item and 
+	the fourth parameter is for html attributes like css to be applied on the dropdownlist.
+*/
+
+
+/// Please note that you can add MyMVCApp.Models namespace into <namespaces> section in web.config 
+/// in the Views folder instead of using @using to include namespces in all the views.
+
+
+/// DropDownListFor()
+/// -----------------
+/// DropDownListFor helper method is a strongly typed extension method. 
+/// It generates <select> element for the property specified using a lambda expression. 
+/// DropDownListFor method binds a specified model object property to dropdownlist control. 
+/// So it automatically list items in DropDownList based on the property value.
+
+/// DropDownListFor() method signature:
+
+	MvcHtmlString Html.DropDownListFor(Expression<Func<dynamic,TProperty>> expression, 
+	                                   IEnumerable<SelectLestItem> selectList, string optionLabel, 
+									   object htmlAttributes)
+
+
+	// DropDownListFor() in Razor View
+
+	@using MyMVCApp.Models
+
+	@model Student
+
+	@Html.DropDownListFor(m => m.StudentGender, 
+                    new SelectList(Enum.GetValues(typeof(Gender))), 
+                    "Select Gender", 
+					new { @class = "form-control" })
+
+	// Html Result:
+
+	<select class="form-control" id="StudentGender" name="StudentGender">
+		<option>Select Gender</option> 
+		<option>Male</option> 
+		<option>Female</option> 
+	</select>
+
+/*
+	In the above example, the first parameter in DropDownListFor() method is a lambda expression 
+		that specifies the model property to be bind with the select element. We have specified 
+		StudentGender property of enum type. 
+	The second parameter specifies the items to show into dropdown list using SelectList. 
+	The third parameter is optionLabel which will be the first item of dropdownlist and
+	the fourth parameter is for html attributes like css to be applied on the dropdownlist.
+	
+	So now, it generates <select> element with id & name set to property name - StudentGener and 
+	two list items - Male & Female.
+*/
+
 	
 	
 	
