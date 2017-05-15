@@ -162,7 +162,7 @@
 		}
 
 	</body>
-
+	
 
 // Views / DisplayCustomer
 	
@@ -1210,3 +1210,44 @@
 	lambda expression in the LabelFor() method. So, it generates <label> and set label text 
 	to the same as StudentName property name.	
 */
+
+
+
+/// Editor():
+/// ---------
+/// Editor() method created the appropriate input elements based on the datatype  of the specified properties.
+
+/// Editor() signature: 
+
+	MvcHtmlString Editor(string propertyname)
+	
+	// Editor() in Razor view
+
+	StudentId:      @Html.Editor("StudentId")
+	Student Name:   @Html.Editor("StudentName")
+	Age:            @Html.Editor("Age")
+	Password:       @Html.Editor("Password")
+	isNewlyEnrolled: @Html.Editor("isNewlyEnrolled")
+	Gender:         @Html.Editor("Gender")
+	DoB:            @Html.Editor("DoB")
+	
+/// EditorFor()
+/// -----------
+/// EditorFor() method is a strongly typed method. 
+/// It requires the lambda expression to specify a property of the model object.
+
+/// EditorFor() signature: 
+
+	MvcHtmlString EditorFor(<Expression<Func<TModel,TValue>> expression)
+
+	// EditorFor() in Razor view
+
+	StudentId:      @Html.EditorFor(m => m.StudentId)
+	Student Name:   @Html.EditorFor(m => m.StudentName)
+	Age:            @Html.EditorFor(m => m.Age)
+	Password:       @Html.EditorFor(m => m.Password)
+	isNewlyEnrolled: @Html.EditorFor(m => m.isNewlyEnrolled)
+	Gender:         @Html.EditorFor(m => m.Gender)
+	DoB:            @Html.EditorFor(m => m.DoB)
+		
+
