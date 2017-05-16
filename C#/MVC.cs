@@ -1333,3 +1333,38 @@
 
 		return RedirectToAction("Index");
 	}
+	
+/// Bind Attribute
+/// --------------
+/// ASP.NET MVC framework also enables us to specify which properties of a model class we want to bind. 
+/// The [Bind] attribute will let us specify the exact properties a model binder should include or exclude 
+/// in binding.
+
+/// In the following example, Edit action method will only bind StudentId and StudentName property 
+/// of a Student model.
+
+	// Include example:
+
+	[HttpPost]
+	public ActionResult Edit([Bind(Include = "StudentId, StudentName")] Student std)
+	{
+		var name = std.StudentName;
+			   
+		//write code to update student 
+				
+		return RedirectToAction("Index");
+	}
+
+	// Exclude example:
+
+	[HttpPost]
+	public ActionResult Edit([Bind(Exclude = "Age")] Student std)
+	{
+		var name = std.StudentName;
+			   
+		//write code to update student 
+				
+		return RedirectToAction("Index");
+	}
+
+/// The Bind attribute will improve the performance by only bind properties which we needed.
