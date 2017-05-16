@@ -1230,6 +1230,7 @@
 	isNewlyEnrolled: @Html.Editor("isNewlyEnrolled")
 	Gender:         @Html.Editor("Gender")
 	DoB:            @Html.Editor("DoB")
+
 	
 /// EditorFor()
 /// -----------
@@ -1251,3 +1252,35 @@
 	DoB:            @Html.EditorFor(m => m.DoB)
 		
 
+
+/// Model Binding
+/// -------------
+/// http://www.tutorialsteacher.com/mvc/model-binding-in-asp.net-mvc
+
+/// Binding to Primitive type:
+
+/// HttpGET request embeds data into a query string. 
+/// MVC framework automatically converts a query string to the action method parameters. 
+/// For example, the query string "id" in the following GET request would automatically 
+/// be mapped to the id parameter of the Edit() action method.
+
+	public ActionResult Edit(int Id)
+	{
+		
+		var std = studentList.Where(s => s.StudentId == Id).FirstOrDefault();
+
+		return View(std);
+	}
+	
+/// We can also have multiple parameters in the action method with different data types. 
+/// Query string values will be converted into paramters based on matching name.
+
+///  For example, http://localhost/Student/Edit?id=1&name=John 
+///	would map to id and name parameter of the following Edit action method.
+
+	public ActionResult Edit(int id, string name)
+	{            
+		// do something here
+				
+		return View();
+	}

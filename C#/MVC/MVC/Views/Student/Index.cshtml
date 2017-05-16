@@ -1,4 +1,7 @@
-﻿@model IEnumerable<MVC.Models.Student>
+﻿@using MVC.Models
+@model IEnumerable<MVC.Models.Student>
+
+
 
 @{
     ViewBag.Title = "Index";
@@ -10,6 +13,12 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
+    <colgroup>
+        <col />
+        <col />
+        <col />
+
+    </colgroup>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.StudentId)
@@ -20,26 +29,54 @@
         <th>
             @Html.DisplayNameFor(model => model.Age)
         </th>
-        <th></th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isNewlyEnrolled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>Action</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modeItem => item.StudentId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Age)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {id = item.StudentId}) |
-            @Html.ActionLink("Details", "Details", new {id = item.StudentId}) |
-            @Html.ActionLink("Delete", "Delete", new {id = item.StudentId})
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modeItem => item.StudentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.isNewlyEnrolled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
+            </td>
+        </tr>
+    }
+
+
 
 </table>
+
+
+
+
+

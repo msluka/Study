@@ -13,5 +13,16 @@ namespace MVC.Models
         [Display(Name = "Name")]
         public string StudentName { get; set; }
         public int Age { get; set; }
+        public Gender Gender { get; set; }
+        [Display(Name = "Is Newly Enrold?")]
+        public bool isNewlyEnrolled { get; set; }
+        public string Password { get; set; }
+        
+    }
+
+    public enum Gender
+    {
+        Male,
+        Female
     }
 }
