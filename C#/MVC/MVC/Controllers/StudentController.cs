@@ -47,7 +47,7 @@ namespace MVC.Controllers
         {
             var db = new MVCContext();
             var std = db.Students.Where(s => s.StudentId == Id).FirstOrDefault();
-
+              
             return View(std);
         }
         
@@ -63,7 +63,7 @@ namespace MVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            return RedirectToAction("Edit");
+            return View(std);
         }
 
     }

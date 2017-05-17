@@ -112,3 +112,4 @@ D:\GitHub\Study\C#\MVC\MVC\obj\Debug\MVC.Migrations.InitialCreate.resources
 D:\GitHub\Study\C#\MVC\MVC\obj\Debug\MVC.csproj.GenerateResource.Cache
 D:\GitHub\Study\C#\MVC\MVC\obj\Debug\MVC.Migrations.AddUrl.resources
 D:\GitHub\Study\C#\MVC\MVC\obj\Debug\MVC.Migrations.RemoveUrl.resources
+D:\GitHub\Study\C#\MVC\MVC\obj\Debug\MVC.Migrations.Validation.resources

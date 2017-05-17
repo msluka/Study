@@ -10,8 +10,10 @@ namespace MVC.Models
     {
         [Display(Name = "Id")]
         public int StudentId { get; set; }
+        [Required]
         [Display(Name = "Name")]
         public string StudentName { get; set; }
+        [Required(ErrorMessage = "Enter age.")]
         public int Age { get; set; }
         public Gender Gender { get; set; }
         [Display(Name = "Is Newly Enrold?")]

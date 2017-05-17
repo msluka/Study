@@ -1408,9 +1408,9 @@
 	
 	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 	// ValidationSummary displays a list of all the error messages at once.
-	
-	@Html.ValidationMessageFor(model => model.StudentName, "", new { @class = "text-danger" })		
-	@Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+		
+	@Html.ValidationMessage("StudentName", "", new { @class = "text-danger" })
+	@Html.ValidationMessageFor(model => model.StudentName, "", new { @class = "text-danger" })	
 	// ValidationMessage and ValidationMessageFor are responsible to display error message 
 	// for the specified field.
 	
@@ -1432,6 +1432,7 @@
 /// ValidationMessageFor() method.
 
 	@Html.ValidationMessage("StudentName", "Please enter student name.", new { @class = "text-danger" })
+	@Html.ValidationMessageFor(m => m.StudentName, "Please enter student name.", new { @class = "text-danger" })
 
 	// or
 	
@@ -1444,6 +1445,10 @@
 /// The ValidationSummary helper method generates an unordered list (ul element) of validation messages 
 /// that are in the ModelStateDictionary object.
 
+	// ValidationSummary() Signature:
+
+	MvcHtmlString ValidateMessage(bool excludePropertyErrors, string message, object htmlAttributes)	
+
 	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 	
 	// By default, ValidationSummary filters out field level error messages. 
@@ -1452,6 +1457,36 @@
 	
 	@Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-The ValidationSummary can be used to display all the error messages for all the fields. It can also be used to display custom error messages.
 
+/// The ValidationSummary can be used to display all the error messages for all the fields. 
+/// It can also be used to display custom error messages.
 
+/// For example, we want to display a message if Student Name already exists in the database.
+/// To display a custom error message, first of all, we need to add custom errors into 
+/// the ModelState in the appropriate action method.
+
+	// Example: Add error in ModelState
+            
+	if (ModelState.IsValid) { 
+				  
+		//check whether name is already exists in the database or not
+		bool nameAlreadyExists = * check database *       
+			
+		if(nameAlreadyExists)
+		{
+			ModelState.AddModelError(string.Empty, "Student Name already exists.");
+		
+			return View(std);
+		}
+	}
+
+	
+	
+/// Layout view
+/// -----------
+/// An application may contain common parts in the UI which remains the same throughout the application 
+/// such as the logo, header, left navigation bar, right bar or footer section. ASP.NET MVC introduced 
+/// a Layout view which contains these common UI parts, so that we don't have to write the same code 
+/// in every page.
+
+/// Layout views are shared with multiple views, so it must be stored in the Shared folder. 
