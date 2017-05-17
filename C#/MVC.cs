@@ -1255,13 +1255,14 @@
 
 /// Model Binding
 /// -------------
+/// http://www.tutorialsteacher.com/mvc/model-binding-in-asp.net-mvc
+/// https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-aspnet-mvc4/
+///         examining-the-edit-methods-and-edit-view
+
 /// Model binding automatically converts request values into a primitive or complex type object. 
 /// 	Model binding is a two step process. 
 ///		First, it collects values from the incoming http request and second, 
 ///		populates primitive type or complex type with these values.
-/// http://www.tutorialsteacher.com/mvc/model-binding-in-asp.net-mvc
-/// https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-aspnet-mvc4/
-///         examining-the-edit-methods-and-edit-view
 
 /// Binding to Primitive type:
 
@@ -1368,3 +1369,89 @@
 	}
 
 /// The Bind attribute will improve the performance by only bind properties which we needed.
+
+
+
+/// Validation
+/// ----------
+/// SP.NET MVC uses DataAnnotations attributes to implement validations.
+/// The following table lists DataAnnotations validation attributes.
+
+/*
+	Attribute				Description
+	---------               -----------
+	Required				Indicates that the property is a required field
+	StringLength			Defines a maximum length for string field
+	Range	                Defines a maximum and minimum value for a numeric field
+	RegularExpression		Specifies that the field value must match with specified Regular Expression
+	CreditCard				Specifies that the specified field is a credit card number
+	CustomValidation		Specified custom validation method to validate the field
+	EmailAddress			Validates with email address format
+	FileExtension			Validates with file extension
+	MaxLength				Specifies maximum length for a string field
+	MinLength				Specifies minimum length for a string field
+	Phone					Specifies that the field is a phone number using regular expression for phone numbers
+*/
+
+	public class Student
+	{
+		public int StudentId { get; set; }
+		 
+		[Required]
+		public string StudentName { get; set; }
+		   
+		[Range(5,50)]
+		public int Age { get; set; }
+	}
+	
+	//In View
+	
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	// ValidationSummary displays a list of all the error messages at once.
+	
+	@Html.ValidationMessageFor(model => model.StudentName, "", new { @class = "text-danger" })		
+	@Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+	// ValidationMessage and ValidationMessageFor are responsible to display error message 
+	// for the specified field.
+	
+	
+/// Validation Message
+/// ------------------
+
+	@Html.ValidationMessage("StudentName", "", new { @class = "text-danger" })
+/*	
+	In the above example, the first parameter in the ValidationMessage method is a property name 
+	for which we want to show the error message e.g. StudentName. The second parameter is for 
+	custom error message and the third parameter is for html attributes like css, style etc.
+*/
+
+/// Custom Error Message
+/// --------------------
+/// We can display your own error message instead of the default error message. 
+/// We can provide a custom error message either in the DataAnnotations attribute or 
+/// ValidationMessageFor() method.
+
+	@Html.ValidationMessage("StudentName", "Please enter student name.", new { @class = "text-danger" })
+
+	// or
+	
+	[Required(ErrorMessage="Please enter student name.")]
+    public string StudentName { get; set; }
+
+	
+/// ValidationSummary
+/// -----------------
+/// The ValidationSummary helper method generates an unordered list (ul element) of validation messages 
+/// that are in the ModelStateDictionary object.
+
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	
+	// By default, ValidationSummary filters out field level error messages. 
+	// If you want to display field level error messages as a summary then specify 
+	// excludePropertyErrors = false.
+	
+	@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+The ValidationSummary can be used to display all the error messages for all the fields. It can also be used to display custom error messages.
+
+
