@@ -2914,3 +2914,45 @@ class Program
 /// ORM framework automatically creates classes based on database tables and 
 /// the vice versa is also true, that is, it can also automatically generate 
 /// necessary SQL to create database tables based on classes.
+
+
+/// Fibonacci
+/// ---------
+
+	static int Fibonacci(int n)  
+	{  
+		int firstnumber = 0, secondnumber = 1, result = 0;  
+
+		if (n == 0) return 0;   
+		if (n == 1) return 1;  
+
+
+		for (int i = 2; i <= n; i++)  
+		{  
+			result = firstnumber + secondnumber;  
+			firstnumber = secondnumber;  
+			secondnumber = result;  
+		}  
+
+		return result;  
+	}  
+	
+/// Math Power
+/// ----------
+
+	static int Power(int a, int b){
+		
+		if (a == 0 || b == 0) return 0;		
+		 
+		int result = 1;
+		
+		for (int i = 0; i < b; i++){			
+		   
+			result *= a;
+			
+		}
+		
+		return result;
+	}
+	
+	// or just Math.Pow(2,3)
