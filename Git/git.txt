@@ -137,6 +137,10 @@ git checkout -- filename
 ------------------------
 This will checkout the file from HEAD, overwriting your change. 
 
+git checkout -- .
+-----------------
+clears all unstaged changes.
+
 
 git help
 --------
