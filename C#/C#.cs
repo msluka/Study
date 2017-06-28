@@ -2919,6 +2919,8 @@ class Program
 /// Fibonacci
 /// ---------
 
+///	0	1	1	2	3	5	8	13	21	34	55
+
 	static int Fibonacci(int n)  
 	{  
 		int firstnumber = 0, secondnumber = 1, result = 0;  
@@ -2939,6 +2941,7 @@ class Program
 	
 /// Math Power
 /// ----------
+/// 2*2*2*2 = Pow(2,4)
 
 	static int Power(int a, int b){
 		
@@ -2954,5 +2957,76 @@ class Program
 		
 		return result;
 	}
+	Console.WriteLine(Pow(2, 4))
+	//Outputs 32
+	
+	
+	static int Pow(int x, int y = 2) {
+        int result = 1;
+        for (int i = 0; i < y; i++) {
+            result *= x;
+        }
+        return result;
+    }
+   
+        Console.WriteLine(Pow(6));
+        //Outputs 36
 	
 	// or just Math.Pow(2,3)
+	
+	
+/// Factorial
+/// ---------
+
+/// 4 * 3 * 2 * 1 = 24
+	
+	static int Fact(int num)
+	{
+		if (num == 1)
+		{
+			return 1;
+		}
+		return num * Fact(num - 1);
+	}
+	static void Main(string[] args)
+	{
+		Console.WriteLine(Fact(4));
+		Console.ReadLine();
+		
+		//Output: 24
+	}
+	
+/// Sort array JS
+/// -------------
+
+	var points = [40, 100, 1, 5, 25, 10];
+
+	function myFunction() {
+		
+		points.sort(function(a, b){return a-b});
+		
+	}
+
+	
+/// BubbleSort JS
+
+	var a = [33, 103, 3, 726, 200, 984, 198, 764, 9];
+
+	function bubbleSort(a)
+	{
+		var swapped;
+		do {
+			swapped = false;
+			for (var i=0; i < a.length-1; i++) {
+				if (a[i] > a[i+1]) {
+					var temp = a[i];
+					a[i] = a[i+1];
+					a[i+1] = temp;
+					swapped = true;
+				}
+			}
+		} while (swapped);
+	}
+
+	bubbleSort(a);
+	console.log(a);
