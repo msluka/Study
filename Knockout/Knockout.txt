@@ -1,0 +1,42 @@
+http://learn.knockoutjs.com/#/?tutorial=intro
+
+
+Introduction
+============
+
+Data-bind
+---------
+data-bind attributes are how Knockout lets you declaratively associate viewmodel properties with DOM elements. 
+You just used the text binding to assign text to your DOM elements.
+
+
+	HTML
+	----
+
+	<!-- This is a *view* - HTML markup that defines the appearance of your UI -->
+
+	<p>First name: <strong data-bind="text: firstName">todo</strong></p>
+	<p>Last name: <strong data-bind="text: lastName">todo</strong></p>
+
+
+	JS
+	--
+
+	// This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
+
+	function AppViewModel() {
+    	     this.firstName = "Bert";
+    	     this.lastName = "Bertington";
+	}
+
+	// Activates knockout.js
+	
+	ko.applyBindings(new AppViewModel());
+
+
+	Output
+	------
+
+	First name: Bert
+
+	Last name: Bertington
