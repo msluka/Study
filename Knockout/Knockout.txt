@@ -88,3 +88,43 @@ Update your viewmodel to make the firstName and lastName properties observable u
 	Last name: Bertington
 
 
+Computed values
+---------------
+computed properties - these are observable (i.e., they notify on change) and 
+they are computed based on the values of other observables.
+
+	 this.fullName = ko.computed(function() {
+    	     return this.firstName() + " " + this.lastName();    
+	 }, this);
+
+
+	JS
+	--
+
+	function AppViewModel() {
+    	     this.firstName = ko.observable("Bert");
+    	     this.lastName = ko.observable("Bertington");
+    
+    	     this.fullName = ko.computed(function() {
+    	          return this.firstName() + " " + this.lastName();    
+	     }, this);
+    
+	}
+
+	ko.applyBindings(new AppViewModel());
+
+
+	HTML
+	----
+
+	<p>First name: <strong data-bind="text: firstName"></strong></p>
+	<p>Last name: <strong data-bind="text: lastName"></strong></p>
+	<p>Full name: <strong data-bind="text: fullName"></strong></p>
+
+
+	Output
+	------
+
+	First name: Bert
+	Last name: Bertington
+	Full name: Bert Bertington
