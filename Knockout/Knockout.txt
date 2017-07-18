@@ -49,3 +49,42 @@ Making the data editable
 	<p>Last name: <input data-bind="value: lastName"/></p>
 
 
+Observable
+----------
+observables - these are properties that automatically will issue notifications whenever their value changes.
+Update your viewmodel to make the firstName and lastName properties observable using ko.observable:
+
+	JS
+	--
+
+	function AppViewModel() {
+    	     this.firstName = ko.observable("Bert");
+    	     this.lastName = ko.observable("Bertington");
+	}
+
+	ko.applyBindings(new AppViewModel());
+
+
+	HTML
+	----
+
+
+	<p>First name: <strong data-bind="text: firstName">todo</strong></p>
+	<p>Last name: <strong data-bind="text: lastName">todo</strong></p>
+
+	<p>First name: <input data-bind="value: firstName"/></p>
+	<p>Last name: <input data-bind="value: lastName"/></p>
+
+	Output
+	------
+
+	First name: Bert
+	Last name: Bertington
+
+	//Input
+	First name: Bert	
+
+	//Input
+	Last name: Bertington
+
+
