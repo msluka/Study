@@ -454,3 +454,31 @@ Removing items
 	// in ViewModel
 
 	self.removeSeat = function(seat) { self.seats.remove(seat) }
+
+
+
+Displaying a total surcharge
+----------------------------
+
+	Add the following ko.computed property inside ReservationsViewModel:
+
+	self.totalSurcharge = ko.computed(function() {
+   	     var total = 0;
+             for (var i = 0; i < self.seats().length; i++)
+       	         total += self.seats()[i].meal().price;
+   	         return total;
+	});
+
+
+	Again, notice that since seats and meal are both observables, we're invoking 
+	them as functions to read their current values (e.g., self.seats().length).
+
+	Display the total surcharge by adding the following <h3> element to the bottom of your view:
+
+		<h3 data-bind="visible: totalSurcharge() > 0">
+    			Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
+		</h3>
+
+	The visible binding makes an element visible or invisible as your data changes 
+	(internally, it modifies the element's CSS display style). In this case, we choose 
+	to show the "total surcharge" information only if it's greater than zero.
