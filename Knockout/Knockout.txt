@@ -258,3 +258,13 @@ automatically trigger UI updates whenever items are added or removed.
 	}
 
 	ko.applyBindings(new ReservationsViewModel());
+
+
+	Output
+	------
+
+	Your seat reservations
+
+	Passenger name	Meal	Surcharge
+	Steve	Standard (sandwich)	0
+	Bert	Standard (sandwich)	0
