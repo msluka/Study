@@ -433,3 +433,24 @@ Input / Dropdown
 	}
 
 	ko.applyBindings(new ReservationsViewModel());
+
+
+
+
+Removing items
+--------------
+
+	It displays a "remove" link next to each item:	
+
+	<td>
+	     <a href="#" data-bind="click: $root.removeSeat">Remove</a>
+	</td>
+
+	Note that the $root. prefix causes Knockout to look for a removeSeat handler on your 
+	top-level viewmodel instead of on the SeatReservation instance being bound --- that's 
+	a more convenient place to put removeSeat in this example. So, add a corresponding 
+	removeSeat function to your root viewmodel class, ReservationsViewModel:
+
+	// in ViewModel
+
+	self.removeSeat = function(seat) { self.seats.remove(seat) }
