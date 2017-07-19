@@ -482,3 +482,23 @@ Displaying a total surcharge
 	The visible binding makes an element visible or invisible as your data changes 
 	(internally, it modifies the element's CSS display style). In this case, we choose 
 	to show the "total surcharge" information only if it's greater than zero.
+
+
+Final niceties 
+eneble / disable / length
+-------------------------
+
+	If you're asked to display the total number of seats being reserved, you can implement that 
+	in just a single place:
+
+		<h2>
+		     Your seat reservations (<span data-bind="text: seats().length"></span>)
+		</h2>
+
+	if you're asked to put a limit on the number of seats you can reserve, say, you can make 
+	the UI represent that by using the enable binding. 
+	The button becomes disabled when the seat limit is reached: 
+
+		<button data-bind="click: addSeat, enable: seats().length < 5" >
+		     Reserve another seat
+		</button>
