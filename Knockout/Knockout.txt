@@ -349,3 +349,87 @@ Adding items
 	}
 
 	ko.applyBindings(new ReservationsViewModel());
+
+
+
+Making the data editable
+Input / Dropdown
+------------------------
+
+	<td>
+	     <select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select>
+	</td>
+
+	This code uses two new bindings, "options" and "optionsText", which together control both the set of 
+	available items in a dropdown list, and which object property (in this case, mealName) is used to 
+	represent each item on screen.
+
+
+	HTML
+	----
+	
+	<h2>Your seat reservations</h2>
+
+	<table>
+    	     <thead>
+                  <tr>
+            	       <th>Passenger name</th>
+                       <th>Meal</th>
+                       <th>Surcharge</th>        
+                  </tr>
+    	     </thead>
+    	
+    	     <tbody data-bind="foreach: seats">
+                  <tr>
+                       <td><input data-bind="value: name" /></td>
+            	       <td>
+			   <select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'">
+			   </select>
+		       </td>
+            	       <td data-bind="text: formattedPrice"></td>
+                  </tr>    
+    	     </tbody>
+        </table>
+
+	<button data-bind="click: addSeat">Reserve another seat</button>
+	
+	JS
+	--
+
+		
+	function SeatReservation(name, initialMeal) {
+    	     var self = this;
+             self.name = name;
+             self.meal = ko.observable(initialMeal);
+
+	     self.formattedPrice = ko.computed(function() {
+                  var price = self.meal().price;
+                  return price ? "$" + price.toFixed(2) : "None";        
+             });
+	}
+
+	// viewmodel 
+
+	function ReservationsViewModel() {
+             var self = this;
+
+            
+	self.availableMeals = [
+             { mealName: "Standard (sandwich)", price: 0 },
+             { mealName: "Premium (lobster)", price: 34.95 },
+             { mealName: "Ultimate (whole zebra)", price: 290 }
+    	];    
+   
+    	    	
+	self.seats = ko.observableArray([
+             new SeatReservation("Steve", self.availableMeals[0]),        
+             new SeatReservation("Bert", self.availableMeals[0])
+    	]);
+
+	self.addSeat = function() {
+             self.seats.push(new SeatReservation("", self.availableMeals[0]));
+    	}
+
+	}
+
+	ko.applyBindings(new ReservationsViewModel());
