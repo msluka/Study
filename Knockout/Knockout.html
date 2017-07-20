@@ -1,0 +1,538 @@
+http://learn.knockoutjs.com/#/?tutorial=intro
+
+http://knockoutjs.com/documentation/introduction.html
+
+
+Introduction
+============
+
+Data-bind
+---------
+data-bind attributes are how Knockout lets you declaratively associate viewmodel properties with DOM elements. 
+You just used the text binding to assign text to your DOM elements.
+
+
+	HTML
+	----
+
+	<!-- This is a *view* - HTML markup that defines the appearance of your UI -->
+
+	<p>First name: <strong data-bind="text: firstName">todo</strong></p>
+	<p>Last name: <strong data-bind="text: lastName">todo</strong></p>
+
+
+	JS
+	--
+	<script>
+
+	// This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
+
+	function AppViewModel() {
+    	     this.firstName = "Bert";
+    	     this.lastName = "Bertington";
+	}
+
+	// Activates knockout.js
+	
+	ko.applyBindings(new AppViewModel());
+	
+	</script>
+
+	Output
+	------
+
+	First name: Bert
+
+	Last name: Bertington
+
+
+Making the data editable
+------------------------
+
+	<p>First name: <input data-bind="value: firstName"/></p>
+	<p>Last name: <input data-bind="value: lastName"/></p>
+
+
+Observable
+----------
+observables - these are properties that automatically will issue notifications whenever their value changes.
+Update your viewmodel to make the firstName and lastName properties observable using ko.observable:
+
+	JS
+	--
+	<script>
+
+	function AppViewModel() {
+    	     this.firstName = ko.observable("Bert");
+    	     this.lastName = ko.observable("Bertington");
+	}
+
+	ko.applyBindings(new AppViewModel());
+	
+	</script>
+
+	HTML
+	----
+
+
+	<p>First name: <strong data-bind="text: firstName">todo</strong></p>
+	<p>Last name: <strong data-bind="text: lastName">todo</strong></p>
+
+	<p>First name: <input data-bind="value: firstName"/></p>
+	<p>Last name: <input data-bind="value: lastName"/></p>
+
+	Output
+	------
+
+	First name: Bert
+	Last name: Bertington
+
+	//Input
+	First name: Bert	
+
+	//Input
+	Last name: Bertington
+
+
+Computed values
+---------------
+computed properties - these are observable (i.e., they notify on change) and 
+they are computed based on the values of other observables.
+
+	<script>
+	
+	 this.fullName = ko.computed(function() {
+    	     return this.firstName() + " " + this.lastName();    
+	 }, this);
+
+	</script>
+	
+	JS
+	--
+	<script>
+	
+	function AppViewModel() {
+    	     this.firstName = ko.observable("Bert");
+    	     this.lastName = ko.observable("Bertington");
+    
+    	     this.fullName = ko.computed(function() {
+    	          return this.firstName() + " " + this.lastName();    
+	     }, this);
+    
+	}
+
+	ko.applyBindings(new AppViewModel());
+	
+	</script>
+
+	HTML
+	----
+
+	<p>First name: <strong data-bind="text: firstName"></strong></p>
+	<p>Last name: <strong data-bind="text: lastName"></strong></p>
+	<p>Full name: <strong data-bind="text: fullName"></strong></p>
+
+
+	Output
+	------
+
+	First name: Bert
+	Last name: Bertington
+	Full name: Bert Bertington
+
+
+Upper-case
+----------
+Updating the viewmodel
+First, add a capitalizeLastName function to the viewmodel to implement this behavior:
+
+	<script>
+	
+	this.capitalizeLastName = function() {
+        	var currentVal = this.lastName();        // Read the current value
+        	this.lastName(currentVal.toUpperCase()); // Write back a modified value
+    	};
+
+	</script>
+	
+Next, add a button to the view, 
+using the click binding to associate clicks with the viewmodel function you just added:
+
+	<button data-bind="click: capitalizeLastName">Go caps</button>
+
+
+	JS
+	--
+	<script>
+	
+	function AppViewModel() {
+    	     this.firstName = ko.observable("Bert");
+    	     this.lastName = ko.observable("Bertington");
+    
+    	     this.fullName = ko.computed(function() {
+     	          return this.firstName() + " " + this.lastName();    
+	     }, this);
+    
+      	     this.capitalizeLastName = function() {
+                  var currentVal = this.lastName();        // Read the current value
+                  this.lastName(currentVal.toUpperCase()); // Write back a modified value
+    	     };
+    
+	}
+
+
+	ko.applyBindings(new AppViewModel());
+
+	</script>
+	
+	HTML
+	----
+
+	<p>First name: <strong data-bind="text: firstName"></strong></p>
+	<p>Last name: <strong data-bind="text: lastName"></strong></p>
+	<p>Full name: <strong data-bind="text: fullName"></strong></p>
+
+	<button data-bind="click: capitalizeLastName">Go caps</button>
+
+
+	Output:
+	-------
+
+	First name: Bert
+	Last name: BERTINGTON
+	Full name: Bert BERTINGTON
+
+	|Go caps| //Button
+
+
+
+Working with Lists and Collections
+==================================
+
+ko.observableArray
+------------------
+that's the observable equivalent of a regular array, which means it can 
+automatically trigger UI updates whenever items are added or removed.
+
+	Notice that, in the example below, because the meal property is an observable, 
+	it's important to invoke  meal() as a function (to obtain its current value) 
+	before attempting to read sub-properties. In other words, write meal().price, not meal.price.
+
+
+	HTML
+	----
+	
+	<h2>Your seat reservations</h2>
+
+	<table>
+    	     <thead>
+                  <tr>
+            	       <th>Passenger name</th>
+                       <th>Meal</th>
+                       <th>Surcharge</th>        
+                  </tr>
+    	     </thead>
+    	
+    	     <tbody data-bind="foreach: seats">
+                  <tr>
+                       <td data-bind="text: name"></td>
+                       <td data-bind="text: meal().mealName"></td>
+                       <td data-bind="text: meal().price"></td>
+                  </tr>    
+    	     </tbody>
+        </table>
+
+	
+	JS
+	--
+	<script>
+	
+	// Class to represent a row in the seat reservations grid
+	
+	function SeatReservation(name, initialMeal) {
+    	     var self = this;
+             self.name = name;
+             self.meal = ko.observable(initialMeal);
+	}
+
+	// Overall viewmodel for this screen, along with initial state
+
+	function ReservationsViewModel() {
+             var self = this;
+
+        // Non-editable catalog data - would come from the server
+    
+	self.availableMeals = [
+             { mealName: "Standard (sandwich)", price: 0 },
+             { mealName: "Premium (lobster)", price: 34.95 },
+             { mealName: "Ultimate (whole zebra)", price: 290 }
+    	];    
+   
+    	// Editable data
+    	
+	self.seats = ko.observableArray([
+             new SeatReservation("Steve", self.availableMeals[0]),        
+             new SeatReservation("Bert", self.availableMeals[0])
+    	]);
+	}
+
+	ko.applyBindings(new ReservationsViewModel());
+
+	</script>
+
+	Output
+	------
+
+	Your seat reservations
+
+	Passenger name	Meal	Surcharge
+	Steve	Standard (sandwich)	0
+	Bert	Standard (sandwich)	0
+
+
+
+Adding items
+------------
+
+	Add  "addSeat" function to the ViewModel:
+	
+	<script>
+	
+	self.addSeat = function() {
+             self.seats.push(new SeatReservation("", self.availableMeals[0]));
+    	}
+	
+	</script>
+
+	Add a button to your view, using the click binding:
+
+	<button data-bind="click: addSeat">Reserve another seat</button>
+
+
+	HTML
+	----
+	
+	<h2>Your seat reservations</h2>
+
+	<table>
+    	     <thead>
+                  <tr>
+            	       <th>Passenger name</th>
+                       <th>Meal</th>
+                       <th>Surcharge</th>        
+                  </tr>
+    	     </thead>
+    	
+    	     <tbody data-bind="foreach: seats">
+                  <tr>
+                       <td data-bind="text: name"></td>
+                       <td data-bind="text: meal().mealName"></td>
+                       <td data-bind="text: meal().price"></td>
+                  </tr>    
+    	     </tbody>
+        </table>
+
+	<button data-bind="click: addSeat">Reserve another seat</button>
+	
+	JS
+	--
+	<script>
+	
+	// Class to represent a row in the seat reservations grid
+	
+	function SeatReservation(name, initialMeal) {
+    	     var self = this;
+             self.name = name;
+             self.meal = ko.observable(initialMeal);
+	}
+
+	// Overall viewmodel for this screen, along with initial state
+
+	function ReservationsViewModel() {
+             var self = this;
+
+        // Non-editable catalog data - would come from the server
+    
+	self.availableMeals = [
+             { mealName: "Standard (sandwich)", price: 0 },
+             { mealName: "Premium (lobster)", price: 34.95 },
+             { mealName: "Ultimate (whole zebra)", price: 290 }
+    	];    
+   
+    	// Editable data
+    	
+	self.seats = ko.observableArray([
+             new SeatReservation("Steve", self.availableMeals[0]),        
+             new SeatReservation("Bert", self.availableMeals[0])
+    	]);
+
+	self.addSeat = function() {
+             self.seats.push(new SeatReservation("", self.availableMeals[0]));
+    	}
+
+	}
+
+	ko.applyBindings(new ReservationsViewModel());
+
+	</script>
+
+Making the data editable
+Input / Dropdown
+------------------------
+
+	<td>
+	     <select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select>
+	</td>
+
+	This code uses two new bindings, "options" and "optionsText", which together control both the set of 
+	available items in a dropdown list, and which object property (in this case, mealName) is used to 
+	represent each item on screen.
+
+
+	HTML
+	----
+	
+	<h2>Your seat reservations</h2>
+
+	<table>
+    	     <thead>
+                  <tr>
+            	       <th>Passenger name</th>
+                       <th>Meal</th>
+                       <th>Surcharge</th>        
+                  </tr>
+    	     </thead>
+    	
+    	     <tbody data-bind="foreach: seats">
+                  <tr>
+                       <td><input data-bind="value: name" /></td>
+            	       <td>
+			   <select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'">
+			   </select>
+		       </td>
+            	       <td data-bind="text: formattedPrice"></td>
+                  </tr>    
+    	     </tbody>
+        </table>
+
+	<button data-bind="click: addSeat">Reserve another seat</button>
+	
+	JS
+	--
+	<script>
+		
+	function SeatReservation(name, initialMeal) {
+    	     var self = this;
+             self.name = name;
+             self.meal = ko.observable(initialMeal);
+
+	     self.formattedPrice = ko.computed(function() {
+                  var price = self.meal().price;
+                  return price ? "$" + price.toFixed(2) : "None";        
+             });
+	}
+
+	// viewmodel 
+
+	function ReservationsViewModel() {
+             var self = this;
+
+            
+	self.availableMeals = [
+             { mealName: "Standard (sandwich)", price: 0 },
+             { mealName: "Premium (lobster)", price: 34.95 },
+             { mealName: "Ultimate (whole zebra)", price: 290 }
+    	];    
+   
+    	    	
+	self.seats = ko.observableArray([
+             new SeatReservation("Steve", self.availableMeals[0]),        
+             new SeatReservation("Bert", self.availableMeals[0])
+    	]);
+
+	self.addSeat = function() {
+             self.seats.push(new SeatReservation("", self.availableMeals[0]));
+    	}
+
+	}
+
+	ko.applyBindings(new ReservationsViewModel());
+
+	</script>
+
+
+Removing items
+--------------
+
+	It displays a "remove" link next to each item:	
+
+	<td>
+	     <a href="#" data-bind="click: $root.removeSeat">Remove</a>
+	</td>
+
+	Note that the $root. prefix causes Knockout to look for a removeSeat handler on your 
+	top-level viewmodel instead of on the SeatReservation instance being bound --- that's 
+	a more convenient place to put removeSeat in this example. So, add a corresponding 
+	removeSeat function to your root viewmodel class, ReservationsViewModel:
+
+	// in ViewModel
+
+	<script>
+	
+	self.removeSeat = function(seat) { self.seats.remove(seat) }
+	
+	</script>
+
+
+Displaying a total surcharge
+----------------------------
+
+	Add the following ko.computed property inside ReservationsViewModel:
+
+	<script>
+	
+	self.totalSurcharge = ko.computed(function() {
+   	     var total = 0;
+             for (var i = 0; i < self.seats().length; i++)
+       	         total += self.seats()[i].meal().price;
+   	         return total;
+	});
+
+	</script>
+
+	Again, notice that since seats and meal are both observables, we're invoking 
+	them as functions to read their current values (e.g., self.seats().length).
+
+	Display the total surcharge by adding the following <h3> element to the bottom of your view:
+
+		<h3 data-bind="visible: totalSurcharge() > 0">
+    			Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
+		</h3>
+
+	The visible binding makes an element visible or invisible as your data changes 
+	(internally, it modifies the element's CSS display style). In this case, we choose 
+	to show the "total surcharge" information only if it's greater than zero.
+
+
+Final niceties 
+eneble / disable / length
+-------------------------
+
+	If you're asked to display the total number of seats being reserved, you can implement that 
+	in just a single place:
+
+		<h2>
+		     Your seat reservations (<span data-bind="text: seats().length"></span>)
+		</h2>
+
+	if you're asked to put a limit on the number of seats you can reserve, say, you can make 
+	the UI represent that by using the enable binding. 
+	The button becomes disabled when the seat limit is reached: 
+
+		<button data-bind="click: addSeat, enable: seats().length < 5" >
+		     Reserve another seat
+		</button>
+		
+		
+Single page applications
+========================
