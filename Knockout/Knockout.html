@@ -641,6 +641,7 @@ Displaying a grid of mails
 	(i.e., without needing the user to click it):
 	
 	<script>
+	
 		function WebmailViewModel() {
 		
 			var self = this;
@@ -661,9 +662,145 @@ Displaying a grid of mails
 
 	</script>
 
+	
+Viewing individual emails
+-------------------------
 
+	The visitor can now navigate between folders. 
+	What about letting them open and read specific emails? 
+	As with folder navigation, let's start by defining a viewmodel 
+	property to represent data loaded for a specific mail:
 
+	<script>
+	
+		function WebmailViewModel() {
+		
+			var self = this;
+			self.folders = ['Inbox', 'Archive', 'Sent', 'Spam'];
+			self.chosenFolderId = ko.observable();
+			self.chosenMailData = ko.observable(); //New
+			
+			self.chosenFolderData = ko.observable(); 
 
+			// Behaviours    
+			self.goToFolder = function(folder) { 
+				self.chosenFolderId(folder); 
+				$.get('/mail', { folder: folder }, self.chosenFolderData); 
+			};
+			
+			// Show inbox by default
+			self.goToFolder('Inbox');
+		};
+
+	</script>
+	
+	Next you need to update your bindings, so that if the visitor clicks 
+	on a row in the mails grid, your viewmodel loads the corresponding mail. 
+	First use the click binding on the  <tr> elements:
+	
+	<ul class="folders" data-bind="foreach: folders">
+		<li data-bind="text: $data, 
+               css: { selected: $data == $root.chosenFolderId() },
+               click: $root.goToFolder">
+		</li>
+	</ul>
+
+	<table class="mails" data-bind="with: chosenFolderData">
+		<thead>
+			<tr data-bind="click: $root.goToMail"> <!--New-->
+				<th>From</th>
+				<th>To</th>
+				<th>Subject</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach: mails">
+			<tr>
+				<td data-bind="text: from"></td>
+				<td data-bind="text: to"></td>
+				<td data-bind="text: subject"></td>
+				<td data-bind="text: date"></td>
+			</tr>     
+		</tbody>
+	</table>
+	
+	Next, implement goToMail on WebmailViewModel, causing it to update  
+	"chosenMailData" and "chosenFolderData" by means of an Ajax request:
+	
+	<script>
+	
+		function WebmailViewModel() {
+		
+			var self = this;
+			self.folders = ['Inbox', 'Archive', 'Sent', 'Spam'];
+			self.chosenFolderId = ko.observable();
+			self.chosenMailData = ko.observable();
+			
+			self.chosenFolderData = ko.observable(); 
+
+			// Behaviours    
+			self.goToFolder = function(folder) { 
+				self.chosenFolderId(folder);
+				self.chosenMailData(null); // Stop showing a mail //New			
+				$.get('/mail', { folder: folder }, self.chosenFolderData); 
+			};
+			
+			//New
+			self.goToMail = function(mail) { 
+				self.chosenFolderId(mail.folder);
+				self.chosenFolderData(null); // Stop showing a folder
+				$.get("/mail", { mailId: mail.id }, self.chosenMailData);
+			};
+			
+			// Show inbox by default
+			self.goToFolder('Inbox');
+		};
+
+	</script>
+
+	Finally, you can display chosenMailData by adding a little more markup to your view:
+	
+	<ul class="folders" data-bind="foreach: folders">
+		<li data-bind="text: $data, 
+               css: { selected: $data == $root.chosenFolderId() },
+               click: $root.goToFolder">
+		</li>
+	</ul>
+
+	<table class="mails" data-bind="with: chosenFolderData">
+		<thead>
+			<tr data-bind="click: $root.goToMail">
+				<th>From</th>
+				<th>To</th>
+				<th>Subject</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach: mails">
+			<tr>
+				<td data-bind="text: from"></td>
+				<td data-bind="text: to"></td>
+				<td data-bind="text: subject"></td>
+				<td data-bind="text: date"></td>
+			</tr>     
+		</tbody>
+	</table>
+	
+	<!--New-->
+	<div class="viewMail" data-bind="with: chosenMailData">
+		<div class="mailInfo">
+			<h1 data-bind="text: subject"></h1>
+			<p><label>From</label>: <span data-bind="text: from"></span></p>
+			<p><label>To</label>: <span data-bind="text: to"></span></p>
+			<p><label>Date</label>: <span data-bind="text: date"></span></p>
+		</div>
+		<p class="message" data-bind="html: messageContent" />
+	</div>
+	
+	Notice the use of the  html binding, which allows any linebreaks or HTML markup 
+	in the mail content to be displayed on-screen (we're making the server responsible 
+	for ensuring the mails are stripped of any malicious content).
+	
 
 
 
