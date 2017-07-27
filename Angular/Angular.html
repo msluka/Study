@@ -126,7 +126,24 @@ Component Template - Inline
 			<app-server></app-server>`,
 		  styleUrls: ['./servers.component.css']
 		})
+		
+Styling - Inline 
+----------------
 
+	@Component({
+	  selector: 'app-root',
+	  templateUrl: './app.component.html',
+	  // styleUrls: ['./app.component.css'] 
+
+	  styles: [`
+		h3{
+		  color: dodgerblue;
+		}  
+	  `]
+
+	})
+
+	
 	
 	
 		
