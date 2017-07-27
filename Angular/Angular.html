@@ -103,6 +103,29 @@ Create a new component via terminal
 
 		ng generate component servers     //servers in jast a name
 		ng g c servers                    // short version
+		
+		
+		
+Component Template - Inline 
+---------------------------
+
+	between single quotation mark ' ' - one line
+
+		@Component({
+		  selector: 'app-servers',
+		  template: '<app-server></app-server><app-server></app-server>',
+		  styleUrls: ['./servers.component.css']
+		})
+		
+	between back tag ` ` - multiline
+
+		@Component({
+		  selector: 'app-servers',
+		  template: `
+			<app-server></app-server>    
+			<app-server></app-server>`,
+		  styleUrls: ['./servers.component.css']
+		})
 
 	
 	
