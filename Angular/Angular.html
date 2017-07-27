@@ -42,7 +42,61 @@ Angular
 			"../node_modules/bootstrap/dist/css/bootstrap.min.css",
 			"styles.css"
 		  ],
+		  
+	
+Create a new component by hand
+------------------------------
 
+	1. Create folder for example: server
+	2. in this folder cretae a ts file with the same name as folder - server.component.ts
+	3. in this folder create a html file with the same name as folder - server.component.html
+	4. In server.component.ts add:
+	
+		import {Component} from '@angular/core';
+
+		@Component({
+		  selector: 'app-server',                   //any uniq name for selector
+		  templateUrl: './server.component.html'    //path to the html file
+		})
+		export class ServerComponent {
+
+		}
+		
+	5. add some info in - server.component.html
+	
+		<p>The Is a New Component</p>
+	
+	6. in app.module.ts:
+	
+		import { BrowserModule } from '@angular/platform-browser';
+		import { NgModule } from '@angular/core';
+		import { FormsModule } from '@angular/forms';
+		import { HttpModule } from '@angular/http';
+
+		import { AppComponent } from './app.component';
+		import { ServerComponent } from './server/server.component';   // import ServerComponent
+
+		@NgModule({
+		  declarations: [
+			AppComponent,
+			ServerComponent                                            // add ServerComponent
+		  ],
+		  imports: [
+			BrowserModule,
+			FormsModule,
+			HttpModule
+		  ],
+		  providers: [],
+		  bootstrap: [AppComponent]
+		})
+		export class AppModule { }
+		
+	7. In app.component.html: 
+	
+		<app-server></app-server>   //add selector we declared in - server.component.ts
+
+Create a new component by hand
+------------------------------
 
 
 	
