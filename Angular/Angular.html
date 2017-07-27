@@ -142,7 +142,51 @@ Styling - Inline
 	  `]
 
 	})
+	
+Selector name as an attribute
+-----------------------------
 
+	@Component({
+	  selector: '[app-servers]',
+	  template: `
+		<app-server></app-server>    
+		<app-server></app-server>`,
+	  styleUrls: ['./servers.component.css']
+	})
+	
+	
+	<div class="container">
+	  <div class="row">
+		<div class="col-xs-12">
+		  <h3>Hello Angular</h3>
+		  <hr>
+		  <div app-servers></div>    //as an attribute
+		</div>
+	  </div>
+	</div>
+	
+	
+Selector name as a class
+------------------------
+
+	@Component({
+	  selector: '.app-servers',
+	  template: `
+		<app-server></app-server>    
+		<app-server></app-server>`,
+	  styleUrls: ['./servers.component.css']
+	})
+	
+	
+	<div class="container">
+	  <div class="row">
+		<div class="col-xs-12">
+		  <h3>Hello Angular</h3>
+		  <hr>
+		  <div class="app-servers"></div>    //as a class
+		</div>
+	  </div>
+	</div>
 	
 	
 	
