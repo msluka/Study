@@ -25,10 +25,24 @@ Angular
 	5. cd applicationFolderPath (newly created folder path)
 	6. ng serve
 	
-	Installing bootstrap:
+	Installing bootstrap: 
 
 	1. cd applicationFolderPath
 	2. npm install --save bootstrap
+	
+	Importing bootstrap:
+	
+	.angular-cli.ison > styles > (add the following:) 
+	
+		"../node_modules/bootstrap/dist/css/bootstrap.min.css",
+		
+		Result:
+		
+		"styles": [
+			"../node_modules/bootstrap/dist/css/bootstrap.min.css",
+			"styles.css"
+		  ],
+
 
 
 	
