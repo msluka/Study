@@ -7,31 +7,64 @@ AngularJS
 	AngularJS is distributed as a JavaScript file, and can be added 
 	to a web page with a script tag:
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
 	
 	Preparation:
 	
-	1. Install AngularJS library from NuGet package manager:
-	"AngularJS Core"
+	1. Download AngularJS library from https://angularjs.org/ 
+		
+		a. Download angular.min.js file and add after body:
+			
+			<script src= "angular.min.js"></script>
+				
+			or
+		
+		b. npm install angular@1.6.5
+		
+			or
+		
+		c. just add after body:
+		
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
 	
-	2. Include angular.js file
+	2. 
 	
-	Now, we can start writing AngularJS web application.
+	We can also add: 
+	
+	In the head:
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	After body:
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script> 
+	<script 5rc="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script> 
+
+	Ready!!!
+	
+First AngularJS Application
+---------------------------
 	
 	<!DOCTYPE html>
 
 	<html>
 	<head>
 		<title>First AngularJS Application</title>
-		<script src= "~/Scripts/angular.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	</head>
-	<body ng-app >
+	<body ng-app>
+	
 		<h1>First AngularJS Application</h1>
 
 		Enter Numbers to Multiply: 
 		<input type="text" ng-model="Num1" /> x <input type="text" ng-model="Num2" /> 
-		= <span>{{Num1 * Num2}}</span>  
+		= <span>{{Num1 * Num2}}</span> 
+		
 	</body>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script> 
+	<script 5rc="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+	
 	</html>
 	
 	
@@ -51,6 +84,7 @@ ng-model
 --------
 
 	The ng-model directive binds HTML element to a property on the $scope object. 
+	
 	
 Expression
 ----------
