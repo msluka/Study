@@ -71,7 +71,10 @@ First AngularJS Application
 	Attributes and braces such as 
 	ng-app, ng-model, and {{ }} 
 	are built-in attributes in AngularJS and are called directives.
-	
+
+Directives
+==========
+
 ng-app
 ------
 
@@ -83,15 +86,113 @@ ng-app
 ng-model
 --------
 
-	The ng-model directive binds HTML element to a property on the $scope object. 
+	The ng-model directive binds HTML element to a property on the $scope object.
+	
+	
+ng-init 
+-------
+
+	ng-init directive initializes an AngularJS Application data. 
+	It is used to put values to the variables to be used in the application. 
+	In following example, we'll initialize an array of countries. 
+	We're using JSON syntax to define array of countries.
+	
+	<div ng-app = "" ng-init = "countries = [
+				{locale:'en-US',name:'United States'}, 
+				{locale:'en-GB',name:'United Kingdom'}, 
+				{locale:'en-FR',name:'France'}
+			]"> 
+ng-repeat
+---------
+
+	This directive repeats html elements for each item in a collection.
+
+	<div ng-app = "" ng-init = "countries = [
+				{locale:'en-US',name:'United States'}, 
+				{locale:'en-GB',name:'United Kingdom'}, 
+				{locale:'en-FR',name:'France'}
+			]"> 
+         
+         <p>List of Countries with locale:</p>
+      
+         <ol>
+            <li ng-repeat = "country in countries">
+               {{ 'Country: ' + country.name + ', Locale: ' + country.locale }}
+            </li>
+         </ol>
+    </div>	
+	
+	
+ng-bind
+-------
+	ng-bind in same way as expression {{ expression }}
+	
+	for example:
+	
+	<span>{{Num1 * Num2}}</span>
+	
+	<span ng-bind="Num1 * Num2"></span> 
 	
 	
 Expression
-----------
+==========
 
-	An expression is like JavaScript code which is usually wrapped inside double curly braces 
-	such as {{ expression }}. AngularJS framework evaluates the expression and produces a result. 
-	In the above example, {{ Num1 * Num2}} will simply display the product of Num1 and Num2.
+	Expressions are used to bind application data to html. 
+	Expressions are written inside double braces like {{ expression}}. 
+	Expressions behaves in same way as ng-bind directives. 
+	AngularJS application expressions are pure javascript expressions 
+	and outputs the data where they are used.
+	
+
+Using numbers
+-------------
+
+	<p>Expense on Books : {{cost * quantity}} Rs</p>
+	
+	
+Using strings
+-------------
+
+	<p>Hello {{student.firstname + " " + student.lastname}}!</p>
+	
+	
+Using object
+------------
+
+	<p>Roll No: {{student.rollno}}</p>
+	
+	
+Using array
+-----------
+
+	<p>Marks(Math): {{marks[3]}}</p>
+	
+	
+	Example:
+	
+	<html>   
+	   <head>
+		  <title>AngularJS Expressions</title>
+	   </head>
+	   
+	   <body>
+		  <h1>Sample Application</h1>
+		  
+		  <div ng-app = "" ng-init = "quantity = 1;cost = 30; student = {firstname:'David',lastname:'Bush',rollno:101};marks = [80,90,75,73,60]">
+			 <p>Hello {{student.firstname + " " + student.lastname}}!</p>
+			 <p>Expense on Books : {{cost * quantity}} Rs</p>
+			 <p>Roll No: {{student.rollno}}</p>
+			 <p>Marks(Math): {{marks[3]}}</p>
+		  </div>
+		  
+		  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+		  
+	   </body>
+	</html>
+	
+	
+	
+	
 	
 	
 	
