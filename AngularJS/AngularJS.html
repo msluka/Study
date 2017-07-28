@@ -191,6 +191,43 @@ Using array
 	</html>
 	
 	
+Controllers
+===========
+
+ng-controller
+-------------
+	
+	A controller is defined using ng-controller directive. 
+	
+	AngularJS application mainly relies on controllers to control the flow of data 
+	in the application.
+	
+	A controller is a JavaScript object containing attributes/properties and functions. 
+	Each controller accepts $scope as a parameter which refers to the application/module 
+	that controller is to control.
+	
+	<div ng-app = "" ng-controller = "studentController">...</div>
+	
+	Here we've declared a controller studentController using ng-controller directive. 
+	As a next step we'll define the studentController as follows −
+	
+	<script>
+         var mainApp = angular.module("mainApp", []);
+         
+         mainApp.controller('studentController', function($scope) {
+            $scope.student = {
+               firstName: "David",
+               lastName: "Bush",
+               
+               fullName: function() {
+                  var studentObject;
+                  studentObject = $scope.student;
+                  return studentObject.firstName + " " + studentObject.lastName;
+               }
+            };
+         });
+      </script>
+	
 	
 	
 	
