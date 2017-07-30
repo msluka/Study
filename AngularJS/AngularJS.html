@@ -229,6 +229,142 @@ ng-controller
       </script>
 	
 	
+Filters
+=======
+
+	Filters are used to change modify the data and can be clubbed in expression 
+	or directives using pipe character. Following is the list of commonly used filters.
+	
+	1. uppercase	
+	
+		{{student.fullName() | uppercase}}
+	   
+	2. lowercase
+	
+		{{student.fullName() | lowercase}}
+		
+	3. currency
+	
+		{{student.fees | currency}}
+		
+	4. filter (filter the array to a subset of it based on provided criteria.)
+	
+		<li ng-repeat = "subject in student.subjects | filter: subjectName">
+		
+	5. orderby
+	
+		<li ng-repeat = "subject in student.subjects | orderBy:'marks'">
+	
+	Example:
+	
+	<html>
+
+	<head>
+		<title>AngularJS First Application</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+	</head>
+
+	<body>
+
+		<div class="row">
+			<div class="col-xs-2"></div>
+			<div class="col-xs-8">
+
+				<h2>AngularJS Sample Application</h2>
+				<div ng-app="mainApp" ng-controller="studentController">
+					<table border="0">
+						<tr>
+							<td>Enter first name:</td>
+							<td><input type="text" ng-model="student.firstName"></td>
+						</tr>
+
+						<tr>
+							<td>Enter last name: </td>
+							<td><input type="text" ng-model="student.lastName"></td>
+						</tr>
+
+						<tr>
+							<td>Enter fees: </td>
+							<td><input type="text" ng-model="student.fees"></td>
+						</tr>
+
+						<tr>
+							<td>Enter subject: </td>
+							<td><input type="text" ng-model="subjectName"></td>
+						</tr>
+					</table>
+					<br/>
+
+					<table border="0">
+						<tr>
+							<td>Name in Upper Case: </td>
+							<td>{{student.fullName() | uppercase}}</td>
+						</tr>
+
+						<tr>
+							<td>Name in Lower Case: </td>
+							<td>{{student.fullName() | lowercase}}</td>
+						</tr>
+
+						<tr>
+							<td>fees: </td>
+							<td>{{student.fees | currency}}
+							</td>
+						</tr>
+
+						<tr>
+							<td>Subject:</td>
+
+							<td>
+								<ul>
+									<li ng-repeat="subject in student.subjects | filter: subjectName |orderBy:'-num'">
+										{{ subject.name + ', Marks:' + subject.marks + ', Id: ' + subject.id }}
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+
+				</div>
+			</div>
+
+			<div class="col-xs-2"><button onclick="myFunction()">Try it</button></div>
+		</div>
+
+		<script>
+			var mainApp = angular.module("mainApp", []);
+
+			mainApp.controller('studentController', function ($scope) {
+				$scope.student = {
+					firstName: "David",
+					lastName: "Bush",
+					fees: 500,
+
+					subjects: [
+						{ name: 'Physics', marks: 70, id: 5 },
+						{ name: 'Chemistry', marks: 80, id: 3 },
+						{ name: 'Math', marks: 65, id: 2 },
+						{ name: 'Math', marks: 70, id: 4 },
+						{ name: 'Math', marks: 40, id: 1 }
+					],
+
+					fullName: function () {
+						var studentObject;
+						studentObject = $scope.student;
+						return studentObject.firstName + " " + studentObject.lastName;
+					}
+				};
+			});
+		</script>
+
+	</body>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
+	<script 5rc="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
+	</html>
+	
 	
 	
 	
