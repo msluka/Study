@@ -431,6 +431,65 @@ HTML DOM and directives
 			  
 		   </body>
 		</html>
+		
+
+Modules
+=======
+
+	AngularJS supports modular approach. Modules are used to separate logics say services, 
+	controllers, application etc. and keep the code clean.
+	
+	We define modules in separate js files and name them as per the module.js file. 
+	In this example we're going to create two modules.
+
+		1. Application Module − used to initialize an application with controller(s).
+
+		2. Controller Module − used to define the controller.
+		
+	Application Module
+	------------------
+
+		mainApp.js
+		
+			var mainApp = angular.module("mainApp", []);
+			
+	Controller Module
+	-----------------
+
+		studentController.js
+		
+			mainApp.controller("studentController", function($scope) {
+			   $scope.student = {
+				  firstName: "David",
+				  lastName: "Bush",
+				  fees:500,
+				  
+				  subjects:[
+					 {name:'Physics',marks:70},
+					 {name:'Chemistry',marks:80},
+					 {name:'Math',marks:65},
+					 {name:'English',marks:75},
+					 {name:'Hindi',marks:67}
+				  ],
+				  
+				  fullName: function() {
+					 var studentObject;
+					 studentObject = $scope.student;
+					 return studentObject.firstName + " " + studentObject.lastName;
+				  }
+			   };
+			});
+			
+			
+	Use Modules
+	-----------
+	
+	<div ng-app = "mainApp" ng-controller = "studentController">
+	   ...
+	   <script src = "mainApp.js"></script>
+	   <script src = "studentController.js"></script>
+	
+	</div>
 	
 	
 	
