@@ -609,8 +609,32 @@ Forms
 	   </body>
 	</html>
 	
+
+Include
+=======
+
+	Using AngularJS, we can embed HTML pages within a HTML page using directive:
+	ng-include 	
+	
+	Example:
+	
+	main.html
+	---------
+	<div>	This is Main div	</div>
+	
+	other.html
+	----------
+	<div>	This is Other div	</div>
 	
 	
+	Index.html
+	----------
 	
+	<div ng-app="">
+
+		<div ng-include=" 'main.html' "></div>
+		<div ng-include=" 'other.html' "></div>
+
+	</div>
 	
 	
