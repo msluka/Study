@@ -318,3 +318,44 @@ Entity Framework
 				}
 			}
 		}
+
+/*
+	Async & Await
+	-------------		
+*/
+
+	using System;
+	using System.Threading;
+	using System.Threading.Tasks;
+
+	namespace AsyncAwait
+	{
+		class Program
+		{
+			static void Main(string[] args)
+			{
+				Message2();
+				Console.WriteLine("Main Message");
+				Console.ReadLine();
+			}
+
+			public static async void Message2()
+			{
+				// var task = Task.Run(new Action(Message1));
+
+				var task = new Task(Message1);
+
+				task.Start();
+				await task;
+
+				Console.WriteLine("Second Message");
+
+			}
+
+			public static void Message1()
+			{
+				Thread.Sleep(5000);
+				Console.WriteLine("First Message");
+			}
+		}
+	}
