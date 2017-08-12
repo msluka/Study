@@ -723,6 +723,11 @@ End
 		Age int
 	); 
 	
+	--or like that:
+	
+	Create Clustered Index IX_Employee_Salary
+	ON Employee (Salary ASC)
+	
 	--Create a composite clustered Index on the Gender and Salary columns 
 
 	Create Clustered Index IX_Employee_Gender_Salary
@@ -734,6 +739,9 @@ End
 	--the index in another place. The index will have pointers to the storage location of the data.
 	
 	--A table can have more than one nonclustered index
+	
+	Create NonClustered Index IX_Employee_Name
+	ON Employee (Name)
 	
 	-- Difference --
 
