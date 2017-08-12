@@ -686,13 +686,23 @@ End
 	CREATE INDEX idx_lastname
 	ON Persons (LastName);
 	
+	--or like that:
+	
+	CREATE INDEX IX_Persons_Lastname -- Convention: IX=Index; Persons = TableName; Lastname = column;
+	ON Persons (LastName);
+	
 	--If you want to create an index on a combination of columns, you can list the column names 
 	--within the parentheses, separated by commas:
 	
 	CREATE INDEX idx_pname
     ON Persons (LastName, FirstName);
+		
+-- FIND indexes
+   --if we want to find where we have indexes we can use the stored procedure:
+   
+   sp_Helpindex Persons
 	
 -- DROP INDEX Statement
-
-	DROP INDEX table_name.index_name;
-	
+   --DROP INDEX table_name.index_name;
+   
+	CREATE INDEX Persons.IX_Persons_Lastname
