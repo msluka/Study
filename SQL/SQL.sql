@@ -752,3 +752,49 @@ End
 
 	--3. Clustered index determines the storage order of rows in the table, and hence doesn't require 
 	--   additional disk space, but where as a Non Clustered index is stored separately from the table, additional storage space is required. 
+
+--Unique and Non Unique indexes 
+
+	--PRIMARY KEY constraint, automatically creates a unique clustered index.
+	
+	CREATE TABLE Persons (
+		ID int IDENTITY(1,1) PRIMARY KEY, -- a unique clustered index will be created.
+		LastName nvarchar(50) NOT NULL,
+		FirstName nvarchar(50),
+		Age int
+	); 
+	
+	--UNIQUE constraint creates a unique nonclustered index.
+	
+	CREATE TABLE Persons (
+		ID int NOT NULL UNIQUE, -- a unique nonclustered index will be created.
+		LastName nvarchar(50) NOT NULL,
+		FirstName nvarchar(50),
+		Age int
+	);
+	
+	CREATE TABLE Persons (
+    ID int NOT NULL,                          --a unique nonclustered index will be created.
+    LastName varchar(255) NOT NULL,           --a unique nonclustered index will be created.
+    FirstName varchar(255),
+    Age int,                                  
+    CONSTRAINT UC_Person UNIQUE (ID,LastName)
+	);
+
+	ALTER TABLE Persons
+	ADD UNIQUE (ID);
+	
+	ALTER TABLE Persons
+	ADD CONSTRAINT UC_Person 
+	UNIQUE (ID);                               --a unique nonclustered index will be created.
+	
+	ALTER TABLE Persons
+	ADD CONSTRAINT UC_Person 
+	UNIQUE CLUSTERED(ID);                      --a unique clustered index will be created.
+	
+	ALTER TABLE Persons
+	ADD CONSTRAINT UC_Person 
+	UNIQUE (ID,LastName);
+	
+	ALTER TABLE Persons
+    DROP CONSTRAINT UC_Person;
