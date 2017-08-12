@@ -706,3 +706,41 @@ End
    --DROP INDEX table_name.index_name;
    
 	CREATE INDEX Persons.IX_Persons_Lastname
+
+--Clustered and Nonclustered indexes 
+
+    -- Clustered indexes --
+	
+	--A clustered index determines the physical order of data in a table. 
+	--For this reason, a table can have only one clustered index.
+	
+	--When we use PRIMARY KEY constraint, automatically creates a unique clustered index.
+	
+	CREATE TABLE Persons (
+		ID int IDENTITY(1,1) PRIMARY KEY, -- a unique clustered index will be created.
+		LastName nvarchar(50) NOT NULL,
+		FirstName nvarchar(50),
+		Age int
+	); 
+	
+	--Create a composite clustered Index on the Gender and Salary columns 
+
+	Create Clustered Index IX_Employee_Gender_Salary
+	ON Employee (Gender DESC, Salary ASC)
+	
+	-- Nonclustered indexes --
+	
+	--A nonclustered index is analogous to an index. The data is stored in one place, 
+	--the index in another place. The index will have pointers to the storage location of the data.
+	
+	--A table can have more than one nonclustered index
+	
+	-- Difference --
+
+	--1. Only one clustered index per table, where as you can have more than one nonclustered index.
+
+	--2. Clustered index is faster than a nonclustered index, because, the clustered index has to refer 
+	--   back to the table, if the selected column is not present in the index. 
+
+	--3. Clustered index determines the storage order of rows in the table, and hence doesn't require 
+	--   additional disk space, but where as a Non Clustered index is stored separately from the table, additional storage space is required. 
