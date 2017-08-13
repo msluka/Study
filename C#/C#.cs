@@ -3035,6 +3035,8 @@ class Program
 /// Serialize and Deserialize
 /// -------------------------
 
+	/// JSON
+	
 	using System;
 	using System.Collections.Generic;
 	using System.IO;
@@ -3091,6 +3093,65 @@ class Program
 			}
 		}
 	}
+	
+	/// XML
+	
+	using System;
+	using System.Collections.Generic;
+	using System.IO;
+	using System.Xml.Serialization;
+
+
+	namespace SerializeXML
+	{
+	 
+		public class Student
+		{
+			public int Id { get; set; }		 
+			public string Name { get; set; }		 
+			public int Age { get; set; }
+		}
+
+
+		class Program
+		{
+			static void Main(string[] args)
+			{
+				
+				List<Student> students = new List<Student>();
+
+				students.Add(new Student { Id = 1, Name = "David", Age = 20 });
+				students.Add(new Student { Id = 1, Name = "John", Age = 22 });
+				students.Add(new Student { Id = 1, Name = "Sara", Age = 21 });
+
+
+				//Serialize 
+
+				XmlSerializer serializer = new XmlSerializer(typeof(List<Student>)); // (typeof(Student)) if object is single
+				StreamWriter sw = new StreamWriter("students.xml");
+				//Stream sw = File.OpenWrite("students.txt");
+				serializer.Serialize(sw, students);
+				sw.Close();
+
+				var xmlText = File.ReadAllText("students.xml");
+				Console.WriteLine(xmlText);
+
+
+				//Deserialize
+
+				StreamReader sr = new StreamReader("students.xml");
+				var studentsFromFile = (List<Student>) serializer.Deserialize(sr);
+				sr.Close();
+
+				foreach (var std in studentsFromFile)
+				{
+					Console.WriteLine(std.Name + " " + std.Age);
+					
+				}
+			}
+		}
+	}
+
 
 	
 /// Dynamic 
