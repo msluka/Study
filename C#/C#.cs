@@ -3031,6 +3031,10 @@ class Program
 	bubbleSort(a);
 	console.log(a);
 	
+	
+/// Serialize and Deserialize
+/// -------------------------
+
 	using System;
 	using System.Collections.Generic;
 	using System.IO;
@@ -3084,6 +3088,71 @@ class Program
 					Console.WriteLine(std.Name + ' ' + std.Age);
 				}
 		
+			}
+		}
+	}
+
+	
+/// Dynamic 
+/// -------
+
+/// A dynamic variable can have any type. Its type can change during runtime.
+
+	using System;	
+	using System.Threading;
+
+	namespace Dynamic
+	{
+		public class Student
+		{
+			public int Id { get; set; }
+			public string Name { get; set; }
+			public int Age { get; set; }
+		}
+
+
+		class Program
+		{
+			static void Main(string[] args)
+			{
+
+				// Dynamic Object
+
+				dynamic student = new Student();
+				
+				student.Name = "David";
+				student.Age = 22;
+
+
+				Console.WriteLine($"Student's Name is: {student.Name } and Age: { student.Age}");
+
+				Console.WriteLine("The Student is transforming...");
+
+				Thread.Sleep(3000);
+
+
+				student.Name = "Sara";
+				student.Age = 20;
+
+				Console.WriteLine($"Now, Student's Name is: {student.Name } and Age:{ student.Age}");
+
+				Thread.Sleep(3000);
+
+				// ----------------------------------------------------------------------------------
+
+				// Dynamic variables
+
+				dynamic test = "TEXT";
+				Console.WriteLine("Test is string: " + test);
+
+				test = 20;
+				Console.WriteLine("Now, Test is int: " + test);
+
+				test = true;
+
+				if (test == true)
+					Console.WriteLine("Now, Test is boolian");
+				
 			}
 		}
 	}
