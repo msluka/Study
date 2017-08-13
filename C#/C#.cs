@@ -3030,3 +3030,61 @@ class Program
 
 	bubbleSort(a);
 	console.log(a);
+	
+	using System;
+	using System.Collections.Generic;
+	using System.IO;
+	using System.Threading;
+	using System.Web.Script.Serialization;
+
+	namespace objectToJSON
+	{
+		public class Student {
+
+			public string Name { get; set; }
+			public int Age { get; set; }
+			
+		}
+		class Program
+		{
+			static void Main(string[] args)
+			{
+				List<Student> Students = new List<Student>
+				{ 
+					new Student {Name = "David", Age = 18},
+					new Student {Name = "Alex", Age = 20},
+					new Student {Name = "Sara", Age = 19}
+				};
+
+
+				Console.WriteLine("Serializing...");
+				Thread.Sleep(3000);
+
+				//Serializer
+				JavaScriptSerializer convertor = new JavaScriptSerializer();
+
+				//Serialize
+				var studentsToJson = convertor.Serialize(Students);
+
+				File.WriteAllText("Json.txt", studentsToJson);
+
+				var textJson = File.ReadAllText("Json.txt");
+				Console.WriteLine(textJson);
+				Console.WriteLine();
+				
+				Console.WriteLine("Deserializing...");
+				Thread.Sleep(3000);
+
+				//Deserialize
+				List<Student> StudentsFromJson = (List<Student>)convertor.Deserialize(textJson, typeof(List<Student>));
+			   
+
+				foreach (var std in StudentsFromJson)
+				{
+					Console.WriteLine(std.Name + ' ' + std.Age);
+				}
+		
+			}
+		}
+	}
+
