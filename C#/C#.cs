@@ -3219,6 +3219,7 @@ class Program
 	}
 
 	/// ExpandoObject
+	/// -------------
 	
 	///	ExpandoObject it like a expand property in HTML. 
 	/// Microsoft introduces new class ExpandoObject. 
@@ -3290,3 +3291,74 @@ class Program
 		]
 		
 		
+	/// AsExpando
+	/// ---------
+	
+	//Name of File: students.xml
+	<?xml version="1.0" encoding="utf-8"?>
+	<ArrayOfStudent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	                         xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	  <Student>		
+		<Name>David</Name>
+		<Age>20</Age>
+	  </Student>
+	 
+	  <Student>		
+		<Name>Sara</Name>
+		<Age>21</Age>
+	  </Student>
+	  
+	</ArrayOfStudent>
+	
+	
+	//Program	
+	var doc = XDocument.Load("students.xml");
+
+	//Standard way
+	foreach (var std in doc.Element("ArrayOfStudent").Elements("Student"))
+	{
+		Console.WriteLine(std.Element("Name").Value + " " + std.Element("Age").Value);
+
+	}
+
+	//AsExpando
+	var doc2 = XDocument.Load("students.xml").AsExpando();
+
+	foreach (var std in doc2.ArrayOfStudent)
+	{
+		Console.WriteLine(std.Age + " " + std.Name);
+	}
+	
+	/// To use AsExpando method "static class ExpandoXml" is necessary.
+	
+	public static class ExpandoXml
+    {
+        public static dynamic AsExpando(this XDocument xDocument)
+        {
+            return CreateExpando(xDocument.Root);
+        }
+
+        private static dynamic CreateExpando(XElement xElement)
+        {
+            var result = new System.Dynamic.ExpandoObject() as IDictionary<string, object>;
+            if (xElement.Elements().Any(x => x.HasElements))
+            {
+                var list = new List<System.Dynamic.ExpandoObject>();
+                result.Add(xElement.Name.ToString(), list);
+                foreach (var childElement in xElement.Elements())
+                {
+                    list.Add(CreateExpando(childElement));
+                }
+            }
+            else
+            {
+                foreach (var leafElement in xElement.Elements())
+                {
+                    result.Add(leafElement.Name.ToString(), leafElement.Value);
+                }
+            }
+            return result;
+        }
+    }
+	
+// -------------------------------------------------------------------------------------
