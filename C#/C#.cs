@@ -3218,3 +3218,75 @@ class Program
 		}
 	}
 
+	/// ExpandoObject
+	
+	///	ExpandoObject it like a expand property in HTML. 
+	/// Microsoft introduces new class ExpandoObject. 
+	/// It's really dynamic object. 
+	
+	/// The ExpandoObject class enables you to add and delete members of its 
+	/// instances at run time and also to set and get values of these members.
+	
+	
+	// Here we are creating dynamic instance.
+
+	dynamic Employee = new ExpandoObject();
+	
+	Employee.ID = 1;
+	Employee.Name = "David";
+	Employee.Salary = 90000;
+
+	// Nested dynamic instance
+
+	Employee.Addess = new ExpandoObject();
+	
+	Employee.Addess.City = "London";
+	Employee.Addess.Country = "GB";
+	
+		JavaScriptSerializer convertor = new JavaScriptSerializer();
+		var Text = convertor.Serialize(Employee);
+		Console.WriteLine(Text);
+	
+	//Output:
+		
+		[
+			{"Key":"ID","Value":1},
+			{"Key":"Name","Value":"David"},
+			{"Key":"Salary","Value":90000},
+			{"Key":"Addess","Value":[
+										{"Key":"City","Value":"London"},
+										{"Key":"Country","Value":"GB"}
+									]
+			}
+		]
+		
+	
+    // Another example
+	
+	 List<string> fields = new List<string>();
+
+		fields.Add("string_one");
+		fields.Add("string_two");
+		fields.Add("string_three");
+
+		dynamic exo = new System.Dynamic.ExpandoObject();
+
+		foreach (string field in fields)
+		{
+			((IDictionary<String, Object>)exo).Add(field, field + "_data");
+		}
+
+
+		JavaScriptSerializer convertor = new JavaScriptSerializer();		
+		var Text = convertor.Serialize(exo);
+		Console.WriteLine(Text);
+		
+		//Output
+		
+		[
+			{"Key":"string_one","Value":"string_one_data"},
+			{"Key":"string_two","Value":"string_two_data"},
+			{"Key":"string_three","Value":"string_three_data"}
+		]
+		
+		
