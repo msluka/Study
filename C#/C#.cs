@@ -3388,10 +3388,10 @@ class Program
         static void Main(string[] args)
         {
             Clients c = new Clients();
-            c[0] = "Dave";
-            c[1] = "Bob";
+            c[2] = "Dave";
+            c[8] = "Bob";
             
-            Console.WriteLine(c[1]);
+            Console.WriteLine(c[8]);
             //Output: Bob
         }
     }
@@ -3496,6 +3496,66 @@ class Program
 				Console.WriteLine(customer[222].City);
 				Console.WriteLine(customer["London"].PostalCode);
 			
+			}
+		}
+	}
+	
+	//Another example
+	
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+
+	namespace Indexers
+	{
+		public class Customer
+		{
+			public string Name { get; set; }
+			public string Gender { get; set; }
+
+			private List<Customer> customers = new List<Customer>();
+			
+			//Define indexers
+			public string this[string gender]
+			{
+				get
+				{
+					return customers.Count(c => c.Gender == gender).ToString();
+				}
+				set
+				{
+					foreach (var customer in customers)
+					{
+						if (customer.Gender == gender)
+
+							customer.Gender = value;
+					}
+				}
+
+			}
+			
+			class Program
+			{
+				static void Main(string[] args)
+				{
+					
+					var cus = new Customer();
+					cus.customers.Add(new Customer { Name = "David", Gender = "Male" });
+					cus.customers.Add(new Customer { Name = "John", Gender = "Male" });
+					cus.customers.Add(new Customer { Name = "Sara", Gender = "Female" });
+
+
+					Console.WriteLine("Before Update");
+					Console.WriteLine("Male" + " " + cus["Male"]);
+					Console.WriteLine("female" + " " + cus["Female"]);
+
+					cus["Male"] = "Female";
+
+					Console.WriteLine("After Update");
+					Console.WriteLine("Male" + cus["Male"]);
+					Console.WriteLine("female" + cus["Female"]);
+					
+				}
 			}
 		}
 	}
