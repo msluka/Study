@@ -3362,3 +3362,143 @@ class Program
     }
 	
 // -------------------------------------------------------------------------------------
+
+
+/// Indexer
+/// -------
+
+	/// Indexers allow instances of a class to be indexed just like arrays.
+	/// Indexer is defined by using this keyword
+	/// Indexer is a property and we should define get / set accessor
+	
+	class Program
+    {
+        class Clients {
+            private string[] names = new string[10];
+            
+            public string this[int ind] {
+                get {
+                    return names[ind];
+                }
+                set {
+                    names[ind] = value;
+                }
+            }
+        }
+        static void Main(string[] args)
+        {
+            Clients c = new Clients();
+            c[0] = "Dave";
+            c[1] = "Bob";
+            
+            Console.WriteLine(c[1]);
+            //Output: Bob
+        }
+    }
+	
+	//Another example
+	
+	using System;
+	using System.Collections.Generic;
+
+	namespace Indexers
+	{
+		public class Customer
+		{
+			public int Id { get; set; }
+			public string Name { get; set; }
+			private List<Address> Addresses = new List<Address>();
+
+			public Customer()
+			{
+				Addresses.Add(new Address { City = "London", PostalCode = 111 });
+				Addresses.Add(new Address { City = "Warsaw", PostalCode = 222 });
+			}
+
+			public Address getAddress(int postalCode)
+			{
+				foreach (var add in Addresses)
+				{
+					if (add.PostalCode == postalCode)
+					{
+						return add;
+					}
+				}				
+				return null;
+			}
+
+			public Address getAddress(string city)
+			{
+				foreach (var add in Addresses)
+				{
+					if (add.City == city)
+					{
+						return add;
+					}
+				}
+				return null;
+			}
+
+			//Define indexers
+			public Address this[int postalCode]
+			{
+				get
+				{
+					foreach (var add in Addresses)
+					{
+						if (add.PostalCode == postalCode)
+						{
+							return add;
+						}
+					}
+					return null;
+				}
+			}
+
+			public Address this[string city]
+			{
+				get
+				{
+					foreach (var add in Addresses)
+					{
+						if (add.City == city)
+						{
+							return add;
+						}
+					}
+					return null;
+				}
+			}
+		}
+
+		public class Address
+		{
+			public string City { get; set; }
+			public int PostalCode { get; set; }
+		}
+
+		class Program
+		{
+			static void Main(string[] args)
+			{
+
+				var customer = new Customer();
+
+				// Standard Way
+				var pin = customer.getAddress(222);
+				var cit = customer.getAddress("London");
+				
+				Console.WriteLine(pin.City);
+				Console.WriteLine(cit.PostalCode);
+
+				//Using Indexer
+				
+				Console.WriteLine(customer[222].City);
+				Console.WriteLine(customer["London"].PostalCode);
+			
+			}
+		}
+	}
+
+// -------------------------------------------------------------------------------------
+	
