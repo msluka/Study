@@ -6,6 +6,9 @@ SQL - Structured Query Language.
 SQL is used to access and manipulate a database.
 SQL is an ANSI (American National Standards Institute) standard*/
 
+/*--Lists the databases--*/ 
+select * from sys.databases
+
 
 /*--CREATING TABLE--*/
 CREATE TABLE groceries (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER );
