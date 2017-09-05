@@ -9,6 +9,13 @@ SQL is an ANSI (American National Standards Institute) standard*/
 /*--Lists the databases--*/ 
 select * from sys.databases
 
+/*--Creates a database--*/ 
+CREATE DATABASE testDB;
+
+/*--Drops the database--*/
+DROP DATABASE testDB;
+
+
 
 /*--CREATING TABLE--*/
 CREATE TABLE groceries (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER );
