@@ -62,7 +62,7 @@
 		}
 	}
 	
-	/// Create User with Role
+	/// Register User with Role
 	/// Helping source: https://www.youtube.com/watch?v=-IbNXvyyeVQ
 	
 	// In AccountViewModels
@@ -184,5 +184,56 @@
 		<li>@Html.ActionLink("RegisterUser", "RegisterUser", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
 	
 		
+	/// Add multiple Roles to User
 	
+	//In AccountController
 	
+	public ActionResult RegisterUser()
+	{
+		return View();
+	}
+
+	//
+	// POST: /Account/RegisterUser
+	[HttpPost]
+	[AllowAnonymous]
+	[ValidateAntiForgeryToken]
+	public async Task<ActionResult> RegisterUser(RegisterUserViewModel model)
+	{
+		using (var context = new ApplicationDbContext())
+		{
+			if (ModelState.IsValid)
+			{
+				var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+				var result = await UserManager.CreateAsync(user, model.Password);
+				
+				if (result.Succeeded)
+				{
+					var roleStore = new RoleStore<IdentityRole>(context);
+                        var roleManager = new RoleManager<IdentityRole>(roleStore);
+                        await roleManager.CreateAsync(new IdentityRole(model.Role));
+                        await roleManager.CreateAsync(new IdentityRole(model.Role2));
+
+                        //Multiple Roles						
+                        string[] roles = { model.Role, model.Role2};
+                        
+                        foreach (var role in roles)
+                        {
+                            await UserManager.AddToRoleAsync(user.Id, role); 
+                        }
+												
+                        //or
+                        //await UserManager.AddToRoleAsync(user.Id, model.Role);
+                        //await UserManager.AddToRoleAsync(user.Id, model.Role2);
+
+
+					await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+					
+					return RedirectToAction("Index", "Home");
+				}
+				AddErrors(result);
+			}
+			
+			return View(model);
+		}
+	}
