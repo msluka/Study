@@ -63,7 +63,7 @@
 	}
 	
 	/// Register User with Role
-	/// Helping source: https://www.youtube.com/watch?v=-IbNXvyyeVQ
+	/// Helpful source: https://www.youtube.com/watch?v=-IbNXvyyeVQ
 	
 	// In AccountViewModels
 	
@@ -240,6 +240,9 @@
 	
 	/// Add multiple Roles to User from checkboxes
 	
+	/// Helpful source: https://stackoverflow.com/questions/37778489/how-to-make-check-box-list-in-asp-net-mvc
+	///                 https://www.youtube.com/watch?v=4KeoOPWshmw&t=320s
+	
 	//In AccountViewModels
 	
 	public class RegisterUserViewModel
@@ -414,3 +417,138 @@
 		@section Scripts {
 			@Scripts.Render("~/bundles/jqueryval")
 		}
+    }
+	
+	
+	/// Add properties to User / Customize profile
+	/// Helpful source: http://go.microsoft.com/fwlink/?LinkID=317594
+	
+	//In Models > IdentityModel.cs 
+	
+	 public class ApplicationUser : IdentityUser
+    {
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            // Add custom user claims here
+            return userIdentity;
+        }
+
+        public string JobTitle { get; set; } // This is a new property
+    }
+	
+	//In Models > AccountViewModels.cs > RegisterViewModel
+	
+	public class RegisterViewModel
+    {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
+        [Required]
+        public string JobTitle { get; set; } // This is a new property
+    }
+	
+	
+	//In Controllers > AccountController.cs > Register method	
+	
+	// POST: /Account/Register
+	[HttpPost]
+	[AllowAnonymous]
+	[ValidateAntiForgeryToken]
+	public async Task<ActionResult> Register(RegisterViewModel model)
+	{
+		if (ModelState.IsValid)
+		{                                                                                 //This is a new property
+			var user = new ApplicationUser { UserName = model.Email, Email = model.Email, JobTitle = model.JobTitle };
+			var result = await UserManager.CreateAsync(user, model.Password);
+			if (result.Succeeded)
+			{
+				await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
+				return RedirectToAction("Index", "Home");
+			}
+			AddErrors(result);
+		}
+		
+		return View(model);
+	}
+	
+	
+	//In Views > Account > Register.cshtml
+	
+	@model AddPropertyToUserMVC.Models.RegisterViewModel
+	@{
+		ViewBag.Title = "Register";
+	}
+
+	<h2>@ViewBag.Title.</h2>
+
+	@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+	{
+		@Html.AntiForgeryToken()
+		<h4>Create a new account.</h4>
+		<hr />
+		@Html.ValidationSummary("", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+			<div class="col-md-10">
+				@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+			</div>
+		</div>
+		<div class="form-group">
+			@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+			<div class="col-md-10">
+				@Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+			</div>
+		</div>
+		<div class="form-group">
+			@Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+			<div class="col-md-10">
+				@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+			</div>
+		</div>
+		
+		//This is a new property
+		
+		<div class="form-group">
+			@Html.LabelFor(m => m.JobTitle, new { @class = "col-md-2 control-label" })
+			<div class="col-md-10">
+				@Html.TextBoxFor(m => m.JobTitle, new { @class = "form-control" })
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" class="btn btn-default" value="Register" />
+			</div>
+		</div>
+	}
+
+	@section Scripts {
+		@Scripts.Render("~/bundles/jqueryval")
+	}
+	
+	
+	// Enable Entity Framework Migrations
+	
+	1. Open Package Manager Console by doing Tools – Library Package Manager – Package Manager Console
+	2. Enable-Migrations
+	3. Add-Migration "JobTitle"
+	4. Update-Database
+
+	
+	
+	
