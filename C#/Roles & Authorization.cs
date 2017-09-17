@@ -550,5 +550,98 @@
 	4. Update-Database
 
 	
+	/// Get all users and their roles and other properties asp.net mvc
+	
+	/// Helpful source: https://stackoverflow.com/questions/34936469/get-all-users-and-their-roles-they-got-into-a-table-asp-net-mvc
+	
+	// Create ViewModel
+	
+	public class RolesViewModel
+    {
+        public IEnumerable<string> RoleNames { get; set; }
+        public string UserName { get; set; }
+		public string Password { get; set; } //We also can bind other properties 
+    }
+	
+	// Create Method
+	
+	public ActionResult GetAllUsersWithRoles()
+        {
+            var userRoles = new List<RolesViewModel>();
+            var context = new ApplicationDbContext();
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+
+            //Get all the usernames
+            foreach (var user in userStore.Users)
+            {
+                var r = new RolesViewModel
+                {
+                    UserName = user.UserName,
+					Password = user.PasswordHash
+                };
+                userRoles.Add(r);
+            }
+            //Get all the Roles for our users
+            foreach (var user in userRoles)
+            {
+                user.RoleNames = userManager.GetRoles(userStore.Users.First(s => s.UserName == user.UserName).Id);
+            }
+
+            return View(userRoles);
+        }
+
+    // In View
+	
+	@model IEnumerable<AddPropertyToUserMVC.Models.RolesViewModel>
+
+	@foreach (var user in Model.ToList())
+	{
+	<div class="row">
+		<div class="col-lg-2">@user.UserName</div>
+		<div class="col-lg-8">@user.Password</div>
+			@foreach (var role in user.RoleNames)
+			{
+				<div style="display: inline-block">@role</div>
+			}
+		</div>
+	</div>
+	}
+
+	//Or
+	
+	@*<table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Password</th>
+                <th>Roles</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var user in Model.ToList())
+                {
+                <tr>
+
+                    <td> @user.UserName </td>
+					<td> @user.Password </td>
+                    <td>
+                        <table>
+                            @foreach (var role in user.RoleNames)
+                            {
+                                <tr>
+                                    <td>@role</td>
+                                </tr>
+                            }
+                        </table>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>*@
+
 	
 	
