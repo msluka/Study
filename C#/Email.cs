@@ -185,3 +185,51 @@
 
 	}
 	
+	/// Sending Email with multiple Attachment
+	
+	/// Helpful source: https://msdn.microsoft.com/ru-ru/library/system.net.mail.mailmessage.attachments(v=vs.110).aspx
+	
+	// The same as above and additionally:
+	
+	 public void SendEmail(string toEmail, string subject, string emailBody)
+	{
+		try
+		{
+			string senderEmail = System.Configuration.ConfigurationManager.AppSettings["SenderEmail"].ToString();
+			string senderPassword = System.Configuration.ConfigurationManager.AppSettings["SenderPass"].ToString();
+
+			SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+			client.EnableSsl = true;
+			client.Timeout = 100000;
+			client.DeliveryMethod = SmtpDeliveryMethod.Network;
+			client.UseDefaultCredentials = false;
+			client.Credentials = new NetworkCredential(senderEmail, senderPassword);
+
+			MailMessage msg = new MailMessage(senderEmail, toEmail, subject, emailBody);
+			msg.IsBodyHtml = true;
+			msg.BodyEncoding = Encoding.UTF8;
+
+			msg.CC.Add("some1@gmail.com");
+			msg.Bcc.Add("some2@gmail.com");		
+
+			string[] files = { @"D:\welcome.jpg", @"D:\welcome.pdf", @"D:\welcome.xlsx", @"D:\welcome.docx", @"D:\welcome.mp4" };
+
+		 
+			foreach (var file in files)
+			{
+				Attachment data = new Attachment(file, MediaTypeNames.Application.Octet);
+				msg.Attachments.Add(data);
+			}
+
+			client.Send(msg);
+
+		}
+		
+		catch (Exception ex)
+		{
+			Response.Write("<script>alert('Something went wrong ! ')</script>");
+			Response.Write("The error :" + ex);
+		}
+
+	}
+	
