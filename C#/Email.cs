@@ -83,9 +83,9 @@
 
 		List<MailAddress> toEmail = new List<MailAddress>();
 
-		toEmail.Add(new MailAddress("ia.gumberidze@gmail.com"));
-		toEmail.Add(new MailAddress("mamulashvilis@gmail.com"));
-		toEmail.Add(new MailAddress("msluka.info@gmail.com"));
+		toEmail.Add(new MailAddress("som1@gmail.com"));
+		toEmail.Add(new MailAddress("some2@gmail.com"));
+		toEmail.Add(new MailAddress("some3@gmail.com"));
 
 		subject = "Email From ASP MVC";
 		emailBody = "<h1>WELCOME<br>" +
@@ -96,5 +96,43 @@
 			SendEmail(address.Address, subject, emailBody);
 		}
 	
+	}
+	
+	
+	/// Sending Email with CC and Bcc
+	
+	// The same as above and additionally:
+	
+	public void SendEmail(string toEmail, string subject, string emailBody)
+	{
+		try
+		{
+			string senderEmail = System.Configuration.ConfigurationManager.AppSettings["SenderEmail"].ToString();
+			string senderPassword = System.Configuration.ConfigurationManager.AppSettings["SenderPass"].ToString();
+
+			SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+			client.EnableSsl = true;
+			client.Timeout = 100000;
+			client.DeliveryMethod = SmtpDeliveryMethod.Network;
+			client.UseDefaultCredentials = false;
+			client.Credentials = new NetworkCredential(senderEmail, senderPassword);
+
+			MailMessage msg = new MailMessage(senderEmail, toEmail, subject, emailBody);
+			msg.IsBodyHtml = true;
+			msg.BodyEncoding = Encoding.UTF8;
+
+			msg.CC.Add("some1@gmail.com");  // This is a new code
+			msg.Bcc.Add("some2@gmail.com"); // This is a new code
+
+			client.Send(msg);
+
+
+		}
+		catch (Exception ex)
+		{
+			Response.Write("<script>alert('Something went wrong ! ')</script>");
+			Response.Write("The error :" + ex);
+		}
+
 	}
 	
