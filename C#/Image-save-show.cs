@@ -282,4 +282,128 @@
     }
 	
 	
+	/// Upload and save multiple Images to Database and display them.
+	
+	// Html
+	
+	<input type="file" id="imageBrowse" multiple="multiple" />
+    
+    <a href="#" class="btn btn-sm btn-success" onclick="SaveImage()">Save</a>
+    
+    <div id="uploadedImg"></div>
+	
+	// Script
+	
+	<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+	
+	<script>
+	
+	var SaveImage = function () {
+
+        var data = new FormData();
+        
+        var files = document.getElementById("imageBrowse").files;
+
+        for (var i = 0; i < files.length; i++) {
+            data.append("ImgFile", files[i]);
+        }
+        
+        $.ajax({
+            type: "POST",
+            url: "/Home/SaveImage",
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function (imgsId) {
+				
+				for(var i=0; i<imgsId.length; i++){
+					
+				$("#uploadedImg").append('<img src="/Home/DisplayingImage?Id=' +
+					imgsId[i] +
+					'"class="img-responsive img-rounded" style="margin:5px;"/>');
+				}
+
+			}
+
+        }).done(function () {
+            // alert('success');
+        }).fail(function (xhr, status, errorThrown) {
+            // alert('fail');
+        });
+
+    };
+	
+	</script>
+	
+	// Model
+	
+	public class Images
+    {
+        public int Id { get; set; }
+        public string ImgTitle { get; set; }
+        public byte[] ImgByte { get; set; }
+        public string ImgPath { get; set; }
+      
+    }
+	
+	// ViewModel
+	
+	public class ImgViewModel
+    {
+        public List<HttpPostedFileWrapper> ImgFile { get; set; }
+    }
+	
+	// Controller
+	
+	public JsonResult SaveImage(ImgViewModel model)
+	{
+		MyContext db = new MyContext();            
+		List<int> imagesId = new List<int>();
+		var files = model.ImgFile;
+		byte[] imageByte = null;
+
+		if (files != null)
+		{
+			foreach (var file in files)
+			{
+				file.SaveAs(Server.MapPath("/ImagesFolder/" + file.FileName));
+				BinaryReader reader = new BinaryReader(file.InputStream);
+				imageByte = reader.ReadBytes(file.ContentLength);
+				
+				Images img = new Images();
+
+				img.ImgTitle = file.FileName;
+				img.ImgByte = imageByte;
+				img.ImgPath = "/ImagesFolder/" + file.FileName;
+				db.Images.Add(img);
+				db.SaveChanges();
+				
+				imagesId.Add(img.Id);
+			}
+
+
+		}
+		return Json(imagesId, JsonRequestBehavior.AllowGet);
+	}
+
+	public ActionResult DisplayingImage(int id)
+	{
+		MyContext db = new MyContext();
+
+		var img = db.Images.SingleOrDefault(x => x.Id == id);
+		return File(img.ImgByte, "image/jpg");
+
+	}
+	
+	// Web.config
+	
+	// https://stackoverflow.com/questions/3853767/maximum-request-length-exceeded
+	
+	// Error: Maximum request length exceeded
+
+	
+	<system.web>
+		<httpRuntime targetFramework="4.5.2" maxRequestLength="1048576"/> 
+	</system.web>
+	
 	
