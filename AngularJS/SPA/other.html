@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<style>
+	table, th , td  {
+	  border: 1px solid grey;
+	  border-collapse: collapse;
+	  padding: 5px;
+	}
+	table tr:nth-child(odd) {
+	  background-color: #f1f1f1;
+	}
+	table tr:nth-child(even) {
+	  background-color: #ffffff;
+	}
+	</style>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	
+	
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	</head>
+	<body>
+
+		<br>
+		<h3>List of Students</h3>
+		<br>
+		
+		<div ng-app="myApp" ng-controller="studentsCtrl"> 
+			<table>
+			
+				<th>Name</th><th>Age</th><th>Location</th>		
+			  <tr ng-repeat="x in students | orderBy : 'Age'">
+				<td>{{ x.Name }}</td>
+				<td>{{ x.Age }}</td>
+				<td>{{ x.Location }}</td>
+			  </tr>
+			</table>
+
+		</div>
+
+		<script>
+			var app = angular.module('myApp', []);
+
+			app.controller('studentsCtrl', function($scope, $http) {
+				$http.get("http://localhost:51805/api/home")
+				.then(function (response) {$scope.students = response.data;});
+				
+				
+			});
+		</script>
+
+	</body>
+</html>

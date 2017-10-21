@@ -1,0 +1,62 @@
+﻿<html>
+<head>
+    <title>AngularJS AJAX and API</title>
+
+    <style>
+        table, th, td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+            table tr:nth-child(odd) {
+                background-color: #f2f2f2;
+            }
+
+            table tr:nth-child(even) {
+                background-color: #ffffff;
+            }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+</head>
+<body>
+    <h2>AngularJS AJAX and API</h2>
+    <div ng-app="myApp" ng-controller="studentController">
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Location</th>
+            </tr>
+
+            <tr ng-repeat="student in students | orderBy: '-Age'">
+                <td>{{ student.Name }}</td>
+                <td>{{ student.Age }}</td>
+                <td>{{ student.Location }}</td>
+
+            </tr>
+        </table>
+    </div>
+
+    <script>
+
+        var app = angular.module('myApp', []);
+
+        app.controller('studentController', function ($scope, $http) {
+
+            var url = "http://localhost:51805/api/home";
+
+            $http.get(url).then(function (response) {
+                $scope.students = response.data;
+                //$scope.$digest();
+            });
+        }
+
+        );
+    </script>
+
+</body>
+</html>
