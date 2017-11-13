@@ -406,4 +406,27 @@
 		<httpRuntime targetFramework="4.5.2" maxRequestLength="1048576"/> 
 	</system.web>
 	
+	// Or
+	
+	// https://alexandrebrisebois.wordpress.com/2015/12/09/troubleshooting-maxallowedcontentlength-exceeded/
+	
+	<configuration>
+	  <system.web>
+		<!-- maxRequestLength is in kilobytes (KB)  -->
+		<httpRuntime maxRequestLength="4194303" />
+	  </system.web>
+	  <system.webServer>
+		<security>
+		  <requestFiltering>
+			<!-- maxAllowedContentLength is in bytes (B)  -->
+			<requestLimits maxAllowedContentLength="4294967295"/>
+		  </requestFiltering>
+		</security>
+	  </system.webServer>
+	</configuration>
+	
+	// maxRequestLength is in kilobytes (KB)
+    // maxQueryString is in bytes (B) and of type uint. Its default value is 2048
+    // maxUrl is in bytes (B) and of type uint. Its default value is 4096
+    // maxAllowedContentLength is in bytes (B) and its default value is 30000000, which is about 28.61 MB. Its type is uint, and its max value is 4,294,967,295 bytes = 3,99 GB
 	
