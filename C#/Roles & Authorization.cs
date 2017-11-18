@@ -428,6 +428,8 @@
 	
 	 public class ApplicationUser : IdentityUser
     {
+		public string JobTitle { get; set; } // This is a new property
+		
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -435,8 +437,7 @@
             // Add custom user claims here
             return userIdentity;
         }
-
-        public string JobTitle { get; set; } // This is a new property
+        
     }
 	
 	//In Models > AccountViewModels.cs > RegisterViewModel
