@@ -22,6 +22,15 @@
 		return View();
 	}
 	
+	// Get LogedIn UserId
+	var logedInUserId = User.Identity.GetUserId();
+		
+	// Get Roles For LogedIn User
+	if (logedInUserId != null)
+	{
+		var rolesForUser = UserManager.GetRoles(logedInUserId).ToList(); //Returns List of Roles
+	}
+	
 	/// Redirect to different pages after login, based on user role in ASP.NET MVC 5
 	
 	// In AccountController
